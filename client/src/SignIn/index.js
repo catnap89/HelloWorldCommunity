@@ -1,9 +1,11 @@
 import React from 'react';
-import { Form, Button}  from 'react-bootstrap/Form'
-import './sidein.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import CardDeck from 'react-bootstrap/CardDeck'
+import './signin.css';
 
 const SignIn =(props) => (
-
+  <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 <Form>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
@@ -24,7 +26,7 @@ const SignIn =(props) => (
     Submit
   </Button>
 </Form>
-
+</CardDeck>
 )
 
 export default SignIn;
