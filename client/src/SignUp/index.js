@@ -1,9 +1,13 @@
 import React from 'react';
-import { Form, Button, Col}  from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import CardDeck from 'react-bootstrap/CardDeck'
 import './signup.css';
 
 const SignUp = (props) => (
 
+<CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 <Form>
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
@@ -55,7 +59,7 @@ const SignUp = (props) => (
     Submit
   </Button>
 </Form>
-
+</CardDeck>
 )
 
 export default SignUp;
