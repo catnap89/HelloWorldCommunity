@@ -78,26 +78,16 @@ const Chatbox = (props) => (
         </Card.Body>
 
         <Card.Footer className="text-muted bg-white border-0 mt-3">
-            <InputGroup size="lg" className=" p-2 pl-5 pr-5">
-                <FormControl className= "bg-white"
-                placeholder= ''
-                aria-label="Enter Chat Message"
+
+            <InputGroup size="lg" className="mb-3">
+            <FormControl
+                placeholder="Recipient's username"
+                aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
-                />
-                <InputGroup.Append>
-                <Button variant="dark border pl-5 pr-5">Send</Button>
-                </InputGroup.Append>
-            </InputGroup>
-            {/*  */}
-            <InputGroup size="lg">
-                <InputGroup.Prepend>
-                <InputGroup.Text>Chat here</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                placeholder=""
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                />
+            />
+            <InputGroup.Append>
+                <Button variant="outline-secondary pl-5 pr-5">Send</Button>
+            </InputGroup.Append>
             </InputGroup>
         </Card.Footer>
     </Card>
