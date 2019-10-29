@@ -65,7 +65,7 @@ const SignUp = (props) => (
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group> */}
 <br />
-  <Button variant="primary" type="submit">
+  <Button variant="dark" type="submit">
     Submit
   </Button>
 
