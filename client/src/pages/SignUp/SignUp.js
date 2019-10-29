@@ -12,7 +12,7 @@ const SignUp = (props) => (
 <CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 <Card className="col-4 bg-light">
      
-    <Card.Title className="pt-3">Sign In</Card.Title>
+    <Card.Title className="pt-4 pl-2">Sign In</Card.Title>
      <hr />
      <br />
 
@@ -22,34 +22,34 @@ const SignUp = (props) => (
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Email:</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" />
+      <Form.Control className="form" type="email" placeholder="Enter email" />
     </Form.Group>
 <br />
     <Form.Group as={Col} controlId="formGridPassword">
       <Form.Label>Password:</Form.Label>
-      <Form.Control type="password" placeholder="Password" />
+      <Form.Control className="form" type="password" placeholder="Password" />
     </Form.Group>
   </Form.Row>
   <br />
   <Form.Group controlId="formGridAddress1">
     <Form.Label>Address:</Form.Label>
-    <Form.Control placeholder="1234 Main St" />
+    <Form.Control className="form" placeholder="1234 Main St" />
   </Form.Group>
   <br />
   <Form.Group controlId="formGridAddress2">
     <Form.Label>Address 2:</Form.Label>
-    <Form.Control placeholder="Apartment, studio, or floor" />
+    <Form.Control className="form" placeholder="Apartment, studio, or floor" />
   </Form.Group>
 <br />
   <Form.Row>
     <Form.Group as={Col} controlId="formGridCity">
       <Form.Label>City:</Form.Label>
-      <Form.Control />
+      <Form.Control className="form" />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>State:</Form.Label>
-      <Form.Control as="select">
+      <Form.Control className="form" as="select">
         <option>Choose...</option>
         <option>...</option>
       </Form.Control>
@@ -57,7 +57,7 @@ const SignUp = (props) => (
 
     <Form.Group as={Col} controlId="formGridZip">
       <Form.Label>Zip:</Form.Label>
-      <Form.Control />
+      <Form.Control className="form" />
     </Form.Group>
   </Form.Row>
 
@@ -65,7 +65,7 @@ const SignUp = (props) => (
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group> */}
 <br />
-  <Button variant="dark" type="submit">
+  <Button className="button" variant="dark" type="submit">
     Submit
   </Button>
 
