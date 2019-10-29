@@ -2,7 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
-
+// import {Link} from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 
 import './signin.css';
@@ -31,10 +31,15 @@ const SignIn =(props) => (
     {/* <Form.Check type="checkbox" label="Check me out" /> */}
   </Form.Group>
   <br />
-  <Button className="button" variant="dark" type="submit">
+  <Button className="button mr-4" variant="dark" type="submit">
     Submit
   </Button>
+  <a href="/signup">Sign up / Register</a>
 </Form>
+
+
+
+
 </Card>
 
 
