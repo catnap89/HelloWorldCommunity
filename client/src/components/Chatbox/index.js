@@ -86,7 +86,7 @@ const Chatbox = (props) => (
                 aria-describedby="basic-addon2"
             />
             <InputGroup.Append>
-                <Button variant="light border pl-5 pr-5">Send</Button>
+                <Button variant="secondary border pl-5 pr-5">Send</Button>
             </InputGroup.Append>
             </InputGroup>
         </Card.Footer>
