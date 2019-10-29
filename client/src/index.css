@@ -14,7 +14,7 @@ code {
 }
 
 html, body, .App, #root {
-  height: 95%
+  height: 100%
   
 
 }
@@ -22,3 +22,4 @@ html, body, .App, #root {
 body {
   overflow-y:hidden;
 }
+

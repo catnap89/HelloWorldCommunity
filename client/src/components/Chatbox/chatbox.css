@@ -18,10 +18,10 @@ font-size: 16px;;
 }
 
 .chat {
-  /* min-height:700px; */
-  max-height: 720px; 
+  min-height:700px; 
+   max-height: 700px;  
   overflow-y: auto;
-  height:90vh
+  height:100vh
 }
 
 ::-webkit-scrollbar {
@@ -45,3 +45,4 @@ font-size: 16px;;
 ::-webkit-scrollbar-thumb:hover {
   background:lightskyblue; 
 }
+

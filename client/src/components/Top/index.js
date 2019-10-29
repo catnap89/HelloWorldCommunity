@@ -4,7 +4,7 @@ import './top.css';
 
 const Top = (props) => (
 
-  <Navbar className="topbar p-0 border-bottom" bg="info" fixed="top" variant="light">
+  <Navbar className="topbar p-0 border-bottom"  fixed="top" variant="light">
   <Navbar.Brand href="#home">
   <img
        style= {{height: '85px', paddingLeft: '20px'}}
@@ -18,9 +18,9 @@ const Top = (props) => (
     <Nav.Link href="#pricing">Pricing</Nav.Link>
   </Nav>
   <Form inline>
-  <Button variant="dark mr-5 border">Sign Out</Button><span> | </span>
-    <FormControl type="text" placeholder="Search" className="mr-sm-3 ml-5" />
-    <Button className ="mr-3" variant="outline-dark">Search</Button>
+  <Button className="button mr-5" variant="dark">Sign Out</Button><span> | </span>
+    <FormControl type="text" placeholder="Search" className=" p-3 mr-3 ml-5 form" />
+    <Button className ="mr-3 button" variant="dark">Search</Button>
   </Form>
 </Navbar>
 )
