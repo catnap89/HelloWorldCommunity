@@ -8,73 +8,27 @@ import { FormControl, InputGroup, Button} from 'react-bootstrap';
 import './chatbox.css';
 
 const Chatbox = (props) => (
-    <Card className= 'col-9 p-3 border-0 mt-2 mb-4'>
-        <Card.Body className='chat'>
-            <p className='response1'>
-            <strong>John - </strong> Contrary to popular belief, Lorem Ipsum is not simply random text. Contrary to popular belief, Lorem Ipsum is not simply random text.
+    <Card className= 'col-9 p-3 border-0 chat mt-5 mb-4 mx-auto'>
+        <Card.Body className="scroll">
+            <p className='response1 speech-bubble p-5'>
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
             </p>
 
-            <p className='response ml-3'>
+            <p className='response speech-bubble ml-5 p-5'>
             <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
             </p>
-            <p className='response1'>
+            <p className='response1 speech-bubble p-5'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
             </p>
 
-            <p className='response ml-3 '>
+            <p className='response ml-5 speech-bubble p-5'>
             <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  
             </p>
-            <p className='response1'>
+            <p className='response1 speech-bubble p-5'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
             </p>
 
-            <p className='response ml-3'>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-
-            <p className='response1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-            <p className='response ml-3 '>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-            <p className='response1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-            <p className='response ml-3'>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-            <p className='response1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-            <p className='response ml-3 '>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-            <p className='response1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-            <p className='response ml-3'>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-
-            <p className='response1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-            <p className='response ml-3 '>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-            <p className='response1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-            <p className='response ml-3'>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p> 
+          
         </Card.Body>
 
         <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-3">
