@@ -74,7 +74,7 @@ const SignUp = (props) => (
 </Card>
 
 
-<Card className="col-8 bg-light text-center pt-5">
+<Card className="col-8 cha text-center pt-5">
   <Card.Text>
   <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
    <h3>Please Register and Create your profile to enjoy <strong>Ch@</strong>. 
