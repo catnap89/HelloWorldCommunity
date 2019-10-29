@@ -1,106 +1,145 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { Redirect } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
 
 import './signup.css';
 
-const SignUp = (props) => (
+class SignUp extends Component  {
+  state = {
+    username: "",
+    email: "",
+    password: "",
+    toSignIn: false
+  }
 
-<CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
-<Card className="col-4 bg-light">
-     
-    <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
-     <hr />
-     <br />
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-<Form>
+  handleFormSubmit = event => {
+    event.preventDefault();
+    console.log("Username: " + this.state.username+ " Eamil: " + this.state.email + " Password: " + this.state.password);
+    //next step is to make an axios.post using the email and password that our user enters
+    const userInfo = {
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password
+    }
+    axios.post("/login", userInfo)
+    this.setState({
+      toSignIn: true,
+    });
+  };
+
+  render() {
+
+    if (this.state.toSignIn) {
+      return <Redirect to={{
+        pathname: "/",
+      }} />
+    }
+    return(
+      <CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
+
+        <Card className="col-4 bg-light">
+            
+          <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
+          <hr />
+          <br />
+
+          <Form>
+
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control 
+                className="form" 
+                type="email" 
+                placeholder="Enter email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+                name="email" 
+              />
+            </Form.Group>
+            <br />
+            <Form.Group as={Col} controlId="formGridUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                className="form" 
+                type="username" 
+                placeholder="Enter username" 
+                value={this.state.username}
+                onChange={this.handleInputChange}
+                name="username"
+              />
+            </Form.Group>
+            <br />
+            <Form.Group as={Col} controlId="formGridPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control 
+                className="form" 
+                type="password" 
+                placeholder="Password" 
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                name="password"
+              />
+            </Form.Group>
+
+            <br />
+
+            <Button 
+              className="button mr-4" 
+              variant="dark" 
+              type="submit"
+              onClick={this.handleFormSubmit}
+            >
+              Submit
+            </Button>
+
+            <a href="/"> Sign In</a>
+            
+          </Form>
+
+        </Card>
 
 
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>Email:</Form.Label>
-      <Form.Control className="form" type="email" placeholder="Enter email" />
-    </Form.Group>
-<br />
-    <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label>Password:</Form.Label>
-      <Form.Control className="form" type="password" placeholder="Password" />
-    </Form.Group>
-  </Form.Row>
-  <br />
-  <Form.Group controlId="formGridAddress1">
-    <Form.Label>Address:</Form.Label>
-    <Form.Control className="form" placeholder="1234 Main St" />
-  </Form.Group>
-  <br />
-  <Form.Group controlId="formGridAddress2">
-    <Form.Label>Address 2:</Form.Label>
-    <Form.Control className="form" placeholder="Apartment, studio, or floor" />
-  </Form.Group>
-<br />
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>City:</Form.Label>
-      <Form.Control className="form" />
-    </Form.Group>
+        <Card className="col-8 cha text-center pt-5">
+          <Card.Body>
+          <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
+            <h3>Please Register and Create your profile to enjoy <strong>Ch@</strong>. 
+            <br />
+            <br />
+            We hope you have a Wonderful time.
+            </h3>
+            <h5 className="p-4">The Dev Team:</h5>
+            <ul className="list-unstyled">
+              <li>Daniel Cho</li>
+              <li>Khavin Lindo</li>
+              <li>Ryan Weingart</li>
+              <li>Trey Helmer</li>
+            </ul>
 
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>State:</Form.Label>
-      <Form.Control className="form" as="select">
-        <option>Choose...</option>
-        <option>...</option>
-      </Form.Control>
-    </Form.Group>
+          </Card.Body>
+        </Card>
 
-    <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>Zip:</Form.Label>
-      <Form.Control className="form" />
-    </Form.Group>
-  </Form.Row>
+      </CardDeck>
 
-  {/* <Form.Group id="formGridCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group> */}
-<br />
-  <Button className="button mr-4" variant="dark" type="submit">
-    Submit
-  </Button>
-  <a href="/"> Sign In</a>
+    )
+  }
 
-  </Form>
-
-
-  
-</Card>
-
-
-<Card className="col-8 cha text-center pt-5">
-  <Card.Text>
-  <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
-   <h3>Please Register and Create your profile to enjoy <strong>Ch@</strong>. 
-   <br />
-   <br />We hope you have a Wonderful time.</h3>
-        <h5 className="p-4">The Dev Team:</h5>
-        <ul className="list-unstyled">
-<li>Daniel Cho</li>
-<li>Khavin Lindo</li>
-<li>Ryan Weingart</li>
-<li>Trey Helmer</li>
-
-
-        </ul>
-
- </Card.Text>
-</Card>
-</CardDeck>
+}
 
 
 
 
 
-)
 
 export default SignUp;
