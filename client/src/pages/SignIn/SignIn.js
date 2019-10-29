@@ -43,7 +43,7 @@ const SignIn =(props) => (
 <Card className="col-8 cha text-center pt-5">
   <Card.Text>
   <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
-   <h3>Welcome back!! Please Log-in to enter <strong>Ch@</strong>.</h3>
+   <h3>Welcome back!! Please Sign in to enter <strong>Ch@</strong>.</h3>
         <h5 className="p-4">The Dev Team:</h5>
         <ul className="list-unstyled">
 <li>Daniel Cho</li>
