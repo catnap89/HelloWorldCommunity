@@ -12,7 +12,7 @@ const SignUp = (props) => (
 <CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 <Card className="col-4 bg-light">
      
-    <Card.Title className="pt-4 pl-2">Sign In</Card.Title>
+    <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
      <hr />
      <br />
 
