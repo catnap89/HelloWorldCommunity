@@ -17,7 +17,7 @@ function App() {
         {/* <Top /> */}
         <Switch>
           <Route exact path="/" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/SignUp" component={SignUp} />
           {/* <Route exact path="/main" component={Main} /> */}
           <Route exact path="/community/:id" component={Community} />
           <Route component={NoMatch} />
