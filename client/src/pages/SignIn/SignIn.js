@@ -90,13 +90,15 @@ class SignIn extends Component {
             <br />
 
             <Button
-              className="button"
+              className="button mr-4"
               variant="dark"
               type="submit"
               onClick={this.handleFormSubmit}
             >
               Submit
             </Button>
+
+            <a href="/signup">Sign up / Register</a>
 
           </Form>
 
