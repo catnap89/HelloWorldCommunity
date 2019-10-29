@@ -65,12 +65,15 @@ const SignUp = (props) => (
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group> */}
 <br />
-  <Button className="button" variant="dark" type="submit">
+  <Button className="button mr-4" variant="dark" type="submit">
     Submit
   </Button>
+  <a href="/"> Sign In</a>
+
+  </Form>
 
 
-</Form>
+  
 </Card>
 
 
