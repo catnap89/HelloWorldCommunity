@@ -3,6 +3,7 @@ const mongoose = require("mongoose"); // run npm i mongoose to install
 // const path = require("path");
 const routes = require("./routes");
 
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/HelloWorldDB");
 
 // Define API routes here
 app.use(routes)
+require("./routes/apiRoutes")(app);
 
 
 app.listen(PORT, () => {
