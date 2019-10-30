@@ -9,7 +9,7 @@ import './side.css';
 const Side =(props) => (
 
 
-  <Card className='col-2 pr-0 ml-0 pl-0 border-0 text-center' bg="light">
+  <Card className='col-2 pr-0 ml-0 pl-0 border-0 text-center' bg="white">
 
     <Card.Title>
 
@@ -19,34 +19,34 @@ const Side =(props) => (
         DASHBOARD
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="light border-0" as={Link} to="/signup">
+      <ListGroup.Item action variant="white border-0" as={Link} to="/signup">
         Sign Up / Register
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="light border-0" as={Link} to="/">
+      <ListGroup.Item action variant="white border-0" as={Link} to="/">
         Sign In
       </ListGroup.Item>
 
 
-      <ListGroup.Item action variant="light border-0" as={Link} to="/community/:id">
+      <ListGroup.Item action variant="white border-0" as={Link} to="/community/:id">
         Chat / Main
       </ListGroup.Item>
 
       
 
-      <ListGroup.Item action variant="light border-0">
+      <ListGroup.Item action variant="white border-0">
         Danger
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="light border-0">
+      <ListGroup.Item action variant="white border-0">
         Warning
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="light border-0">
+      <ListGroup.Item action variant="white border-0">
         Info
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="light border-0">
+      <ListGroup.Item action variant="white border-0">
         Light
       </ListGroup.Item>
     
