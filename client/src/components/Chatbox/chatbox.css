@@ -18,11 +18,16 @@ font-size: 16px;;
 }
 
 .chat {
-  min-height:700px; 
-   max-height: 700px;  
-  overflow-y: auto;
-  height:100vh
+  min-height:750px; 
+  max-height: 750px;   
+ 
+  /* height:90vh */
 }
+
+.scroll {
+   overflow-y: auto;
+}
+
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -44,5 +49,27 @@ font-size: 16px;;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background:lightskyblue; 
+}  
+
+
+.speech-bubble {
+	position: relative;
+	background: whitesmoke;
+  border-radius: .4em;
+  margin-right: 5px;
 }
 
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: whitesmoke;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-right: -20px;
+}

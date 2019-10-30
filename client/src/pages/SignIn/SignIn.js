@@ -26,7 +26,7 @@ class SignIn extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("Eamil: " + this.state.email + " Password: " + this.state.password);
+    console.log("Email: " + this.state.email + " Password: " + this.state.password);
     //next step is to make an axios.post using the email and password that our user enters
     const userInfo = {
       username: this.state.username,
