@@ -73,3 +73,8 @@ font-size: 16px;;
 	margin-top: -10px;
 	margin-right: -20px;
 }
+
+.speech-bubble:hover {
+  background:rgb(236, 235, 235);
+  /* border-left-color: lightskyblue; */
+}
