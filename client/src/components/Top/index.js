@@ -18,8 +18,8 @@ const Top = (props) => (
     <Nav.Link href="#pricing">Pricing</Nav.Link> */}
   </Nav>
   <Form inline>
-  <Button className="button mr-5" variant="dark">Sign Out</Button><span> | </span>
-    <FormControl type="text" placeholder="Search" className=" p-3 mr-3 ml-5 mr-5 form" /><span> | </span>
+  <Button className="button mr-5" variant="dark">Sign Out</Button><span className="line"> | </span>
+    <FormControl type="text" placeholder="Search" className=" p-3 mr-3 ml-5 mr-5 form" /><span className="line"> | </span>
     <Button className ="ml-5 mr-3 button" variant="dark">Search</Button>
   </Form>
 </Navbar>
