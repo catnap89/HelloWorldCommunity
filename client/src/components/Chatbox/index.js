@@ -9,7 +9,7 @@ import './chatbox.css';
 
 const Chatbox = (props) => (
     <Card className= 'col-9 p-3 border chat mt-5 mb-4 mx-auto'>
-        <Card.Body className="scroll">
+        <Card.Body className="scroll ml-auto col-8">
             <p className='response1 speech-bubble p-4'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
             </p>
