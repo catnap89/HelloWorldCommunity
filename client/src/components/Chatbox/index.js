@@ -8,7 +8,7 @@ import { FormControl, InputGroup, Button} from 'react-bootstrap';
 import './chatbox.css';
 
 const Chatbox = (props) => (
-    <Card className= 'col-9 p-3 border-0 chat mt-5 mb-4 mx-auto'>
+    <Card className= 'col-9 p-3 border chat mt-5 mb-4 mx-auto'>
         <Card.Body className="scroll">
             <p className='response1 speech-bubble p-5'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
