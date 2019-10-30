@@ -8,27 +8,42 @@ import { FormControl, InputGroup, Button} from 'react-bootstrap';
 import './chatbox.css';
 
 const Chatbox = (props) => (
+
+    // code for chat with 2 (split) windows
+
     <Card className= 'col-9 p-3 border chat mt-5 mb-4 mx-auto'>
-        <Card.Body className="scroll">
+<Card.Body className='scroll'>
+        <Card.Text id="person1" className=" ml-auto col-5">
             <p className='response1 speech-bubble p-4'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>
+            </p>    
 
-            <p className='response speech-bubble ml-5 p-4'>
+            <p className='response1 speech-bubble p-4'>
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
+            </p>    
+
+            <p className='response1 speech-bubble p-4'>
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
+            </p>    
+
+            <p className='response1 speech-bubble p-4'>
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
+            </p>    
+
+            <p className='response1 speech-bubble p-4'>
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
+            </p>    
+
+        </Card.Text>
+
+        <Card.Text id="person2" className="mr-auto col-5">
+         
+            <p className='response speech-bubble-left p-4'>
             <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
             </p>
-            <p className='response1 speech-bubble p-4'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
+         
+        </Card.Text>
 
-            <p className='response ml-5 speech-bubble p-4'>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>
-            <p className='response1 speech-bubble p-4'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. 
-            </p>
-
-          
         </Card.Body>
 
         <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-3">
@@ -40,7 +55,7 @@ const Chatbox = (props) => (
                 aria-describedby="basic-addon2"
             />
             <InputGroup.Append>
-                <Button variant="secondary border pl-5 pr-5">Send</Button>
+                <Button variant="dark border pl-5 pr-5">Send</Button>
             </InputGroup.Append>
             </InputGroup>
         </Card.Footer>
@@ -48,3 +63,7 @@ const Chatbox = (props) => (
 )
 
 export default Chatbox;
+
+
+// code for chat with 1 screen
+

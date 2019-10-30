@@ -2,8 +2,8 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup'
 import {Link} from "react-router-dom";
-
-import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import './side.css';
 
 const Side =(props) => (
@@ -16,7 +16,10 @@ const Side =(props) => (
     <ListGroup className="flush" variant="flush border-right">
     
       <ListGroup.Item className='pt-3 p-4 channel'>
-        DASHBOARD
+      <Button variant="outline-primary" size="lg">
+      START NEW CHAT
+    </Button>
+        
       </ListGroup.Item>
 
       <ListGroup.Item action variant="white border-0" as={Link} to="/signup">
