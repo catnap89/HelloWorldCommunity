@@ -4,22 +4,23 @@
  
   } */
 
-  p {
-
-font-size: 16px;;
-  }
+p {
+  font-size: 16px;;
+}
 
 .response1 {
   color:green;
 }
 
 .response {
-    color: indigo;
+  color: indigo;
 }
 
 .chat {
-  min-height:750px; 
-  max-height: 750px;   
+  /* min-height: 750px; 
+  max-height: 750px; */
+  min-height: 80vh;
+  max-height: 80vh;    
  
   /* height:90vh */
 }
