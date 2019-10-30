@@ -52,10 +52,10 @@ p {
   background:lightskyblue; 
 }  
 
-
+/* buubles right */
 .speech-bubble {
 	position: relative;
-	background: rgb(238, 247, 255);
+	background: rgb(191, 223, 250);
   border-radius: 1.5em;
   margin-right: 5px;
 }
@@ -68,7 +68,7 @@ p {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-left-color:rgb(238, 247, 255);
+	border-left-color:rgb(191, 223, 250);
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -10px;
@@ -76,6 +76,34 @@ p {
 }
 
 .speech-bubble:hover {
-  background:rgb(236, 235, 235);
+  background:rgb(220, 238, 253);
+  /* border-left-color: lightskyblue; */
+}
+
+/* bubbles left */
+
+.speech-bubble-left {
+	position: relative;
+	background:rgb(236, 235, 235);
+	border-radius: 1.5em;
+}
+
+.speech-bubble-left:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color:rgb(236, 235, 235);
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
+
+.speech-bubble-left:hover {
+  background:rgb(211, 209, 209);
   /* border-left-color: lightskyblue; */
 }
