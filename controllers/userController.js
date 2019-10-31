@@ -19,7 +19,8 @@ module.exports = {
                 bannedCommunityIDs : data.bannedCommunityIDs,
                 isAdmin : data.isAdmin,
                 favoriteCommunityIDs : data.favoriteCommunityIDs,
-                friends : data.friends
+                friends : data.friends,
+                email : data.email
             };
 
             User.create(newUser, function (err, doc) {

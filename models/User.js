@@ -63,6 +63,13 @@ var userSchema = new Schema({
 
     friends : {
         type: Array,
+        required: true
+    },
+
+    email : {
+        type: String,
+        required: true,
+        unique: true
     }
 
 });
