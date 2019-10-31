@@ -4,22 +4,27 @@ var User = require("../models/User");
 
 
 module.exports = {
-    get: function(data, callback) {
-        User.find({username: data.username}, callback);
+    get: function(query, callback) {
+        User.find(query).sort({
+            _id: -1
+        }).exec(function(err, doc) {
+            callback(doc);
+        });
         },
 
     save: function(data, callback) {
             var newUser = {
                 firstName : data.firstName,  
                 lastName : data.lastName,
-                userName : data.username,
+                userName : data.userName,
                 password : data.password,
                 joinedCommunityIDs : data.joinedCommunityIDs,
                 ownedCommunityIDs : data.ownedCommunityIDs,
                 bannedCommunityIDs : data.bannedCommunityIDs,
                 isAdmin : data.isAdmin,
                 favoriteCommunityIDs : data.favoriteCommunityIDs,
-                friends : data.friends
+                friends : data.friends,
+                email : data.email
             };
 
             User.create(newUser, function (err, doc) {
