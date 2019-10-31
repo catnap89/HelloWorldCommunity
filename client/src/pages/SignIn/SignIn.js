@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
@@ -12,7 +12,7 @@ class SignIn extends Component {
   state = {
     password: "",
     username: "",
-    toMainPage: false
+    errorMessage: ""
   };
 
   handleInputChange = event => {
@@ -20,8 +20,6 @@ class SignIn extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state.email);
-    console.log(this.state.password);
   };
 
   handleFormSubmit = event => {
@@ -32,19 +30,19 @@ class SignIn extends Component {
       username: this.state.username,
       password: this.state.password
     }
-    axios.post("/login", userInfo)
-    this.setState({
-      toMainPage: true,
-    });
+    axios.post("/authentication/signin", userInfo)
+      .then((response) => {
+        this.props.history.push("/");
+      })
+      .catch(error => {
+        this.setState({
+          errorMessage: error.response.data.message
+        })
+      })
   };
 
   render() {
 
-    if (this.state.toMainPage) {
-      return <Redirect to={{
-        pathname: "/main",
-      }} />
-    }
     return (
       <CardDeck className= 'col-12 chat border-0 mt-5 mb-4 mx-auto'>
         {/* this is the left card of the Sign In page that has form for email/password and submit button */}
@@ -53,6 +51,7 @@ class SignIn extends Component {
           <Card.Title className="pt-4 pl-2 mb-0">Sign In</Card.Title>
           <hr />
           <br />
+          <p>{this.state.errorMessage}</p>
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Username:</Form.Label>
@@ -81,10 +80,6 @@ class SignIn extends Component {
                 onChange={this.handleInputChange}
                 name="password"
               />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicCheckbox">
-              {/* <Form.Check type="checkbox" label="Check me out" /> */}
             </Form.Group>
 
             <br />
