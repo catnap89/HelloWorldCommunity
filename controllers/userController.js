@@ -18,7 +18,8 @@ module.exports = {
                 ownedCommunityIDs : data.ownedCommunityIDs,
                 bannedCommunityIDs : data.bannedCommunityIDs,
                 isAdmin : data.isAdmin,
-                favoriteCommunityIDs : data.favoriteCommunityIDs
+                favoriteCommunityIDs : data.favoriteCommunityIDs,
+                friends : data.friends
             };
 
             User.create(newUser, function (err, doc) {
