@@ -1,8 +1,9 @@
 const express = require("express"); // run npm i express to install 
 const mongoose = require("mongoose"); // run npm i mongoose to install
 const passport = require("./passport");
-const routes = require("./routes");
+const routes = require("./routes"); // index route?
 const authenticationRoute = require("./routes/authentication");
+const apiRoutes = require("./routes/apiRoutes");
 // const path = require("path");
 
 
@@ -31,12 +32,11 @@ mongoose.connect(db, function(err) {
   }
 });
 
-// Define API routes here
-//app.use(routes)
-require("./routes/apiRoutes")(app);
-require("./routes/index")(app);
+// Routes
+// app.use("/", routes);
+app.use("/api", apiRoutes);
+app.use("/authentication", authenticationRoute);
 
-app.use("/", authenticationRoute);
 // to use passport
 app.use(passport.initialize());
 // app.use(passport.session());

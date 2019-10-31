@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -13,8 +13,7 @@ class SignUp extends Component  {
   state = {
     username: "",
     email: "",
-    password: "",
-    toSignIn: false
+    password: ""
   }
 
   handleInputChange = event => {
@@ -31,21 +30,23 @@ class SignUp extends Component  {
     const userInfo = {
       email: this.state.email,
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      errorMessage: ""
     }
-    axios.post("/signup", userInfo)
-    this.setState({
-      toSignIn: true,
-    });
+    axios.post("/authentication/signup", userInfo)
+      .then((response) => {
+        // when signup is successful, go to signin page
+        this.props.history.push("/signin");
+      })
+      .catch(error => {
+        this.setState({
+          errorMessage: error.response.data.message
+        })
+      })
   };
 
   render() {
 
-    if (this.state.toSignIn) {
-      return <Redirect to={{
-        pathname: "/",
-      }} />
-    }
     return(
       <CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 
@@ -54,6 +55,7 @@ class SignUp extends Component  {
           <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
           <hr />
           <br />
+          <p>{this.state.errorMessage}</p>
 
           <Form>
 
