@@ -50,6 +50,12 @@ var userSchema = new Schema({
     favoriteCommunityIDs : {
         type: Array,
         required: true
+    },
+
+    email : {
+        type: String,
+        required: true,
+        unique: true
     }
 
 });
