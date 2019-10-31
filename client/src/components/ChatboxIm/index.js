@@ -5,7 +5,7 @@ import Card  from 'react-bootstrap/Card';
 import { FormControl, InputGroup, Button} from 'react-bootstrap';
 
 
-import './chatbox.css';
+import './chatboxIm.css';
 
 const ChatboxIm = (props) => (
 
