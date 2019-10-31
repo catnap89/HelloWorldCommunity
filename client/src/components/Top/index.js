@@ -2,6 +2,8 @@ import React from 'react';
 import { Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
 import './top.css';
 
+
+
 const Top = (props) => (
 
   <Navbar className="topbar p-0 border-bottom"  fixed="top" variant="light">
@@ -12,7 +14,11 @@ const Top = (props) => (
         src="../Chat.png"
           />
   </Navbar.Brand>
+  
+<p id="demo" className="mb-0 pb-0 pt-4"><em><strong>Lets talk about it...</strong></em></p>
+
   <Nav className="mr-auto">
+
     {/* <Nav.Link href="#home">Home</Nav.Link>
     <Nav.Link href="#features">Features</Nav.Link>
     <Nav.Link href="#pricing">Pricing</Nav.Link> */}
@@ -25,4 +31,9 @@ const Top = (props) => (
 </Navbar>
 )
 
+
+
+
+
 export default Top;
+

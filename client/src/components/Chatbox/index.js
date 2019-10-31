@@ -12,34 +12,32 @@ const Chatbox = (props) => (
     // code for chat with 2 (split) windows
 
     <Card className= 'col-9 p-3 border chat mt-5 mb-4 mx-auto'>
-<Card.Body className='scroll'>
+
+        <Card.Header as="h5" className="bg-white">Chat Title</Card.Header>
+
+        <Card.Body className='scroll'>
+
         <Card.Text id="person1" className=" ml-auto col-5">
-            <p className='response1 speech-bubble p-4'>
+            <p className='response1 speech-bubble p-3'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
             </p>    
 
-            <p className='response1 speech-bubble p-4'>
+            <p className='response1 speech-bubble p-3'>
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
+            </p>    
+
+            <p className='response1 speech-bubble p-3'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
             </p>    
 
-            <p className='response1 speech-bubble p-4'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-
-            <p className='response1 speech-bubble p-4'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-
-            <p className='response1 speech-bubble p-4'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
+         
 
         </Card.Text>
 
         <Card.Text id="person2" className="mr-auto col-5">
          
-            <p className='response speech-bubble-left p-4'>
-            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.  
+            <p className='response speech-bubble-left p-3'>
+            <strong>Kate - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text. Contrary to popular belief, LContrary to popular belief, Lorem Ipsum is not simply random text.  orem Ipsum is not simply random text.   
             </p>
          
         </Card.Text>
