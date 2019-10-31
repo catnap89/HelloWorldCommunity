@@ -104,7 +104,7 @@ class SignUp extends Component  {
               Submit
             </Button>
 
-            <a href="/"> Sign In</a>
+            <a href="/signin"> Sign In</a>
             
           </Form>
 
