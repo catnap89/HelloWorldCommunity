@@ -113,3 +113,9 @@ p {
 .Input-label {
 	font-size: 13px;
 }
+
+/* font awesome icon textbox */
+
+.mut {
+	color:slategray;
+}
