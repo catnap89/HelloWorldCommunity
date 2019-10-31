@@ -45,17 +45,17 @@ const Chatbox = (props) => (
         </Card.Body>
 
         <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-2">
-
-            <InputGroup size="lg" className="mb-0 shadow-sm">
-            <FormControl className="bg-light"
+ <label for="input" className="Input-label muted pl-2">say something...</label> 
+            <InputGroup size="lg" className="mb-0 shadow-sm"> 
+            <FormControl className="bg-light" 
                 placeholder=""
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
-            />
+            /> 
             <InputGroup.Append>
                 <Button variant="dark border pl-5 pr-5">Send</Button>
             </InputGroup.Append>
-            </InputGroup>
+            </InputGroup> 
         </Card.Footer>
     </Card>
 )

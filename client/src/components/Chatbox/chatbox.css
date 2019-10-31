@@ -107,3 +107,9 @@ p {
   background:rgb(211, 209, 209);
   /* border-left-color: lightskyblue; */
 }
+
+/* textbox lable chat here */
+
+.Input-label {
+	font-size: 13px;
+}
