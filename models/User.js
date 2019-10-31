@@ -12,7 +12,7 @@ var userSchema = new Schema({
         type: String
     },
 
-    userName : {
+    username : {
         type: String,
         required: true,
         unqiue: true

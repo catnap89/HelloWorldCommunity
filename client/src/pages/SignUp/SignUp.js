@@ -33,7 +33,7 @@ class SignUp extends Component  {
       username: this.state.username,
       password: this.state.password
     }
-    axios.post("/login", userInfo)
+    axios.post("/signup", userInfo)
     this.setState({
       toSignIn: true,
     });
