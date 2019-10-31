@@ -5,7 +5,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Side from "../../components/Side";
 import Chatbox from "../../components/Chatbox";
 import Sideright from "../../components/Sideright";
-// import Footer from "../../components/Footer";
+
 
 class Community extends Component {
   // Not sure what to have in the states yet.
@@ -24,7 +24,7 @@ class Community extends Component {
           <Chatbox />
           <Sideright /> 
         </CardDeck> 
-        {/* <Footer />      */}
+      
       </div>
     );
   }
