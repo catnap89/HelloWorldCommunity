@@ -13,7 +13,7 @@ const Side =(props) => (
 
     <Card.Title>
 
-    <ListGroup className="flush" variant="flush border-right">
+    <ListGroup className="flush" variant="flush border-right shadow">
     
       <ListGroup.Item className='pt-3 p-4 channel'>
       <Button variant="outline-primary" size="lg">

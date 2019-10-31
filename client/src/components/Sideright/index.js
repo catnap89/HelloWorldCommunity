@@ -9,7 +9,7 @@ const Sideright =(props) => (
 <Card className='col-1 border-0 text-center pl-0 mr-0 pr-0' bg="white">
 <Card.Title>
 
-    <ListGroup className="flush" variant="flush border-left">
+    <ListGroup className="flush" variant="flush border-left shadow">
     
         <ListGroup.Item className='pt-3 p-4 list'>MEMBER
         </ListGroup.Item>

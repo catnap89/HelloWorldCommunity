@@ -11,7 +11,7 @@ const Chatbox = (props) => (
 
     // code for chat with 2 (split) windows
 
-    <Card className= 'col-9 p-2 border chat mt-5 mb-4 mx-auto'>
+    <Card className= 'col-9 p-2 border-0 chat mt-3 mb-1 mx-auto'>
 
         <Card.Header as="h5" className="bg-white">Chat Title</Card.Header>
 
@@ -44,10 +44,10 @@ const Chatbox = (props) => (
 
         </Card.Body>
 
-        <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-3">
+        <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-2">
 
-            <InputGroup size="lg" className="mb-0">
-            <FormControl
+            <InputGroup size="lg" className="mb-0 shadow-sm">
+            <FormControl className="bg-light"
                 placeholder=""
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
