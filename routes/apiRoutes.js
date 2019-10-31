@@ -10,6 +10,9 @@ module.exports = function(app) {
       res.send("TESTING");
     });
 
+    
+    
+    //get all communities
 app.get("/api/community/all", function(req, res) {
   
     var query = {};
@@ -38,7 +41,7 @@ app.get("/api/user/all", function(req, res) {
 });
 
 
-app.get("/api/users/:username", function(req, res) {
+app.get("/api/user/:username", function(req, res) {
     var query = {};
     query.userName = req.params.username
     userController.get(query, function(data) {
@@ -51,7 +54,7 @@ app.post("/api/community", function (req, res) {
     
     var newCommunity = {
         communityName: req.body.communityName,
-        admin: req.body.admin,
+        userAdmin: req.body.userAdmin,
         bannedList: req.body.bannedList
     }
     
@@ -65,7 +68,7 @@ app.post("/api/user", function(req, res) {
   var newUser = {
     firstName : req.body.firstName,  
     lastName : req.body.lastName,
-    userName : req.body.username,
+    userName : req.body.userName,
     password : req.body.password,
     joinedCommunityIDs : req.body.joinedCommunityIDs,
     ownedCommunityIDs : req.body.ownedCommunityIDs,
