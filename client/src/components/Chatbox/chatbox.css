@@ -5,16 +5,17 @@
   } */
 
 p {
-  font-size: 15px;;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .response1 {
-  color:green;
+  color:indigo;
 }
 
-.response {
+/* .response {
   color: indigo;
-}
+} */
 
 .chat {
   /* min-height: 750px; 
@@ -55,8 +56,8 @@ p {
 /* buubles right */
 .speech-bubble {
 	position: relative;
-	background: rgb(191, 223, 250);
-  border-radius: 1.5em;
+	background: whitesmoke;
+  border-radius: .5em;
   margin-right: 5px;
 }
 
@@ -68,7 +69,7 @@ p {
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-left-color:rgb(191, 223, 250);
+	border-left-color:whitesmoke;
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -10px;
@@ -77,12 +78,12 @@ p {
 
 .speech-bubble:hover {
   background:rgb(220, 238, 253);
-  /* border-left-color: lightskyblue; */
+  
 }
 
 /* bubbles left */
 
-.speech-bubble-left {
+/* .speech-bubble-left {
 	position: relative;
 	background:rgb(236, 235, 235);
 	border-radius: 1.5em;
@@ -105,8 +106,8 @@ p {
 
 .speech-bubble-left:hover {
   background:rgb(211, 209, 209);
-  /* border-left-color: lightskyblue; */
-}
+ 
+} */
 
 /* textbox lable chat here */
 
@@ -119,3 +120,4 @@ p {
 .mut {
 	color:slategray;
 }
+
