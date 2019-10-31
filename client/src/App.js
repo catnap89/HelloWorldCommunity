@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Community from "./pages/Community/Community"
 import NoMatch from "./pages/NoMatch/NoMatch";
+import Main from "./pages/Main/Main";
 
 
 function App() {
