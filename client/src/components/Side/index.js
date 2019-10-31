@@ -9,47 +9,47 @@ import './side.css';
 const Side =(props) => (
 
 
-  <Card className='col-2 pr-0 ml-0 pl-0 border-0 text-center' bg="white">
+  <Card className='col-2 pr-0 ml-0 pl-0 border-0 text-center' bg="light">
 
     <Card.Title>
 
     <ListGroup className="flush" variant="flush border-right shadow">
     
-      <ListGroup.Item className='pt-3 p-4 channel'>
+      <ListGroup.Item className='pt-3 p-4 channel bg-light'>
       <Button variant="outline-primary" size="lg">
       START NEW CHAT
     </Button>
         
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="white border-0" as={Link} to="/signup">
+      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/signup">
         Sign Up / Register
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="white border-0" as={Link} to="/">
+      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/">
         Sign In
       </ListGroup.Item>
 
 
-      <ListGroup.Item action variant="white border-0" as={Link} to="/community/:id">
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/community/:id">
         Chat / Main
       </ListGroup.Item>
 
       
 
-      <ListGroup.Item action variant="white border-0">
+      <ListGroup.Item className="bg-light" action variant="light border-0">
         Danger
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="white border-0">
+      <ListGroup.Item className="bg-light" action variant="light border-0">
         Warning
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="white border-0">
+      <ListGroup.Item className="bg-light" action variant="light border-0">
         Info
       </ListGroup.Item>
 
-      <ListGroup.Item action variant="white border-0">
+      <ListGroup.Item className="bg-light" action variant="light border-0">
         Light
       </ListGroup.Item>
     
