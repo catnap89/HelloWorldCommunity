@@ -1,18 +1,15 @@
 
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 var userSchema = new Schema({
     
     firstName : {
-        type: String,
-        required: true
+        type: String
     }, 
 
     lastName : {
-        type: String,
-        required: true
+        type: String
     },
 
     userName : {
@@ -23,33 +20,49 @@ var userSchema = new Schema({
 
     password : {
         type: String,
+        required: true
+        // Should not be unique since some people's password might be same
+        // unique: true
+    },
+
+    email: {
+        type: String,
         required: true,
         unique: true
     },
 
     joinedCommunityIDs : {
-        type: Array,
-        required: true
+        type: Array
+        // I don't think this should be required
+        // required: true
     },
 
     ownedCommunityIDs : {
-        type: Array,
-        required: true
+        type: Array
+        // I don't think this should be required.
+        // required: true
     },
 
     bannedCommunityIDs : {
-        type: Array,
-        required: true
+        type: Array
+        // I don't think this should be required, user might never get banned from a Community
+        // required: true
     },
 
     isAdmin : {
-       type: Boolean,
-       required: true
+       type: Boolean
+        // I don't think this should be required. A user might not make their own community
+    //    required: true
     },
 
     favoriteCommunityIDs : {
+        type: Array
+        // I don't think this should be required. I might be wrong tho
+        // required: true
+    },
+
+    friends : {
         type: Array,
-        required: true
     }
 
 });
