@@ -60,7 +60,7 @@ const ChatboxIm = (props) => (
     </Card>
 )
 
-export default ChatboxIm,;
+export default ChatboxIm;
 
 
 // code for chat with 1 screen
