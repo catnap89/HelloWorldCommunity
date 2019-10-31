@@ -1,5 +1,6 @@
 const express = require("express"); // run npm i express to install 
 const mongoose = require("mongoose"); // run npm i mongoose to install
+const passport = require("./passport");
 // const path = require("path");
 const routes = require("./routes");
 
@@ -22,6 +23,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/HelloWorldDB");
 // Define API routes here
 app.use(routes)
 require("./routes/apiRoutes")(app);
+
+// to use passport
+app.use(passport.initialize());
+// app.use(passport.session());
 
 
 app.listen(PORT, () => {
