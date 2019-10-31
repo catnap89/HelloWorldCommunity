@@ -13,7 +13,8 @@ class SignUp extends Component  {
   state = {
     username: "",
     email: "",
-    password: ""
+    password: "",
+    errorMessage: ""
   }
 
   handleInputChange = event => {
@@ -30,8 +31,7 @@ class SignUp extends Component  {
     const userInfo = {
       email: this.state.email,
       username: this.state.username,
-      password: this.state.password,
-      errorMessage: ""
+      password: this.state.password
     }
     axios.post("/authentication/signup", userInfo)
       .then((response) => {
