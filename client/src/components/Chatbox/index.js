@@ -17,10 +17,12 @@ const Chatbox = (props) => (
 
         <Card.Body className='scroll'>
 
-        {/* <Card.Text id="person1" className=" ml-auto mr-3"> */}
+
+        <div id="person1" className=" ml-auto mr-3">
+
             <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
+            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random sdsdfsdsf text.
+            </p>     
 
             <p className='response1 speech-bubble p-1'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
@@ -29,55 +31,9 @@ const Chatbox = (props) => (
             <p className='response1 speech-bubble p-1'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
             </p>    
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
+           
 
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>    
-
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>    
-
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
-            </p>    
-
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-            <p className='response1 speech-bubble p-1'>
-            <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-            </p>    
-         
-
-        {/* </Card.Text> */}
+        </div>
 
         {/* <Card.Text id="person2" className="mr-auto col-5">
          
@@ -90,7 +46,9 @@ const Chatbox = (props) => (
         </Card.Body>
 
         <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
+
             <label className="Input-label mut pl-2">say something</label> <i className="far fa-comment fa-sm mut"></i>
+
             <InputGroup size="lg" className="mb-0 shadow-sm"> 
             <FormControl className="bg-light" autoFocus="autofocus"
                 placeholder=""
