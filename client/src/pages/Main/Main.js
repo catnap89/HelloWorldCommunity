@@ -8,7 +8,7 @@ import axios from 'axios';
 // import Sideright from "../../components/Sideright";
 
 
-class Community extends Component {
+class Main extends Component {
   // Not sure what to have in the states yet.
   state = {
     users: [],
@@ -41,4 +41,4 @@ class Community extends Component {
   }
 }
 
-export default Community;
+export default Main;
