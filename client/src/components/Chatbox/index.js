@@ -17,7 +17,7 @@ const Chatbox = (props) => (
 
         <Card.Body className='scroll'>
 
-        <Card.Text id="person1" className=" ml-auto">
+        <Card.Text id="person1" className=" ml-auto mr-3">
             <p className='response1 speech-bubble p-1'>
             <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
             </p>    
@@ -89,10 +89,10 @@ const Chatbox = (props) => (
 
         </Card.Body>
 
-        <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0">
+        <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
  <label for="input" className="Input-label mut pl-2">say something</label> <i className="far fa-comment fa-sm mut"></i>
             <InputGroup size="lg" className="mb-0 shadow-sm"> 
-            <FormControl className="bg-light" 
+            <FormControl className="bg-light" autofocus="autofocus"
                 placeholder=""
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
