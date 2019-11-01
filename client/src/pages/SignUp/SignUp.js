@@ -35,6 +35,7 @@ class SignUp extends Component  {
     }
     axios.post("/authentication/signup", userInfo)
       .then((response) => {
+        console.log(response.data);
         // when signup is successful, go to signin page
         this.props.history.push("/signin");
       })
