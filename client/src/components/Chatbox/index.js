@@ -49,17 +49,17 @@ const Chatbox = (props) => (
 
            
 
-            <InputGroup size="lg" className="mb-0 shadow-sm"> 
+            <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
             <FormControl className="bg-light" autoFocus="autofocus" 
-                placeholder=""
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
+                placeholder="say something...&#xF075;"
+                // aria-label="Recipient's username"
+                // aria-describedby="basic-addon2"
             /> 
             <InputGroup.Append>
                 <Button variant="dark border pl-5 pr-5">Send</Button>
             </InputGroup.Append>
             </InputGroup> 
-             <label className="Input-label mut pl-2 pt-2">say something</label> <i className="far fa-comment fa-sm mut"></i>
+             {/* <label className="Input-label mut pl-2 pt-2">say something</label> <i className="far fa-comment fa-sm mut"></i> */}
         </Card.Footer>
     </Card>
 )
