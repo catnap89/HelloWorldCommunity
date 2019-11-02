@@ -47,7 +47,7 @@ const Chatbox = (props) => (
 
         <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
 
-            <label className="Input-label mut pl-2">say something</label> <i className="far fa-comment fa-sm mut"></i>
+           
 
             <InputGroup size="lg" className="mb-0 shadow-sm"> 
             <FormControl className="bg-light" autoFocus="autofocus"
@@ -59,6 +59,7 @@ const Chatbox = (props) => (
                 <Button variant="dark border pl-5 pr-5">Send</Button>
             </InputGroup.Append>
             </InputGroup> 
+             <label className="Input-label mut pl-2">say something</label> <i className="far fa-comment fa-sm mut"></i>
         </Card.Footer>
     </Card>
 )
