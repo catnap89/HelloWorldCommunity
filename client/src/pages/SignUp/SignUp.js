@@ -99,7 +99,7 @@ class SignUp extends Component  {
             <br />
 
             <Button 
-              className="button mr-4" 
+              className="button mr-4 ml-3" 
               variant="dark" 
               type="submit"
               onClick={this.handleFormSubmit}
