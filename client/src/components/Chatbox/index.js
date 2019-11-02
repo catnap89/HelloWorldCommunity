@@ -56,7 +56,7 @@ const Chatbox = (props) => (
                 // aria-describedby="basic-addon2"
             /> 
             <InputGroup.Append>
-                <Button variant="dark border pl-5 pr-5">Send</Button>
+                <Button variant="dark border pl-3 pr-3"><i class="fas fa-share pr-2"></i>Send</Button>
             </InputGroup.Append>
             </InputGroup> 
              {/* <label className="Input-label mut pl-2 pt-2">say something</label> <i className="far fa-comment fa-sm mut"></i> */}
