@@ -61,7 +61,7 @@ class SignUp extends Component  {
           <Form>
 
             <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email:</Form.Label>
+              <Form.Label><i class="fas fa-envelope pl-2 pr-2"></i>Email</Form.Label>
               <Form.Control 
                 className="form" 
                 type="email" 
@@ -73,7 +73,7 @@ class SignUp extends Component  {
             </Form.Group>
             <br />
             <Form.Group as={Col} controlId="formGridUsername">
-              <Form.Label>Username:</Form.Label>
+              <Form.Label><i class="fas fa-user pl-2 pr-2"></i>Username</Form.Label>
               <Form.Control
                 className="form" 
                 type="username" 
@@ -85,7 +85,7 @@ class SignUp extends Component  {
             </Form.Group>
             <br />
             <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label><i class="fas fa-key pl-2 pr-2"></i>Password</Form.Label>
               <Form.Control 
                 className="form" 
                 type="password" 

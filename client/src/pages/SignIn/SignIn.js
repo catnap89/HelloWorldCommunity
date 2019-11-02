@@ -54,7 +54,7 @@ class SignIn extends Component {
           <p>{this.state.errorMessage}</p>
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Username:</Form.Label>
+              <Form.Label><i class="fas fa-user pl-2 pr-2"></i>Username</Form.Label>
               <Form.Control
                 className="form"
                 placeholder="Enter username"
@@ -64,14 +64,14 @@ class SignIn extends Component {
                 // label="Book Title"
                />
               <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                {/* We'll never share your info with any third parties. */}
               </Form.Text>
             </Form.Group>
 
           <br />
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label><i class="fas fa-key pl-2 pr-2"></i>Password</Form.Label>
               <Form.Control
                 className="form" 
                 type="password" 
