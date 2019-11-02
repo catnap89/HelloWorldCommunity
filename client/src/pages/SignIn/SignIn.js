@@ -93,7 +93,7 @@ class SignIn extends Component {
               Submit
             </Button>
 
-            <a href="/signup">Sign up / Register</a>
+            <a href="/signup"><i class="far fa-hand-point-right pr-2"></i>Sign up / Register</a>
 
           </Form>
 
