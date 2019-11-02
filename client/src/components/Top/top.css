@@ -90,3 +90,8 @@
     opacity: 1;
   }
 }
+
+.fontAwesome {
+	font-family: 'Helvetica', FontAwesome, sans-serif;
+
+  }
