@@ -51,7 +51,7 @@ class SignUp extends Component  {
     return(
       <CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 
-        <Card className="col-4 bg-light">
+        <Card className="col-4 bg-light shadow">
             
           <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
           <hr />
@@ -114,7 +114,7 @@ class SignUp extends Component  {
         </Card>
 
 
-        <Card className="col-8 cha text-center pt-5">
+        <Card className="col-8 cha text-center pt-5 shadow">
           <Card.Body>
           <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
             <h3>Please Register and Create your profile to enjoy <strong>Ch@</strong>. 

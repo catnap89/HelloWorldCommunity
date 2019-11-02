@@ -46,7 +46,7 @@ class SignIn extends Component {
     return (
       <CardDeck className= 'col-12 chat border-0 mt-5 mb-4 mx-auto'>
         {/* this is the left card of the Sign In page that has form for email/password and submit button */}
-        <Card className="col-4 bg-light">
+        <Card className="col-4 bg-light shadow">
         
           <Card.Title className="pt-4 pl-2 mb-0">Sign In</Card.Title>
           <hr />
@@ -100,7 +100,7 @@ class SignIn extends Component {
         </Card>
 
         {/* Right card of the Sign In page */}
-        <Card className="col-8 cha text-center pt-5">
+        <Card className="col-8 cha text-center pt-5 shadow">
           <Card.Body>
           <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
             <h3>Welcome back!! Please Sign In to enter <strong>Ch@</strong>.</h3>
