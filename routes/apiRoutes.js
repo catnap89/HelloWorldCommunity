@@ -3,7 +3,8 @@ const communityController = require("../controllers/communityController");
 const userController = require("../controllers/userController");
 
 
-module.exports = function(app) {
+module.exports = function(app) 
+{
 
 
     app.get("/", function(req, res) {
@@ -43,7 +44,7 @@ module.exports = function(app) {
 
     app.get("/api/user/:username", function(req, res) {
         var query = {};
-        query.userName = req.params.username
+        query.username = req.params.username
         userController.get(query, function(data) {
             res.json(data);
         });
@@ -68,7 +69,7 @@ module.exports = function(app) {
     var newUser = {
         firstName : req.body.firstName,  
         lastName : req.body.lastName,
-        userName : req.body.userName,
+        username : req.body.userName,
         password : req.body.password,
         joinedCommunityIDs : req.body.joinedCommunityIDs,
         ownedCommunityIDs : req.body.ownedCommunityIDs,
@@ -96,7 +97,7 @@ module.exports = function(app) {
 
     app.delete("/api/user/:username", function(req, res) {
         var query = {};
-        query.userName = req.params.username;
+        query.username = req.params.username;
 
         userController.delete(query, function(err, data) {
             res.json(data);

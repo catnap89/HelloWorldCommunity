@@ -45,7 +45,7 @@ module.exports = {
     
         
     update: function(query, callback) {
-            Community.update({userName: userName}, {$set:query}, {}, callback);
+            User.update({username: query.username}, {$set:query}, {}, callback);
             }
         
     };
