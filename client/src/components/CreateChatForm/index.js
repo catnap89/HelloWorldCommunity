@@ -48,7 +48,7 @@ const CreateChatForm = (props) => (
                 <Form.Label><i class="fas fa-info-circle pl-2 pr-2"></i>Ch@ Description</Form.Label>
                 <Form.Control 
                   className="form" 
-                  type="password" 
+                //   type="password" 
                   placeholder="Description" 
                 //   value={this.state.password}
                 //   onChange={this.handleInputChange}
@@ -74,6 +74,3 @@ const CreateChatForm = (props) => (
 )
 
 export default CreateChatForm;
-
-
-// code for chat with 1 screen
