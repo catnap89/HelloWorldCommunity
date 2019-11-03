@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Top from "../../components/Top"; // Navbar
 import CardDeck from 'react-bootstrap/CardDeck';
 import Side from "../../components/Side";
-import Sideright from "../../components/Sideright";
+// import Sideright from "../../components/Sideright";
 
 
 class CreateChat extends Component {
@@ -20,7 +20,7 @@ class CreateChat extends Component {
         <Top />
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
-          <Sideright /> 
+          {/* <Sideright />  */}
         </CardDeck> 
       
       </div>
