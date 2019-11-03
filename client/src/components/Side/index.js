@@ -15,7 +15,7 @@ const Side =(props) => (
 
     <ListGroup className="flush" variant="flush border-right shadow">
     
-      <ListGroup.Item className='pt-3 p-4 channel bg-light'>
+      <ListGroup.Item className='pt-3 p-4 channel bg-light' action as={Link} to="/createchat">
       <Button variant="outline-primary" size="lg">
       START NEW CHAT
     </Button>
