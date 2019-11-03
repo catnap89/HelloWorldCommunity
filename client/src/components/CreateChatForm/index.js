@@ -21,7 +21,7 @@ const CreateChatForm = (props) => (
             <Form>
   
               <Form.Group as={Col} controlId="formGridChatName">
-                <Form.Label><i class="fas pl-2 pr-2"></i>Ch@ Name</Form.Label>
+                <Form.Label><i class="fas fa-plus-circle pl-2 pr-2"></i>Ch@ Name</Form.Label>
                 <Form.Control 
                   className="form" 
                 //   type="email" 
@@ -45,7 +45,7 @@ const CreateChatForm = (props) => (
               </Form.Group>
               <br />
               <Form.Group as={Col} controlId="formGridChatDescription">
-                <Form.Label><i class="fas pl-2 pr-2"></i>Ch@ Description</Form.Label>
+                <Form.Label><i class="fas fa-info-circle pl-2 pr-2"></i>Ch@ Description</Form.Label>
                 <Form.Control 
                   className="form" 
                   type="password" 
