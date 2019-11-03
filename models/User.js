@@ -1,6 +1,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcryptjs");
 
 var userSchema = new Schema({
     
@@ -32,48 +33,60 @@ var userSchema = new Schema({
     },
 
     joinedCommunityIDs : {
-        type: Array,
+        type: Array
         // I don't think this should be required
-         required: true
+        // required: true
     },
 
     ownedCommunityIDs : {
-        type: Array,
+        type: Array
         // I don't think this should be required.
-         required: true
+        // required: true
     },
 
     bannedCommunityIDs : {
-        type: Array,
+        type: Array
         // I don't think this should be required, user might never get banned from a Community
-         required: true
+        // required: true
     },
 
     isAdmin : {
-       type: Boolean,
+       type: Boolean
         // I don't think this should be required. A user might not make their own community
-        required: true
+        // required: true
     },
 
     favoriteCommunityIDs : {
-        type: Array,
+        type: Array
         // I don't think this should be required. I might be wrong tho
-         required: true
+        // required: true
     },
 
     friends : {
-        type: Array,
-        required: true
-    },
-
-    email : {
-        type: String,
-        required: true,
-        unique: true
+        type: Array
+        // required: true
     }
+});
 
+
+userSchema.methods.validatePassword = function(val) {
+    return bcrypt.compare(val, this.password);
+}
+
+userSchema.methods.toJSON = function() {
+    const obj = this.toObject();
+    delete obj.password;
+    return obj;
+}
+
+userSchema.pre('save', function(next) {
+    if ( this.isNew ) {
+        this.password = bcrypt.hashSync(this.password, 10);
+    }
+    next();
 });
 
 var User = mongoose.model("User", userSchema);
+
 
 module.exports = User;

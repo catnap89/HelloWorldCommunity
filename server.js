@@ -1,8 +1,11 @@
 const express = require("express"); // run npm i express to install 
 const mongoose = require("mongoose"); // run npm i mongoose to install
 const passport = require("./passport");
-const routes = require("./routes"); // index route?
+const session = require('express-session');
+// const routes = require("./routes"); // index route?
 const authenticationRoute = require("./routes/authentication");
+//const apiRoutes = require("./routes/apiRoutes");
+// const path = require("path");
 
 
 const PORT = process.env.PORT || 5000;
@@ -20,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 var db = process.env.MONGODB_URI || "mongodb://localhost/HelloWorldDB";
 
 // Connect to the Mongo DB
-mongoose.connect(db, function(err) {
+mongoose.connect(db, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true}, function(err) {
   if (err) {
     console.log(err);
   }
@@ -30,12 +33,23 @@ mongoose.connect(db, function(err) {
   }
 });
 
+//Store secret to .env file -- process.env.SECRET --> must have dotenv package and call dotenv.config() up top in server file
+app.use(session({
+  secret: 'yy5MkxmvKyKP6X92HtR50wPONJk4wfPe',
+  resave: false,
+  saveUninitialized: false,
+  proxy: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Routes
 // app.use("/", routes);
+//app.use("/api", apiRoutes);
+require("./routes/apiRoutes")(app);
 app.use("/authentication", authenticationRoute);
 require("./routes/apiRoutes")(app);
-
-app.use(passport.initialize());
 
 
 

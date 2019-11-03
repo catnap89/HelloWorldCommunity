@@ -111,13 +111,24 @@ p {
 
 /* textbox lable chat here */
 
-.Input-label {
+/* .Input-label {
 	font-size: 13px;
-}
+} */
 
 /* font awesome icon textbox */
 
-.mut {
+/* .mut {
 	color:slategray;
-}
+} */
 
+.fontAwesome {
+	font-family: 'Helvetica', FontAwesome, sans-serif;
+
+  }
+
+  ::placeholder {
+	color:slategray !important; 
+	font-size: 15px;
+	padding-left: 5px;
+	
+  }

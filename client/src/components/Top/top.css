@@ -31,3 +31,45 @@
     font-size: 20px;
     color:rgba(37, 37, 37, 0.856)
   }
+
+  .imager {
+    /* animation-name: image; */
+    -webkit-animation: imager 0.9s ease-out both;
+    animation: imager 0.9s ease-out both;
+  }
+ 
+/**
+ * ----------------------------------------
+ * animation roll-in-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes imager {
+        0% {
+          -webkit-transform: translateX(-800px) rotate(-540deg);
+                  transform: translateX(-800px) rotate(-540deg);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateX(0) rotate(0deg);
+                  transform: translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+      }
+      @keyframes imager {
+        0% {
+          -webkit-transform: translateX(-800px) rotate(-540deg);
+                  transform: translateX(-800px) rotate(-540deg);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateX(0) rotate(0deg);
+                  transform: translateX(0) rotate(0deg);
+          opacity: 1;
+        }
+      }
+      
+
+.fontAwesome {
+	font-family: 'Helvetica', FontAwesome, sans-serif;
+
+  }
