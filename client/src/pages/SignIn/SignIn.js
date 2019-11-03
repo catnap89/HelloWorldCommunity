@@ -46,7 +46,7 @@ class SignIn extends Component {
     return (
       <CardDeck className= 'col-12 chat border-0 mt-5 mb-4 mx-auto'>
         {/* this is the left card of the Sign In page that has form for email/password and submit button */}
-        <Card className="col-4 bg-light">
+        <Card className="col-4 bg-light shadow">
         
           <Card.Title className="pt-4 pl-2 mb-0">Sign In</Card.Title>
           <hr />
@@ -54,7 +54,7 @@ class SignIn extends Component {
           <p>{this.state.errorMessage}</p>
           <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Username:</Form.Label>
+              <Form.Label><i class="fas fa-user pl-2 pr-2"></i>Username</Form.Label>
               <Form.Control
                 className="form"
                 placeholder="Enter username"
@@ -64,14 +64,14 @@ class SignIn extends Component {
                 // label="Book Title"
                />
               <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                {/* We'll never share your info with any third parties. */}
               </Form.Text>
             </Form.Group>
 
           <br />
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label><i class="fas fa-key pl-2 pr-2"></i>Password</Form.Label>
               <Form.Control
                 className="form" 
                 type="password" 
@@ -85,7 +85,7 @@ class SignIn extends Component {
             <br />
 
             <Button
-              className="button mr-4"
+              className="button mr-4 ml-3"
               variant="dark"
               type="submit"
               onClick={this.handleFormSubmit}
@@ -93,14 +93,14 @@ class SignIn extends Component {
               Submit
             </Button>
 
-            <a href="/signup">Sign up / Register</a>
+            <a href="/signup"><i class="far fa-hand-point-right pr-2"></i>Sign up / Register</a>
 
           </Form>
 
         </Card>
 
         {/* Right card of the Sign In page */}
-        <Card className="col-8 cha text-center pt-5">
+        <Card className="col-8 cha text-center pt-5 shadow">
           <Card.Body>
           <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
             <h3>Welcome back!! Please Sign In to enter <strong>Ch@</strong>.</h3>

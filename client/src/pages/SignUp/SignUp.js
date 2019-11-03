@@ -51,7 +51,7 @@ class SignUp extends Component  {
     return(
       <CardDeck className= 'col-12 p-3 chat border-0 mt-5 mb-4 mx-auto'>
 
-        <Card className="col-4 bg-light">
+        <Card className="col-4 bg-light shadow">
             
           <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
           <hr />
@@ -61,7 +61,7 @@ class SignUp extends Component  {
           <Form>
 
             <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email:</Form.Label>
+              <Form.Label><i class="fas fa-envelope pl-2 pr-2"></i>Email</Form.Label>
               <Form.Control 
                 className="form" 
                 type="email" 
@@ -73,7 +73,7 @@ class SignUp extends Component  {
             </Form.Group>
             <br />
             <Form.Group as={Col} controlId="formGridUsername">
-              <Form.Label>Username:</Form.Label>
+              <Form.Label><i class="fas fa-user pl-2 pr-2"></i>Username</Form.Label>
               <Form.Control
                 className="form" 
                 type="username" 
@@ -85,7 +85,7 @@ class SignUp extends Component  {
             </Form.Group>
             <br />
             <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label><i class="fas fa-key pl-2 pr-2"></i>Password</Form.Label>
               <Form.Control 
                 className="form" 
                 type="password" 
@@ -99,7 +99,7 @@ class SignUp extends Component  {
             <br />
 
             <Button 
-              className="button mr-4" 
+              className="button mr-4 ml-3" 
               variant="dark" 
               type="submit"
               onClick={this.handleFormSubmit}
@@ -107,14 +107,14 @@ class SignUp extends Component  {
               Submit
             </Button>
 
-            <a href="/signin"> Sign In</a>
+            <a href="/signin"><i class="far fa-hand-point-right pr-2"></i>Sign In</a>
             
           </Form>
 
         </Card>
 
 
-        <Card className="col-8 cha text-center pt-5">
+        <Card className="col-8 cha text-center pt-5 shadow">
           <Card.Body>
           <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
             <h3>Please Register and Create your profile to enjoy <strong>Ch@</strong>. 
