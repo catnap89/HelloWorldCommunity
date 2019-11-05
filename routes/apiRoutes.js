@@ -6,7 +6,7 @@ const userController = require("../controllers/userController");
 module.exports = function(app) 
 {
 
-
+   //Tester. No functionality
     app.get("/", function(req, res) {
       res.send("TESTING");
     });
@@ -23,7 +23,7 @@ module.exports = function(app)
 
     });
 
-
+    //Returns a specific community
     app.get("/api/community/:community_name", function(req, res) {
         var query = {};
         query.communityName = req.params.community_name;
@@ -34,6 +34,7 @@ module.exports = function(app)
     });
 
 
+   //returns all users
     app.get("/api/user/all", function(req, res) {
         var query = {};
         userController.get(query, function(data) {
@@ -42,6 +43,7 @@ module.exports = function(app)
     });
 
 
+    //Returns a specific user
     app.get("/api/user/:username", function(req, res) {
         var query = {};
         query.username = req.params.username
@@ -51,6 +53,7 @@ module.exports = function(app)
     });
 
 
+    //Creates a community
     app.post("/api/community", function (req, res) {
         
         var newCommunity = {
@@ -65,6 +68,7 @@ module.exports = function(app)
     });
 
 
+    //Creates new user
     app.post("/api/user", function(req, res) {
     var newUser = {
         firstName : req.body.firstName,  
@@ -85,6 +89,7 @@ module.exports = function(app)
     });
 
 
+    //Deletes Community
     app.delete("/api/community/:community_name", function(req, res) {
         var query = {};
         query.communityName = req.params.community_name;
@@ -94,7 +99,8 @@ module.exports = function(app)
         });
     });
 
-
+    
+    //Deletes a user from the database
     app.delete("/api/user/:username", function(req, res) {
         var query = {};
         query.username = req.params.username;
@@ -104,18 +110,47 @@ module.exports = function(app)
         });
     });
 
+    
+    //Adds a community to the User's list of communities
+    app.patch("/api/user/add/:communityType/:community_name/:username", function(req, res) {
 
-    app.patch("/api/user/", function(req, res) {
-        userController.update(req.body, function(err, data) {
+       var details = {
+           username : req.params.username,
+           communityName: req.params.community_name,
+           type: req.params.communityType
+       }
+
+        userController.addCommunity(details, function(err, data) {  
             res.json(data);
         });  
     });
 
 
-    app.patch("/api/community/", function(req, res) {
-        communityController.update(req.body, function(err, data) {
-            res.json(data);
-        });
-    });
+    //Removes a community from the User's list of communities
+    app.patch("/api/user/remove/:communityType/:community_name/:username", function(req, res) {
+
+        var details = {
+            username : req.params.username,
+            communityName: req.params.community_name,
+            type: req.params.communityType
+        }
+ 
+         userController.removeCommunity(details, function(err, data) {  
+             res.json(data);
+         });  
+     });
+
+
+    
+      
+    //  app.patch("/api/community/", function(req, res) {
+    //     communityController.update(req.body, function(err, data) {
+    //         res.json(data);
+    //     });
+    // });
+
+
+
+
 
 }
