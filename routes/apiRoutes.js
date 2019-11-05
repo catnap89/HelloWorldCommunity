@@ -1,6 +1,7 @@
-
+const router = require("express").Router();
 const communityController = require("../controllers/communityController");
 const userController = require("../controllers/userController");
+
 
 
 module.exports = function(app) 
@@ -11,17 +12,8 @@ module.exports = function(app)
       res.send("TESTING");
     });
 
-    
-    
-    //get all communities
-    app.get("/api/community/all", function(req, res) {
-    
-        var query = {};
-        communityController.get(query, function(data) {
-        res.json(data);
-        });
 
-    });
+
 
     //Returns a specific community
     app.get("/api/community/:community_name", function(req, res) {
@@ -31,7 +23,9 @@ module.exports = function(app)
         communityController.get(query, function(data) {
             res.json(data);
         });
-    });
+
+
+});
 
 
    //returns all users
@@ -50,7 +44,10 @@ module.exports = function(app)
         userController.get(query, function(data) {
             res.json(data);
         });
+
     });
+});
+
 
 
     //Creates a community
@@ -63,9 +60,11 @@ module.exports = function(app)
         }
         
         communityController.save(newCommunity, function(data) {
+
         res.json(data);
-        });
     });
+});
+
 
 
     //Creates new user
@@ -84,9 +83,10 @@ module.exports = function(app)
     }
 
     userController.save(newUser, function(data) {
+
         res.json(data);
     });
-    });
+});
 
 
     //Deletes Community
@@ -94,10 +94,49 @@ module.exports = function(app)
         var query = {};
         query.communityName = req.params.community_name;
 
-        communityController.delete(query, function(err, data) {
-            res.json(data);
-        });
+
+// app.post("/api/community", function (req, res) {
+    
+//     var newCommunity = {
+//         communityName: req.body.communityName,
+//         userAdmin: req.body.userAdmin,
+//         bannedList: req.body.bannedList
+//     }
+    
+//     communityController.save(newCommunity, function(data) {
+//     res.json(data);
+//     });
+// });
+
+
+// app.post("/api/user", function(req, res) {
+//     var newUser = {
+//         firstName : req.body.firstName,  
+//         lastName : req.body.lastName,
+//         username : req.body.username,
+//         password : req.body.password,
+//         joinedCommunityIDs : req.body.joinedCommunityIDs,
+//         ownedCommunityIDs : req.body.ownedCommunityIDs,
+//         bannedCommunityIDs : req.body.bannedCommunityIDs,
+//         isAdmin : req.body.isAdmin,
+//         favoriteCommunityIDs : req.body.favoriteCommunityIDs,
+//         email : req.body.email
+//     }
+
+//     userController.save(newUser, function(data) {
+//         res.json(data);
+//     });
+// });
+
+
+router.delete("/api/community/:community_name", function(req, res) {
+    var query = {};
+    query.communityName = req.params.community_name;
+
+    communityController.delete(query, function(err, data) {
+        res.json(data);
     });
+});
 
     
     //Deletes a user from the database
@@ -105,14 +144,16 @@ module.exports = function(app)
         var query = {};
         query.username = req.params.username;
 
-        userController.delete(query, function(err, data) {
-            res.json(data);
-        });
+
+    userController.delete(query, function(err, data) {
+        res.json(data);
     });
+});
 
     
     //Adds a community to the User's list of communities
     app.patch("/api/user/add/:communityType/:community_name/:username", function(req, res) {
+
 
        var details = {
            username : req.params.username,
@@ -152,5 +193,3 @@ module.exports = function(app)
 
 
 
-
-}
