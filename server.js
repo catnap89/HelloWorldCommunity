@@ -66,7 +66,7 @@ app.use(passport.session());
 
 // Attach any API/Data/Auth routes to the server
 // Must come before the catch all route
-app.use(api_routes);
+// app.use(api_routes);
 app.use(auth_routes);
 
 // Catch All Route -- catches any other route that's not setup and will send the react index.html file,

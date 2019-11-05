@@ -8,9 +8,6 @@ import { Link } from "react-router-dom";
 
 const logout = () => {
   axios.get('/auth/logout')
-    .then(res => {
-      alert(res.response.data.msg);
-    })
 }
 
 const Top = (props) => (

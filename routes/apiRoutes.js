@@ -50,7 +50,6 @@ router.post("/api/community", function (req, res) {
 });
 
 
-
 //Creates new user
 router.post("/api/user", function(req, res) {
     var newUser = {
