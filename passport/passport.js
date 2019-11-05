@@ -5,33 +5,13 @@ const bcrypt = require("bcryptjs");
 // Load User model
 const User = require("../models/User");
 
-
-// passport.use(
-//   new LocalStrategy((username, password, done) => {
-//     // Match user
-//     User.findOne({ username: username }, (err, user) => {
-//       if (err) {
-//         return done(err);
-//       }
-//       if (!user) {
-//         return done(null, false, { msg: "That email is not registered"});
-//       }
-//       if (!user.validPassword(password)) {
-//         return done(null, false, { msg: "Incorrect password"});
-//       }
-      
-//       return done(null, user);
-//     })
-//   })
-// );
-
 passport.use(
   new LocalStrategy((username, password, done) => {
     // Match user
     User.findOne({ username: username })
       .then(user => {
         if (!user) {
-          return done(null, false, {msg: "That email is not registered"});
+          return done(null, false, {msg: "That username does not exist"});
         }
 
         // Match password
