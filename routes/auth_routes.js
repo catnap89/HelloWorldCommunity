@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../passport/passport");
+const bcrypt = require("bcryptjs");
 // User model
 const User = require('../models/User');
 
@@ -15,28 +16,58 @@ router.post("/auth/register", (req, res) => {
   }
 
   // Check for existing user
+  // User.findOne({ username })
+  //   .then(user => {
+  //     if(user) return res.status(400).send({ msg: "User already exists"});
+
+  //     // if user does not exist, create a new user
+  //     User.create({ username, email, password })
+  //       .then(newUser => {
+  //         // You dont' want to authenticate the user here since they are new and have just registered
+  //         // Instead, you want to simply sign them into the session (store)
+  //         req.login(newUser, err => {
+  //           if(err) {
+  //             console.log(err);
+  //             return res.status(500).send({ msg: err});
+  //           }
+
+  //           res.send({
+  //             msg: "User created successfully!",
+  //             user: newUser
+  //           });
+  //         });
+  //       });
+  //   });
+
   User.findOne({ username })
     .then(user => {
-      if(user) return res.status(400).send({ msg: "User already exists"});
+      if (user) {
+        return res.status(400).send({ msg: "User already exists "});
+      } else {
 
-      // if user does not exist, create a new user
-      User.create({ username, email, password })
-        .then(newUser => {
-          // You dont' want to authenticate the user here since they are new and have just registered
-          // Instead, you want to simply sign them into the session (store)
-          req.login(newUser, err => {
-            if(err) {
-              console.log(err);
-              return res.status(500).send({ msg: err});
-            }
-
-            res.send({
-              msg: "User created successfully!",
-              user: newUser
-            });
-          });
+        const newUser = new User({
+          username,
+          email,
+          password
         });
-    });
+
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if(err) throw err;
+            newUser.password = hash;
+            newUser.save()
+              .then(user => {
+                req.flash(
+                  "success_msg",
+                  "You are now registered and can log in"
+                );
+                // res.redirect("/auth/login");
+              })
+              .catch(err => console.log(err));
+          })
+        })
+      }
+    })
 })
 
 
@@ -77,7 +108,7 @@ router.get('/auth/isauth', (req, res) => {
 
 router.get('/auth/logout', (req, res) => {
   req.logout();
-  res.send({ msg: "Logged out successfully!"});
+  // res.send({ msg: "Logged out successfully!"});
   res.redirect("/login");
 })
 

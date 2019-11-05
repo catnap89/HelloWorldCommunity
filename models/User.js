@@ -75,22 +75,22 @@ var userSchema = new Schema({
 });
 
 
-userSchema.methods.validatePassword = function(val) {
-    return bcrypt.compare(val, this.password);
-}
+// userSchema.methods.validatePassword = function(val) {
+//     return bcrypt.compare(val, this.password);
+// }
 
-userSchema.methods.toJSON = function() {
-    const obj = this.toObject();
-    delete obj.password;
-    return obj;
-}
+// userSchema.methods.toJSON = function() {
+//     const obj = this.toObject();
+//     delete obj.password;
+//     return obj;
+// }
 
-userSchema.pre('save', function(next) {
-    if ( this.isNew ) {
-        this.password = bcrypt.hashSync(this.password, 10);
-    }
-    next();
-});
+// userSchema.pre('save', function(next) {
+//     if ( this.isNew ) {
+//         this.password = bcrypt.hashSync(this.password, 10);
+//     }
+//     next();
+// });
 
 var User = mongoose.model("User", userSchema);
 
