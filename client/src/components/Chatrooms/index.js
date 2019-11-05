@@ -9,11 +9,13 @@ const Chatrooms = (props) => (
   <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
   {/* <Card.Title>Chat Rooms Available</Card.Title> */}
 
-    <Card className= "cardchat">
+  {/* card 1 */}
+
+    <Card className= "cardchat" style={{ width: '18rem' }}>
       <Card.Body>
       <Card.Title>Car Talk</Card.Title>
       <hr />
-        <Card.Text>
+        <Card.Text >
           Come here to talk about cars.
         </Card.Text>
 
@@ -24,12 +26,15 @@ const Chatrooms = (props) => (
       </Card.Footer>
     </Card>
 
-    <Card className= "cardchat">
-      <Card.Body>
+  {/* card 2 */}
+
+    <Card className= "cardchat" style={{ width: '18rem' }}>
+       <Card.Body >
       <Card.Title>Car Talk</Card.Title>
+     
       <hr />
-        <Card.Text>
-          Come here to talk about cars.
+        <Card.Text >
+          Come here to talk about cars.Come here to talk about cars.
         </Card.Text>
 
       </Card.Body>
@@ -39,11 +44,13 @@ const Chatrooms = (props) => (
       </Card.Footer>
     </Card>
 
-    <Card className= "cardchat">
+{/* card 3 */}
+
+    <Card className= "cardchat" style={{ width: '18rem' }}>
       <Card.Body>
       <Card.Title>Car Talk</Card.Title>
        <hr />
-        <Card.Text>
+        <Card.Text >
           Come here to talk about cars.
         </Card.Text>
 
