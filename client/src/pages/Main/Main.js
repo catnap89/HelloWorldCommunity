@@ -12,8 +12,7 @@ class Main extends Component {
   // Not sure what to have in the states yet.
   state = {
     userInfo: {},
-    communities: [],
-    // errorMessage: ""
+    communities: []
   };
 
   // make a request to the backend and check if the req.user object is not null
@@ -27,15 +26,36 @@ class Main extends Component {
   }
 
 
+  // checkUser = () => {
+  //   axios.get('/auth/isauth')
+  //     .then(res => {
+  //         console.log(res.data);
+  //         this.setState({
+  //           userInfo: res.data.user
+  //         })
+  //         console.log(this.state.userInfo);
+  //       })
+  //     .catch(error => {
+  //       // console.log("error: " + error.response.data.message);
+  //       // this.setState({
+  //       //   errorMessage: error.response.data.message
+  //       console.log(error);
+  //       this.props.history.push("/login");
+  //     })
+  // }
+
   checkUser = () => {
     axios.get('/auth/isauth')
       .then(res => {
-          console.log(res.data);
-          this.setState({
-            userInfo: res.data.user
-          })
-          console.log(this.state.userInfo);
-        })
+        console.log("res: " + res.data.user.username);
+        if (res.data.user) {
+          return this.setState({
+            userInfo: res.data || {}
+          });
+        } else {
+          this.props.history.push("/login");
+        }
+      })
       .catch(error => {
         // console.log("error: " + error.response.data.message);
         // this.setState({
