@@ -33,7 +33,7 @@ router.get("/api/user/:username", function(req, res) {
     userController.get(query, function(data) {
         res.json(data);
     });
-});
+}
 
 //Creates a community
 router.post("/api/community", function (req, res) {
@@ -122,4 +122,6 @@ router.patch("/api/user/remove/:communityType/:community_name/:username", functi
 
 
 
+
 module.exports = router;
+
