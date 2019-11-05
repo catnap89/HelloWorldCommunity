@@ -8,6 +8,12 @@ import { Link } from "react-router-dom";
 
 const logout = () => {
   axios.get('/auth/logout')
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 const Top = (props) => (
@@ -30,7 +36,7 @@ const Top = (props) => (
     <Nav.Link href="#pricing">Pricing</Nav.Link> */}
   </Nav>
   <Form inline>
-  <Link to="/signin" className=" link-button btn btn-primary" variant="dark" onClick={logout}>Sign Out</Link><span className="line"> | </span>
+    <Link to="/login" className=" link-button btn btn-primary" variant="dark" onClick={logout}>Sign Out</Link><span className="line"> | </span>
     <FormControl type="text" placeholder="&#xF002; Search" className=" p-3 mr-3 ml-5 mr-5 form fontAwesome" /><span className="line"> | </span>
     <Button className ="ml-5 mr-3 button" variant="dark">Search</Button>
   </Form>

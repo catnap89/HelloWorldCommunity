@@ -43,20 +43,20 @@ app.use(session({
   // Traversy Uses True
   resave: false,
   // Traversy Uses True
-  saveUninitialized: true,
+  saveUninitialized: false,
   // not sure if I need this
   proxy: true
 }));
 
-// Connect Flash
-app.use(flash());
+// // Connect Flash
+// app.use(flash());
 
-// Gloal variable
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  next();
-});
+// // Gloal variable
+// app.use((req, res, next) => {
+//   res.locals.success_msg = req.flash("success_msg");
+//   res.locals.error_msg = req.flash("error_msg");
+//   next();
+// });
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -66,7 +66,7 @@ app.use(passport.session());
 
 // Attach any API/Data/Auth routes to the server
 // Must come before the catch all route
-// app.use(api_routes);
+app.use(api_routes);
 app.use(auth_routes);
 
 // Catch All Route -- catches any other route that's not setup and will send the react index.html file,
