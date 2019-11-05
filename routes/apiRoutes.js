@@ -41,7 +41,7 @@ router.post("/api/community", function (req, res) {
     var newCommunity = {
         communityName: req.body.communityName,
         userAdmin: req.body.userAdmin,
-        bannedList: req.body.bannedList
+        communityDesc: req.body.communityDesc
     }
     
     communityController.save(newCommunity, function(data) {

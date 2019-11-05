@@ -6,9 +6,8 @@ const Schema = mongoose.Schema;
 var communitySchema =  new Schema({
     
   communityName : {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true
     },
 
     // identifier: {
@@ -16,16 +15,19 @@ var communitySchema =  new Schema({
     //     required: true
     // },
 
-    userAdmin: {
-      type: String,
-      required: true,
-      unique: true
-    },
+  communityDesc : {
+    type: String,
+    required: true
+  },
 
-    bannedList: {
-     type: Array,
-     required: true
-    }
+  userAdmin: {
+    type: String,
+    required: true
+  },
+
+  bannedList: {
+    type: Array
+  }
 });
 
 

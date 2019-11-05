@@ -9,6 +9,7 @@ module.exports = {
         var newCommunity = {
             communityName: data.communityName,
             userAdmin: data.userAdmin,
+            communityDesc: data.communityDesc,
             bannedList: data.bannedList
         };
 
