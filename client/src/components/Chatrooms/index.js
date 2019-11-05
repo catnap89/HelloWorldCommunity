@@ -22,11 +22,29 @@ const Chatrooms = (props) => (
       </Card.Body>
       <Button className="ml-auto mr-2" variant="link">Join Chat</Button>
       <Card.Footer>
-        <small className="text-muted mr-auto">Moderator : John Smith</small> 
+        <p className="text-muted mr-auto">Moderator : John Smith</p> 
       </Card.Footer>
     </Card>
 
   {/* card 2 */}
+
+
+
+
+    <Card className= "cardchat" style={{ width: '18rem' }}>
+      <Card.Body>
+      <Card.Title>Car Talk</Card.Title>
+       <hr />
+        <Card.Text >
+          Come here to talk about cars.
+        </Card.Text>
+
+      </Card.Body>
+      <Button className="ml-auto mr-2" variant="link">Join Chat</Button>
+      <Card.Footer>
+        <small className="text-muted">Moderator : John Smith</small>
+      </Card.Footer>
+    </Card>
 
     <Card className= "cardchat" style={{ width: '18rem' }}>
        <Card.Body >
@@ -60,6 +78,7 @@ const Chatrooms = (props) => (
         <small className="text-muted">Moderator : John Smith</small>
       </Card.Footer>
     </Card>
+    
     
   </CardDeck>
 
