@@ -39,7 +39,7 @@ module.exports = {
 
 
     update: function(query, callback) {
-        Community.update({_id: query._id}, {$set:query}, {}, callback);
+        Community.update({communityName: query.communityName}, {$set:query}, {}, callback);
         }
 
     }
