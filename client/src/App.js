@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from "./pages/SignIn/SignIn";
@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Community from "./pages/Community/Community"
 import NoMatch from "./pages/NoMatch/NoMatch";
 import Main from "./pages/Main/Main";
+
 import CreateChat from './pages/CreateChat/createchat';
 
 
@@ -24,7 +25,9 @@ function App() {
       </div>
     </Router>
   );
-}
+
+
+
 
 
 export default App;

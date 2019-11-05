@@ -1,24 +1,27 @@
-const express = require("express"); // run npm i express to install 
-const mongoose = require("mongoose"); // run npm i mongoose to install
-const passport = require("./passport");
+const express = require("express"); 
+const mongoose = require("mongoose"); 
+const passport = require("./passport/passport");
 const session = require('express-session');
-// const routes = require("./routes"); // index route?
-const authenticationRoute = require("./routes/authentication");
-//const apiRoutes = require("./routes/apiRoutes");
-// const path = require("path");
+const flash = require("connect-flash");
+const api_routes = require("./routes/apiRoutes");
+const auth_routes = require("./routes/auth_routes");
+const path = require("path");
+require('dotenv').config();
 
-
-const PORT = process.env.PORT || 5000;
 const app = express();
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
 // Serve up static assets (usually on heroku)
+// Give the client/browser access to front end files
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+// bodyparser
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 
 var db = process.env.MONGODB_URI || "mongodb://localhost/HelloWorldDB";
 
@@ -33,25 +36,53 @@ mongoose.connect(db, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTop
   }
 });
 
+// Express Session
 //Store secret to .env file -- process.env.SECRET --> must have dotenv package and call dotenv.config() up top in server file
 app.use(session({
-  secret: 'yy5MkxmvKyKP6X92HtR50wPONJk4wfPe',
+  secret: process.env.SECRET,
+  // Traversy Uses True
   resave: false,
-  saveUninitialized: false,
+  // Traversy Uses True
+  saveUninitialized: true,
+  // not sure if I need this
   proxy: true
 }));
+
+// Connect Flash
+app.use(flash());
+
+// Gloal variable
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 
 // Routes
+
 // app.use("/", routes);
 //app.use("/api", apiRoutes);
 require("./routes/apiRoutes")(app);
 app.use("/authentication", authenticationRoute);
+require("./routes/apiRoutes")(app);
 
 
+// Attach any API/Data/Auth routes to the server
+// Must come before the catch all route
+app.use(api_routes);
+app.use(auth_routes);
 
+// Catch All Route -- catches any other route that's not setup and will send the react index.html file,
+// so React can handle the view routes
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
+
+// start the server
 app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
 });

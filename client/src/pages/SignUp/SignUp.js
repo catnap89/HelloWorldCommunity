@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
-
 import './signup.css';
 
 class SignUp extends Component  {
@@ -33,16 +32,19 @@ class SignUp extends Component  {
       username: this.state.username,
       password: this.state.password
     }
-    axios.post("/authentication/signup", userInfo)
+    axios.post("/auth/register", userInfo)
       .then((response) => {
         console.log(response.data);
         // when signup is successful, go to signin page
-        this.props.history.push("/signin");
+        this.props.history.push("/");
+        // return <Redirect to="/" />
       })
       .catch(error => {
+        console.log("error: " + error.response.data.msg);
         this.setState({
-          errorMessage: error.response.data.message
-        })
+          errorMessage: error.response.data.msg
+        });
+        alert(this.state.errorMessage);
       })
   };
 
@@ -61,7 +63,7 @@ class SignUp extends Component  {
           <Form>
 
             <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label><i class="fas fa-envelope pl-2 pr-2"></i>Email</Form.Label>
+              <Form.Label><i className="fas fa-envelope pl-2 pr-2"></i>Email</Form.Label>
               <Form.Control 
                 className="form" 
                 type="email" 
@@ -73,7 +75,7 @@ class SignUp extends Component  {
             </Form.Group>
             <br />
             <Form.Group as={Col} controlId="formGridUsername">
-              <Form.Label><i class="fas fa-user pl-2 pr-2"></i>Username</Form.Label>
+              <Form.Label><i className="fas fa-user pl-2 pr-2"></i>Username</Form.Label>
               <Form.Control
                 className="form" 
                 type="username" 
@@ -85,7 +87,7 @@ class SignUp extends Component  {
             </Form.Group>
             <br />
             <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label><i class="fas fa-key pl-2 pr-2"></i>Password</Form.Label>
+              <Form.Label><i className="fas fa-key pl-2 pr-2"></i>Password</Form.Label>
               <Form.Control 
                 className="form" 
                 type="password" 
@@ -107,7 +109,7 @@ class SignUp extends Component  {
               Submit
             </Button>
 
-            <a href="/signin"><i class="far fa-hand-point-right pr-2"></i>Sign In</a>
+            <a href="/login"><i className="far fa-hand-point-right pr-2"></i>Sign In</a>
             
           </Form>
 

@@ -40,14 +40,47 @@ module.exports = {
         },
 
     delete: function(data, callback) {
-            User.remove({userName: data.userName}, callback);
+            User.remove({username: data.username}, callback);
         },
     
         
-    update: function(query, callback) {
-            Community.update({userName: userName}, {$set:query}, {}, callback);
-            }
+    addCommunity: function(data, callback) {
+          
+            switch(data.type) {
+            case "joinedCommunity":
+                    User.update({username: data.username}, {$push: {joinedCommunityIDs: data.communityName}}, {}, callback);
+            break;
+            case "ownedCommunity":
+                    User.update({username: data.username}, {$push: {ownedCommunityIDs: data.communityName}}, {}, callback);
+            break;
+            case "bannedCommunity":
+                    User.update({username: data.username}, {$push: {bannedCommunityIDs: data.communityName}}, {}, callback);
+            break;
+            case "favoriteCommunity":
+                    User.update({username: data.username}, {$push: {favoriteCommunityIDs: data.communityName}}, {}, callback);
+            break;
+           }         
+        },
+
+
+    removeCommunity: function(data, callback) {
+        switch(data.type) {
+            case "joinedCommunity":
+                    User.update({username: data.username}, {$pull: {joinedCommunityIDs: data.communityName}}, {}, callback);
+            break;
+            case "ownedCommunity":
+                    User.update({username: data.username}, {$pull: {ownedCommunityIDs: data.communityName}}, {}, callback);
+            break;
+            case "bannedCommunity":
+                    User.update({username: data.username}, {$pull: {bannedCommunityIDs: data.communityName}}, {}, callback);
+            break;
+            case "favoriteCommunity":
+                    User.update({username: data.username}, {$pull: {favoriteCommunityIDs: data.communityName}}, {}, callback);
+            break;
+           }
+    }
         
     };
 
     
+    //db.getCollection('users').update({username: test1}, {$push: {joinedCommunityIDs: 4567}})
