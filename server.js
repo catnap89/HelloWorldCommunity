@@ -64,13 +64,6 @@ app.use(passport.session());
 
 // Routes
 
-// app.use("/", routes);
-//app.use("/api", apiRoutes);
-require("./routes/apiRoutes")(app);
-app.use("/authentication", authenticationRoute);
-require("./routes/apiRoutes")(app);
-
-
 // Attach any API/Data/Auth routes to the server
 // Must come before the catch all route
 app.use(api_routes);
