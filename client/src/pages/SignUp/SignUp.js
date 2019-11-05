@@ -12,8 +12,7 @@ class SignUp extends Component  {
   state = {
     username: "",
     email: "",
-    password: "",
-    errorMessage: ""
+    password: ""
   }
 
   handleInputChange = event => {
@@ -54,7 +53,6 @@ class SignUp extends Component  {
           <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
           <hr />
           <br />
-          <p>{this.state.errorMessage}</p>
 
           <Form>
 
