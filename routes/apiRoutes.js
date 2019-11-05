@@ -46,7 +46,7 @@ module.exports = function(app)
         });
 
     });
-});
+}
 
 
 
@@ -192,4 +192,4 @@ router.delete("/api/community/:community_name", function(req, res) {
 
 
 
-
+    });
