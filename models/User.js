@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
+
 
 var userSchema = new Schema({
     
@@ -74,16 +74,16 @@ var userSchema = new Schema({
     }
 });
 
+userSchema.methods.toJSON = function() {
+    const obj = this.toObject();
+    delete obj.password;
+    return obj;
+}
 
 // userSchema.methods.validatePassword = function(val) {
 //     return bcrypt.compare(val, this.password);
 // }
 
-// userSchema.methods.toJSON = function() {
-//     const obj = this.toObject();
-//     delete obj.password;
-//     return obj;
-// }
 
 // userSchema.pre('save', function(next) {
 //     if ( this.isNew ) {
