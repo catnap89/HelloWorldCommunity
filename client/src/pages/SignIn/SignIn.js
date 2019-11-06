@@ -12,8 +12,8 @@ class SignIn extends Component {
 
   state = {
     password: "",
-    username: ""
-    // errorMessage: {}
+    username: "",
+    errorMessage: ""
   };
 
 
@@ -24,7 +24,6 @@ class SignIn extends Component {
     });
   };
 
-
   handleFormSubmit = event => {
     event.preventDefault();
     //next step is to make an axios.post using the email and password that our user enters
@@ -34,16 +33,15 @@ class SignIn extends Component {
     }
     axios.post("/auth/login", userInfo)
       .then((response) => {
-        this.props.history.push("/login");
+        // console.log(response.data);
+        // route to Profile View
+        this.props.history.push("/");
       })
       .catch(error => {
-        // console.log("error: " + error.response.data.message);
-        this.setState({
-          errorMessage: error.response.data.message
-        });
-        alert(error.response.data.message);
+        throw error;
       })
-  };
+    };
+
 
   render() {
 

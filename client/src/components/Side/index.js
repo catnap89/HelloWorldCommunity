@@ -15,27 +15,24 @@ const Side =(props) => (
     <ListGroup className="flush" variant="flush border-right shadow">
     
       <ListGroup.Item className='pt-3 p-4 channel bg-light' action as={Link} to="/createchat">
-      <Button variant="outline-primary" size="lg">
-      START NEW CHAT
-    </Button>
-        
+        <Button variant="outline-primary" size="lg">
+        START NEW CHAT
+        </Button>
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/signup">
-        Sign Up / Register
+      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/register">
+        Register
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/">
-        Sign In
+      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/login">
+        Log In
       </ListGroup.Item>
-
 
       <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/community/:id">
         Chat / Main
       </ListGroup.Item>
 
       
-
       <ListGroup.Item className="bg-light" action variant="light border-0">
         Danger
       </ListGroup.Item>
@@ -56,7 +53,6 @@ const Side =(props) => (
     
     </Card.Title>
   </Card>
-
 
 )
 

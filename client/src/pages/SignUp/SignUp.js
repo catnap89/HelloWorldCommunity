@@ -12,8 +12,7 @@ class SignUp extends Component  {
   state = {
     username: "",
     email: "",
-    password: "",
-    errorMessage: ""
+    password: ""
   }
 
   handleInputChange = event => {
@@ -34,17 +33,13 @@ class SignUp extends Component  {
     }
     axios.post("/auth/register", userInfo)
       .then((response) => {
-        console.log(response.data);
-        // when signup is successful, go to signin page
-        this.props.history.push("/");
+        console.log(response);
+        // when signup is successful, go to signin page or login page?
+        this.props.history.push("/login");
         // return <Redirect to="/" />
       })
       .catch(error => {
         console.log("error: " + error.response.data.msg);
-        this.setState({
-          errorMessage: error.response.data.msg
-        });
-        alert(this.state.errorMessage);
       })
   };
 
@@ -58,7 +53,6 @@ class SignUp extends Component  {
           <Card.Title className="pt-4 pl-2 mb-0">Sign Up / Register</Card.Title>
           <hr />
           <br />
-          <p>{this.state.errorMessage}</p>
 
           <Form>
 
