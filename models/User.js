@@ -44,11 +44,12 @@ var userSchema = new Schema({
         // required: true
     },
 
-    ownedCommunityIDs : {
-        type: Array
+    ownedCommunityIDs : [{
+        type: Schema.Types.ObjectId,
+        ref: "Community"
         // I don't think this should be required.
         // required: true
-    },
+    }],
 
     bannedCommunityIDs : {
         type: Array
