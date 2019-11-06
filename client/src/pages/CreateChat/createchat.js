@@ -82,6 +82,7 @@ class CreateChat extends Component {
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
           {/* <CreateChatForm /> */}
+          <CardDeck className= 'col-10 chat border-0 mt-5 mb-4 mx-auto'>
           <Card className="col-5 bg-light shadow">
             <Card.Title className="pt-4 pl-2 mb-0">Create New Chatroom</Card.Title>
             <hr />
@@ -121,6 +122,7 @@ class CreateChat extends Component {
               </Button>
             </Form>
           </Card>
+          </CardDeck>
         </CardDeck> 
       
       </div>
