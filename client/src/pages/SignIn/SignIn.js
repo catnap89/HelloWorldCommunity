@@ -38,7 +38,7 @@ class SignIn extends Component {
         this.props.history.push("/");
       })
       .catch(error => {
-        if (error.response.data == "Unauthorized") {
+        if (error.response.data === "Unauthorized") {
           this.setState({errorMessage: "Invalid Username or Password"});
         }
         console.log(error.response);
