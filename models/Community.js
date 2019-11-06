@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 var communitySchema =  new Schema({
     
+  
   communityName : {
       type: String,
       required: true
@@ -21,7 +22,8 @@ var communitySchema =  new Schema({
   },
 
   userAdmin: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "User",
     required: true
   },
 
@@ -29,7 +31,6 @@ var communitySchema =  new Schema({
     type: Array
   }
 });
-
 
 
 var Community = mongoose.model("Community", communitySchema);
