@@ -38,9 +38,12 @@ class SignIn extends Component {
         this.props.history.push("/");
       })
       .catch(error => {
-        throw error;
+        if (error.response.data === "Unauthorized") {
+          this.setState({errorMessage: "Invalid Username or Password"});
+        }
+        console.log(error.response);
       })
-    };
+  };
 
 
   render() {
@@ -53,7 +56,7 @@ class SignIn extends Component {
           <Card.Title className="pt-4 pl-2 mb-0">Sign In</Card.Title>
           <hr />
           <br />
-          <p>{this.state.errorMessage}</p>
+          {this.state.errorMessage ? <div className="alert alert-danger">{this.state.errorMessage}</div> : ""}
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label><i className="fas fa-user pl-2 pr-2"></i>Username</Form.Label>

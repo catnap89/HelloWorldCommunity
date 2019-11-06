@@ -24,6 +24,7 @@ app.use(express.json());
 
 
 var db = process.env.MONGODB_URI || "mongodb://localhost/HelloWorldDB";
+// var db = process.env.MONGODB_URI || "mongodb://user:password1@ds141248.mlab.com:41248/heroku_v498c1zn";
 
 // Connect to the Mongo DB
 mongoose.connect(db, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true}, function(err) {
