@@ -101,7 +101,7 @@ class Main extends Component {
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
             {this.state.communities.map(community => (
-              <Card className= "cardchat rounded shadow" key={community._id} style={{ maxWidth: '22rem', maxHeight: '250px'}}>
+              <Card className= "cardchat rounded shadow mb-3" key={community._id} style={{ minWidth: '22rem', maxWidth: '22rem', maxHeight: '250px'}}>
                 <Card.Header href="#" className="pl-3 pt-3 mb-0 chattitle">{community.communityName}</Card.Header>
                 
                 <Card.Body className="overflow-auto" >
