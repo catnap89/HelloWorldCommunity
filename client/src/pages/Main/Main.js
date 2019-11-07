@@ -116,7 +116,7 @@ class Main extends Component {
                   {/* HOW TO ACCESS USER DATA FROM COMMUNITY DATA? */}
                   <small className="text-muted mr-auto pt-2">Moderator : {community.username}</small> 
                   {/* MAKE A BUTTON OR LINK TO /community/:communityID */}
-                  <Button className="ml-5" variant="link">Join Chat</Button>
+                  <Button className="mr-0 pr-0" variant="link">Join Chat</Button>
                 </Card.Footer>
               </Card>
            
