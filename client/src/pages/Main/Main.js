@@ -101,10 +101,10 @@ class Main extends Component {
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
             {this.state.communities.map(community => (
-              <Card className= "cardchat" key={community._id} style={{ maxWidth: '22rem' }}>
-                <Card.Header href="" className="pl-3 pt-3 mb-0 chattitle">{community.communityName}</Card.Header>
+              <Card className= "cardchat rounded shadow" key={community._id} style={{ maxWidth: '22rem', maxHeight: '250px'}}>
+                <Card.Header href="#" className="pl-3 pt-3 mb-0 chattitle">{community.communityName}</Card.Header>
                 
-                <Card.Body className="overflow-auto">
+                <Card.Body className="overflow-auto" >
 
                   <Card.Text>
                     {community.communityDesc}
@@ -112,16 +112,18 @@ class Main extends Component {
 
                 </Card.Body>
                 
-                <Card.Footer>
+                <Card.Footer className="d-flex">
                   {/* HOW TO ACCESS USER DATA FROM COMMUNITY DATA? */}
-                  <small className="text-muted mr-auto">Moderator : {community.username}</small> 
+                  <small className="text-muted mr-auto pt-2">Moderator : {community.username}</small> 
                   {/* MAKE A BUTTON OR LINK TO /community/:communityID */}
-                  <Button className="ml-5" variant="link">Join Chat</Button>
+                  <Button className="mr-0 pr-0" variant="link">Join Chat</Button>
                 </Card.Footer>
               </Card>
-            ))}
-          </CardDeck>
+           
+           ))}
 
+          </CardDeck>
+ 
         </CardDeck> 
       </div>
     );
