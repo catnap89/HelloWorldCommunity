@@ -8,6 +8,14 @@ router.get("/", function(req, res) {
     res.send("TESTING");
 });
 
+//returns all communities
+router.get("/api/community/all", function(req, res) {
+    var query = {};
+    communityController.get(query, function(data) {
+        res.json(data);
+    });
+});
+
 //Returns a specific community
 router.get("/api/community/:community_name", function(req, res) {
     var query = {};
@@ -37,12 +45,14 @@ router.get("/api/user/:username", function(req, res) {
 
 //Creates a community
 router.post("/api/community", function (req, res) {
-    
+    console.log(req.user);
     var newCommunity = {
         communityName: req.body.communityName,
         userAdmin: req.body.userAdmin,
         communityDesc: req.body.communityDesc
     }
+    console.log("!!!!!!!!!!community:")
+    console.log(newCommunity)
     
     communityController.save(newCommunity, function(data) {
         res.json(data);

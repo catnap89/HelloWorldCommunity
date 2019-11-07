@@ -19,7 +19,7 @@ router.post("/auth/register", (req, res) => {
   User.findOne({ username })
     .then(user => {
       if (user) {
-        return res.status(400).send({ msg: "User already exists "});
+        return res.status(400).send({ msg: "User already exists"});
       } else {
 
         const newUser = new User({
@@ -52,15 +52,15 @@ router.post("/auth/register", (req, res) => {
 })
 
 // This one works
-
 // router.post("/auth/login", (req, res, next) => {
-//   // Custom Passport Callback
+// //   // Custom Passport Callback
 //   passport.authenticate("local", {
-//     successRedirect: '/',
-//     failureRedirect: '/login'
+//     successRedirect: '/'
 //     })(req, res, result => {
-//       req.login(req.user, (err) => {
+//       req.login(req.user, (err) => {d
 //         if (err) { 
+//           return next(err);
+//           console.log("hit error block")
 //           return res.status(505).send({msg: "Wrong Username or Password"}); 
 //         }
 //         console.log(req.user);
@@ -69,15 +69,13 @@ router.post("/auth/register", (req, res) => {
 //     });
 // });
 
-
 // Login
 // Also works
 router.post("/auth/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login",
     failureFlash: true
-  }) (req, res, next);
+  })(req, res, next);
 });
 
 

@@ -6,14 +6,16 @@ var Community = require("../models/Community");
 module.exports = {
   
     save: function(data, callback) {
-        var newCommunity = {
-            communityName: data.communityName,
-            userAdmin: data.userAdmin,
-            communityDesc: data.communityDesc,
-            bannedList: data.bannedList
-        };
+        // var newCommunity = {
+        //     communityName: data.communityName,
+        //     userAdmin: data.userAdmin,
+        //     communityDesc: data.communityDesc,
+        //     bannedList: data.bannedList
+        // };
+        console.log("!!!!!controllerCommunity");
+        console.log(data);
 
-        Community.create(newCommunity, function (err, doc) {
+        Community.create(data, function (err, doc) {
             if (err) {
                 console.log(err);
             }

@@ -13,6 +13,7 @@ import { Button } from 'react-bootstrap';
 
 class CreateChat extends Component {
   // Not sure what to have in the states yet.
+
   state = {
     userAdmin: "",
     communityName: "",
@@ -31,6 +32,7 @@ class CreateChat extends Component {
         if (res.data.user) {
           return this.setState({
             userAdmin: res.data.user._id || {}
+            // userAdmin: res.data.user.username || {}
           });
         } else {
           this.props.history.push("/login");
@@ -60,15 +62,16 @@ class CreateChat extends Component {
       communityName: this.state.communityName,
       communityDesc: this.state.communityDesc
     }
+
     console.log(communityInfo);
     axios.post("/api/community", communityInfo)
       .then((response) => {
-        // console.log(response.data);
-        // route to Profile View
+        console.log(response.data);
+        // route to Main View
         this.props.history.push("/");
       })
       .catch(error => {
-        throw error;
+        console.log(error);
       })
   };
   
@@ -79,6 +82,7 @@ class CreateChat extends Component {
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
           {/* <CreateChatForm /> */}
+          <CardDeck className= 'col-10 chat border-0 mt-5 mb-4 mx-auto'>
           <Card className="col-5 bg-light shadow">
             <Card.Title className="pt-4 pl-2 mb-0">Create New Chatroom</Card.Title>
             <hr />
@@ -118,6 +122,7 @@ class CreateChat extends Component {
               </Button>
             </Form>
           </Card>
+          </CardDeck>
         </CardDeck> 
       
       </div>

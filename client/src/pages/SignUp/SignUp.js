@@ -39,7 +39,9 @@ class SignUp extends Component  {
         // return <Redirect to="/" />
       })
       .catch(error => {
-        console.log("error: " + error.response.data.msg);
+        console.log(error.response);
+        // console.log("error: " + error.response.data.msg);
+        // this.setState({errorMessage: error.response.data.msg});
       })
   };
 
