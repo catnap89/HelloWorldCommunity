@@ -8,9 +8,6 @@ const Chatrooms = (props) => (
 
 
   <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
-  {/* <Card.Title>Chat Rooms Available</Card.Title> */}
-
-  {/* card 1 */}
 
     <Card className= "cardchat" style={{ maxWidth: '22rem' }}>
       <Card.Header href="" className="pl-3 pt-3 mb-0 chattitle">Car Talk</Card.Header>
