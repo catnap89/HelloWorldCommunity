@@ -37,9 +37,6 @@ class Main extends Component {
         }
       })
       .catch(error => {
-        // console.log("error: " + error.response.data.message);
-        // this.setState({
-        //   errorMessage: error.response.data.message
         console.log(error);
         this.props.history.push("/login");
       })
@@ -48,7 +45,9 @@ class Main extends Component {
   render() {
     return (
       <div className="App">
-        <Top />
+        <Top 
+          username={this.state.userInfo.username}
+        />
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
           <Chatrooms />
