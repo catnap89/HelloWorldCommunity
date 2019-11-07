@@ -8,6 +8,8 @@ import Side from "../../components/Side";
 // import Sideright from "../../components/Sideright";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+// import './main.css'
+
 
 
 class Main extends Component {
