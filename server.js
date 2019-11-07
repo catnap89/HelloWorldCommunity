@@ -6,11 +6,23 @@ const flash = require("connect-flash");
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
+const socketio = require("socket.io");
+const http = require("http");
 require('dotenv').config();
 
-const app = express();
-
 const PORT = process.env.PORT || 5000;
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+io.on("connection", (socket) => {
+  console.log("We have a new connection!");
+
+  socket.on("disconnect", () => {
+    console.log("User has left!");
+  })
+});
 
 // Serve up static assets (usually on heroku)
 // Give the client/browser access to front end files
