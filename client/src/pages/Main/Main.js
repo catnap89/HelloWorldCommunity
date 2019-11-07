@@ -112,9 +112,9 @@ class Main extends Component {
 
                 </Card.Body>
                 
-                <Card.Footer>
+                <Card.Footer className="d-flex">
                   {/* HOW TO ACCESS USER DATA FROM COMMUNITY DATA? */}
-                  <small className="text-muted mr-auto">Moderator : {community.username}</small> 
+                  <small className="text-muted mr-auto pt-2">Moderator : {community.username}</small> 
                   {/* MAKE A BUTTON OR LINK TO /community/:communityID */}
                   <Button className="ml-5" variant="link">Join Chat</Button>
                 </Card.Footer>
