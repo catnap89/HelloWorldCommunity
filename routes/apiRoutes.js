@@ -8,6 +8,14 @@ router.get("/", function(req, res) {
     res.send("TESTING");
 });
 
+//returns all communities
+router.get("/api/community/all", function(req, res) {
+    var query = {};
+    communityController.get(query, function(data) {
+        res.json(data);
+    });
+});
+
 //Returns a specific community
 router.get("/api/community/:community_name", function(req, res) {
     var query = {};
