@@ -29,13 +29,13 @@ const Side =(props) => (
       </ListGroup.Item>
 
       
-      <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/">
+      {/* <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/">
         About Us
       </ListGroup.Item>
 
       <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/">
         Contact Us
-      </ListGroup.Item>
+      </ListGroup.Item> */}
 
       <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/">
         Favorites
