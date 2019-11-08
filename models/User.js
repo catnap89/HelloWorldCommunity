@@ -38,11 +38,12 @@ var userSchema = new Schema({
     },
 
 
-    joinedCommunityIDs : {
-        type: Array
-        // I don't think this should be required
-        // required: true
-    },
+    // joinedCommunityIDs : [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Community"
+    //     // I don't think this should be required
+    //     // required: true
+    // }],
 
     ownedCommunityIDs : [{
         type: Schema.Types.ObjectId,
@@ -51,11 +52,12 @@ var userSchema = new Schema({
         // required: true
     }],
 
-    bannedCommunityIDs : {
-        type: Array
+    bannedCommunityIDs : [{
+        type: Schema.Types.ObjectId,
+        ref: "Community"
         // I don't think this should be required, user might never get banned from a Community
         // required: true
-    },
+    }],
 
     isAdmin : {
        type: Boolean
@@ -63,11 +65,12 @@ var userSchema = new Schema({
         // required: true
     },
 
-    favoriteCommunityIDs : {
-        type: Array
-        // I don't think this should be required. I might be wrong tho
+    favoriteCommunityIDs : [{
+        type: Schema.Types.ObjectId,
+        ref: "Community"
+        // I don't think this should be required
         // required: true
-    },
+    }],
 
     friends : {
         type: Array
