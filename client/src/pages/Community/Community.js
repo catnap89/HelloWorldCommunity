@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Top from "../../components/Top"; // Navbar
 import CardDeck from 'react-bootstrap/CardDeck';
-import Side from "../../components/Side";
+// import Side from "../../components/Side";
 import Chatbox from "../../components/Chatbox";
 import Sideright from "../../components/Sideright";
 import axios from "axios";
+import SideCommunity from "../../components/Side-Community";
 
 
 class Community extends Component {
   // Not sure what to have in the states yet.
   state = {
     userInfo: {},
-    users: [],
-    title: "",
-    communityCreator: "",
+    participants: []
+    // title: "",
+    // communityCreator: "",
   };
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class Community extends Component {
         console.log("res: ");
         console.log( res.data.user)
         if (res.data.user ) {
-          debugger;
+          // debugger;
           if (res.data.user.bannedCommunityIDs.includes(this.props.match.params.id)) {
             this.props.history.push("/");
           } else {
@@ -47,14 +48,25 @@ class Community extends Component {
       })
   }
 
+  handleFavoriteCommunity = () => {
+    const communityId = this.props.match.params.id;
+    const username = this.state.userInfo.username;
+    axios.patch("/api/user/add/favoriteCommunity/" + communityId +  "/" + username)
+      .then(res => {
+        console.log(res);
+      })
+  }
+
   render() {
     return (
       <div className="App">
         <Top 
           username={this.state.userInfo.username}
         />
-        <CardDeck className="size mx-auto"> 
-          <Side />
+        <CardDeck className="pt-5 mt-5 size mx-auto"> 
+          <SideCommunity 
+            handleFavoriteCommunity={() => this.handleFavoriteCommunity()}
+          />
           <Chatbox />
           <Sideright /> 
         </CardDeck> 

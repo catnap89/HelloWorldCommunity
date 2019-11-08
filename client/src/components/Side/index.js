@@ -30,6 +30,7 @@ const Side = props => (
           Chat / Main
         </ListGroup.Item>
 
+
         <ListGroup.Item
           className="bg-light pl-5"
           action
@@ -81,6 +82,7 @@ const Side = props => (
         Light
       </ListGroup.Item> */}
       </ListGroup>
+
     </Card.Title>
   </Card>
 );
