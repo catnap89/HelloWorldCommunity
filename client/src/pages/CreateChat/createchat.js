@@ -14,8 +14,10 @@ import { Button } from 'react-bootstrap';
 class CreateChat extends Component {
   // Not sure what to have in the states yet.
 
+  //added username
   state = {
     userAdmin: "",
+    userName: "",
     communityName: "",
     communityDesc: ""
   };

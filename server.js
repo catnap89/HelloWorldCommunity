@@ -6,21 +6,23 @@ const flash = require("connect-flash");
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
-const socketio = require("socket.io");
-const http = require("http");
+const io = require("socket.io");
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-const server = http.createServer(app);
-const io = socketio(server);
 
 io.on("connection", (socket) => {
-  console.log("We have a new connection!");
+  console.log("User is connected.");
 
   socket.on("disconnect", () => {
     console.log("User has left!");
+  })
+
+  socket.on("chat", function(msg) {
+    console.log("message" + msg)
+    io.emit("chat", msg)
   })
 });
 
