@@ -91,7 +91,7 @@ class Main extends Component {
           <Top 
             username={this.state.userInfo}
           />
-          <CardDeck className="pt-5 mt-5 size mx-auto"> 
+          <CardDeck className="size mx-auto"> 
             <Side />
             <h1>There are no available communities</h1>
           </CardDeck> 
@@ -104,7 +104,7 @@ class Main extends Component {
         <Top 
           username={this.state.userInfo.username}
         />
-        <CardDeck className="pt-5 mt-5 size mx-auto"> 
+        <CardDeck className="size mx-auto"> 
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto overflow-auto'>
             {this.state.communities.map(community => <Chatroom key={community._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)}
