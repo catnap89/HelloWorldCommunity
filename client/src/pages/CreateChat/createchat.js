@@ -15,6 +15,7 @@ class CreateChat extends Component {
   // Not sure what to have in the states yet.
 
   state = {
+    userInfo: {},
     userAdmin: "",
     communityName: "",
     communityDesc: ""
@@ -31,8 +32,8 @@ class CreateChat extends Component {
         console.log("res.data.user._id: " + res.data.user._id);
         if (res.data.user) {
           return this.setState({
-            userAdmin: res.data.user._id || {}
-            // userAdmin: res.data.user.username || {}
+            userAdmin: res.data.user._id || {},
+            userInfo: res.data.user || {}
           });
         } else {
           this.props.history.push("/login");
@@ -78,7 +79,9 @@ class CreateChat extends Component {
   render() {
     return (
       <div className="App">
-        <Top />
+        <Top 
+          username={this.state.userInfo.username}
+        />
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
           {/* <CreateChatForm /> */}

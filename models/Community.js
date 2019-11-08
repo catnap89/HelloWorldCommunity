@@ -27,9 +27,12 @@ var communitySchema =  new Schema({
     required: true
   },
 
-  bannedList: {
-    type: Array
-  }
+  bannedList: [{
+        type: Schema.Types.ObjectId,
+        ref: "User"
+        // I don't think this should be required
+        // required: true
+    }],
 });
 
 

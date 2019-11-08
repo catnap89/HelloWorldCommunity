@@ -6,8 +6,9 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import Side from "../../components/Side";
 // import Chatrooms from "../../components/Chatrooms";
 // import Sideright from "../../components/Sideright";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+// import Card from 'react-bootstrap/Card';
+// import Button from 'react-bootstrap/Button';
+import Chatroom from "../../components/Chatrooms";
 // import './main.css'
 
 
@@ -26,18 +27,13 @@ class Main extends Component {
   // props.history,sometihnfskdnf to sign i
 
   componentDidMount() {
-    this.checkUser();
-    this.getCommunity();
-  }
-
-  checkUser = () => {
-    axios.get('/auth/isauth')
-      .then(res => {
+    this.checkUser().then(res => {
         console.log("res: " + res.data.user.username);
         if (res.data.user) {
-          return this.setState({
+          this.setState({
             userInfo: res.data.user || {}
           });
+          this.getCommunity();
         } else {
           this.props.history.push("/login");
         }
@@ -45,11 +41,16 @@ class Main extends Component {
       .catch(error => {
         console.log(error);
         this.props.history.push("/login");
-      })
+      });
+  }
+
+  checkUser = () => {
+    return axios.get('/auth/isauth')
   }
 
   // Get All communities from DB
   getCommunity = () => {
+    console.log(this.state.userInfo)
     axios.get('/api/community/all')
       .then(res => {
         if (res.data.length > 0) {
@@ -65,12 +66,30 @@ class Main extends Component {
       }) 
   }
 
+  handleJoinCommunity (community) {
+
+    if (this.state.userInfo) {
+      if (community.bannedList.includes(this.state.userInfo._id)) {
+        //the user is not allowed, maybe alert them that they are banned
+        //TODO make this fancy if we have time
+        alert("You have been banhammered. Go somewhere else.")
+      }
+      else {
+        //the user IS allowed, switch locations
+        window.location.href = "/community/" + community._id
+      }
+    } else {
+      //user not logged in
+      this.props.history.push("/login");
+    }
+  }
+
   render() {
     if (this.state.noCommunity) {
       return (
         <div className="App">
           <Top 
-            username={this.state.userInfo.username}
+            username={this.state.userInfo}
           />
           <CardDeck className="pt-5 mt-5 size mx-auto"> 
             <Side />
@@ -80,18 +99,6 @@ class Main extends Component {
       );
     }
     // Original
-    // return (
-    //   <div className="App">
-    //     <Top 
-    //       username={this.state.userInfo.username}
-    //     />
-    //     <CardDeck className="pt-5 mt-5 size mx-auto"> 
-    //       <Side />
-    //       <Chatrooms />
-    //     </CardDeck> 
-    //   </div>
-    // );
-
     return (
       <div className="App">
         <Top 
@@ -99,31 +106,9 @@ class Main extends Component {
         />
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
-          <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
-            {this.state.communities.map(community => (
-              <Card className= "cardchat rounded shadow mb-3" key={community._id} style={{ minWidth: '22rem', maxWidth: '22rem', maxHeight: '250px'}}>
-                <Card.Header href="#" className="pl-3 pt-3 mb-0 chattitle">{community.communityName}</Card.Header>
-                
-                <Card.Body className="overflow-auto" >
-
-                  <Card.Text>
-                    {community.communityDesc}
-                  </Card.Text>
-
-                </Card.Body>
-                
-                <Card.Footer className="d-flex">
-                  {/* HOW TO ACCESS USER DATA FROM COMMUNITY DATA? */}
-                  <small className="text-muted mr-auto pt-2">Moderator : {community.username}</small> 
-                  {/* MAKE A BUTTON OR LINK TO /community/:communityID */}
-                  <Button className="mr-0 pr-0" variant="link">Join Chat</Button>
-                </Card.Footer>
-              </Card>
-           
-           ))}
-
-          </CardDeck>
- 
+          <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto overflow-auto'>
+            {this.state.communities.map(community => <Chatroom key={community._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)}
+          </CardDeck> 
         </CardDeck> 
       </div>
     );
