@@ -20,25 +20,24 @@ const Side =(props) => (
         </Button>
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
-        something
-      </ListGroup.Item>
-
-      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
-        something
-      </ListGroup.Item>
-
-      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/community/:id">
+       <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/community/:id">
         Chat / Main
       </ListGroup.Item>
 
-      
-      <ListGroup.Item className="bg-light" action variant="light border-0">
-        Danger
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
+        Chatrooms
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="light border-0">
-        Warning
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
+        Favorties
+      </ListGroup.Item>
+      
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
+        About Us
+      </ListGroup.Item>
+
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
+        Contact Us
       </ListGroup.Item>
 
       <ListGroup.Item className="bg-light" action variant="light border-0">
