@@ -7,18 +7,20 @@
 
 
 .link-button {
-    background-color: #ddd;
-    border: none;
+    background-color: rgb(181, 218, 241);
     color:rgba(37, 37, 37, 0.856);
-    font-size: 16px;
-    padding: 10px 20px;
+    /* border:none; */
+    font-size: 14px;
+    border-width: medium;
+    border-color:whitesmoke;
+    padding: 24px 6px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 16px;
-    font-weight: bolder;
+    border-radius: 50%;
+    font-weight: bold;
 }
 
   .form {
@@ -50,6 +52,8 @@
     font-size: 20px;
     color:rgba(37, 37, 37, 0.856)
   }
+
+  /* roll in left logo */
 
   .imager {
     /* animation-name: image; */
@@ -87,8 +91,42 @@
         }
       }
       
+/* font awesome link to make icons work */
 
 .fontAwesome {
 	font-family: 'Helvetica', FontAwesome, sans-serif;
 
   }
+
+  /* roll in right log out */
+
+  .roll-in-right {
+    -webkit-animation: roll-in-right 1.6s ease-out both;
+            animation: roll-in-right 1.6s ease-out both;
+  }
+
+ 
+@-webkit-keyframes roll-in-right {
+  0% {
+    -webkit-transform: translateX(800px) rotate(540deg);
+            transform: translateX(800px) rotate(540deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+            transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes roll-in-right {
+  0% {
+    -webkit-transform: translateX(800px) rotate(540deg);
+            transform: translateX(800px) rotate(540deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0) rotate(0deg);
+            transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}

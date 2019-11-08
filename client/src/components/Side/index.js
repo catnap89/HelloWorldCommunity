@@ -20,12 +20,12 @@ const Side =(props) => (
         </Button>
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/register">
-        Register
+      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="">
+        something
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="/login">
-        Log In
+      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="">
+        something
       </ListGroup.Item>
 
       <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/community/:id">
