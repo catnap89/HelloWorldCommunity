@@ -37,7 +37,7 @@ const Sideright = props => (
           </Link>
         </ul>
 
-        <ListGroup.Item className="bg-light" action variant="bg-light border-0">
+        {/* <ListGroup.Item className="bg-light" action variant="bg-light border-0">
           Primary
         </ListGroup.Item>
         <ListGroup.Item className="bg-light" action variant="bg-light border-0">
@@ -48,7 +48,7 @@ const Sideright = props => (
         </ListGroup.Item>
         <ListGroup.Item className="bg-light" action variant="bg-light border-0">
           Danger
-        </ListGroup.Item>
+        </ListGroup.Item> */}
         {/* <ListGroup.Item className="bg-light" action variant="bg-light border-0">
       Warning
     </ListGroup.Item>
