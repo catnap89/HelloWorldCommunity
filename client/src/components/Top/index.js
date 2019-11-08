@@ -42,26 +42,28 @@ const Top = props => (
 
       {/* <Link className ="pt-4 ml-5 mr-4 links" as={Link} to="/">Home</Link> */}
       <DropdownButton
-        className="mr-4 pt-4"
+        className="mr-5 pt-4"
         id="dropdown-basic-button"
-        title="Connect"
+        title="Links"
       >
         <Dropdown.Item as={Link} to="/">Home</Dropdown.Item>
         <Dropdown.Item as={Link} to="/">About Us</Dropdown.Item>
         <Dropdown.Item as={Link} to="/">Contact Us</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/register">Register</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/login">Sign In</Dropdown.Item>
       </DropdownButton>
       <span className="line pt-4"> | </span>
 
-      <Link className="pt-4 ml-4 mr-4 links" as={Link} to="/register">
+      {/* <Link className="pt-4 ml-4 mr-4 links" as={Link} to="/register">
         Register
       </Link>
       <span className="line pt-4"> | </span>
 
       <Link className="pt-4 ml-4 mr-4 links" as={Link} to="/login">
         Sign In
-      </Link>
+      </Link> */}
       {/* <Link to="" className ="pt-4 ml-5 mr-5 links">Favorites</Link> */}
-      <span className="line pt-4"> | </span>
+      {/* <span className="line pt-4"> | </span> */}
 
       <Link
         to="/login"
