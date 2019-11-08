@@ -34,7 +34,7 @@ const Sideright =(props) => (
     <ListGroup.Item className="bg-light" action variant="bg-light border-0">
       Danger
     </ListGroup.Item>
-    <ListGroup.Item className="bg-light" action variant="bg-light border-0">
+    {/* <ListGroup.Item className="bg-light" action variant="bg-light border-0">
       Warning
     </ListGroup.Item>
     <ListGroup.Item className="bg-light" action variant="bg-light border-0">
@@ -43,7 +43,7 @@ const Sideright =(props) => (
     <ListGroup.Item className="bg-light" action variant="bg-light border-0">
       Light
     </ListGroup.Item>
-   
+    */}
     
          
 

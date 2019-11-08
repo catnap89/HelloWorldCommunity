@@ -41,10 +41,12 @@ const Side =(props) => (
         Favorites
       </ListGroup.Item>
       <ul className="favList list-unstyled pl-5">
-        <li className="favItems pb-2"><a href="/community/:id">link1</a></li>
-        <li className="favItems pb-2"><a href="/community/:id">link1</a></li>
-        <li className="favItems pb-2"><a href="/community/:id">link1</a></li>
-        <li className="favItems pb-2"><a href="/community/:id">link1</a></li>
+        <Link to='/community/:id'><li className="favItems pb-2">chatroom1</li></Link>
+        <Link to='/community/:id'><li className="favItems pb-2">chatroom2</li></Link>
+        <Link to='/community/:id'><li className="favItems pb-2">chatroom3</li></Link>
+        <Link to='/community/:id'><li className="favItems pb-2">chatroom4</li></Link>
+
+      
       </ul>
 
       {/* <ListGroup.Item className="bg-light" action variant="light border-0">
