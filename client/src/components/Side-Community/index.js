@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './side.css';
 
-const Side =(props) => (
+const SideCommunity =(props) => (
 
 
   <Card className='col-2 pr-0 ml-0 pl-0 border-0 text-center' bg="light">
@@ -15,10 +15,11 @@ const Side =(props) => (
     <ListGroup className="flush" variant="flush border-right shadow">
     
       <ListGroup.Item className='pt-3 p-4 channel bg-light' >
-        <Button variant="outline-primary" size="lg" as={Link} to="/createchat">
-        START NEW CHAT
+        <Button variant="outline-primary" size="lg" onClick={props.handleFavoriteCommunity}>
+          Save this community
         </Button>
       </ListGroup.Item>
+
 
       <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/">
         All Communities
@@ -28,6 +29,7 @@ const Side =(props) => (
         Favorite Communities
       </ListGroup.Item>
 
+
     </ListGroup>
     
     </Card.Title>
@@ -35,4 +37,4 @@ const Side =(props) => (
 
 )
 
-export default Side;
+export default SideCommunity;

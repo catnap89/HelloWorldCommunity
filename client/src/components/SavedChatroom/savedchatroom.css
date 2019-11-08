@@ -1,0 +1,10 @@
+ .cardchat {
+    height:250px;
+    max-height: 250px;  
+    min-height: 250px !important;
+} 
+
+.chattitle {
+    font-weight: bold;
+    font-size: 20px;
+}

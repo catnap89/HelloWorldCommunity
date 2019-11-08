@@ -7,7 +7,7 @@ import Community from "./pages/Community/Community"
 import NoMatch from "./pages/NoMatch/NoMatch";
 import Main from "./pages/Main/Main";
 import CreateChat from './pages/CreateChat/createchat';
-
+import FavoriteCommunity from './pages/FavoriteCommunity/FavoriteCommunity';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/login" component={SignIn} />
           <Route exact path="/createchat" component={CreateChat} />
           <Route exact path="/community/:id" component={Community} />
+          <Route exact path="/favoriteCommunities" component={FavoriteCommunity} />
           <Route component={NoMatch} />
         </Switch>
       </div>
