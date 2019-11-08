@@ -10,6 +10,7 @@ const Sideright = props => (
     <Card.Title>
       <ListGroup className="flush" variant="flush border-left shadow">
         <ListGroup.Item
+        
           className="pt-4 p-4 bg-light border-0"
           action
           variant="bg-light"
@@ -19,19 +20,19 @@ const Sideright = props => (
 
         <ul className="memList list-unstyled">
           <Link to="/">
-            <i className="fas fa-user fa-xs"></i>
+            {/* <i className="fas fa-user fa-xs"></i> */}
             <li className="memItems pb-2">Name</li>
           </Link>
           <Link to="/">
-            <i className="fas fa-user fa-xs"></i>
+            {/* <i className="fas fa-user fa-xs"></i> */}
             <li className="memItems pb-2">Name2</li>
           </Link>
           <Link to="/">
-            <i className="fas fa-user fa-xs"></i>
+            {/* <i className="fas fa-user fa-xs"></i> */}
             <li className="memItems pb-2">Name3</li>
           </Link>
           <Link to="/">
-            <i className="fas fa-user fa-xs"></i>
+            {/* <i className="fas fa-user fa-xs"></i> */}
             <li className="memItems pb-2">Name4</li>
           </Link>
         </ul>
