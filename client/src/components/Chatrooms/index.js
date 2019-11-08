@@ -1,35 +1,25 @@
 import React from 'react';
-import  CardDeck  from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
 import './chatrooms.css';
 import Button from 'react-bootstrap/Button';
 
-const Chatrooms = (props) => (
-
-
-  <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto'>
-
-    <Card className= "cardchat" style={{ maxWidth: '22rem' }}>
-      <Card.Header href="" className="pl-3 pt-3 mb-0 chattitle">Car Talk</Card.Header>
-       
-      <Card.Body className="overflow-auto">
+const Chatroom = (props) => (
+<Card className= "cardchat rounded shadow mb-3" key={props.community._id} style={{ minWidth: '22rem', maxWidth: '22rem', maxHeight: '250px'}}>
+      <Card.Header href="#" className="pl-3 pt-3 mb-0 chattitle">{props.community.communityName}</Card.Header>
+      
+      <Card.Body className="overflow-auto" >
 
         <Card.Text>
-          Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.Come here to talk about cars.
+          {props.community.communityDesc}
         </Card.Text>
 
       </Card.Body>
       
-      <Card.Footer>
-      
-        <small className="text-muted mr-auto">Moderator : John Smith</small> 
-         <Button className="ml-5" variant="link">Join Chat</Button>
+      <Card.Footer className="d-flex">
+        <small className="text-muted mr-auto pt-2">Moderator : {props.community.userAdmin.username}</small> 
+        <Button onClick={props.handleJoinCommunity} className="mr-0 pr-0" variant="link">Join Chat</Button>
       </Card.Footer>
     </Card>
-
-    
-  </CardDeck>
-
 )
 
-export default Chatrooms;
+export default Chatroom;

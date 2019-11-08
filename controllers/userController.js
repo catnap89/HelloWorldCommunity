@@ -5,13 +5,22 @@ var User = require("../models/User");
 
 module.exports = {
     get: function(query, callback) {
-        User.find(query).sort({
+        User.find(query)
+        .sort({
             _id: -1
         }).exec(function(err, doc) {
             callback(doc);
         });
-        },
-
+    },
+    getOwnedCommunities: function(query, callback) {
+        User.find(query)
+        .populate("")
+        .sort({
+            _id: -1
+        }).exec(function(err, doc) {
+            callback(doc);
+        });
+    },
     save: function(data, callback) {
             var newUser = {
                 firstName : data.firstName,  

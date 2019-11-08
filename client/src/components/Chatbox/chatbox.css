@@ -122,8 +122,7 @@ p {
 } */
 
 .fontAwesome {
-	font-family: 'Helvetica', FontAwesome, sans-serif;
-
+	font-family: 'Helvetica', "FontAwesome", sans-serif;
   }
 
   ::placeholder {
