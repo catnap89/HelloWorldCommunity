@@ -12,7 +12,7 @@ const Sideright = props => (
         <ListGroup.Item
         
           className="pt-4 p-4 bg-light border-0"
-          action
+          // action
           variant="bg-light"
         >
           MEMBER
