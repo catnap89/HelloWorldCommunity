@@ -19,7 +19,7 @@ const logout = () => {
 const Top = (props) => (
 
   <Navbar className="topbar p-0 border-bottom"  fixed="top" variant="light">
-  <Navbar.Brand href="#home">
+  <Navbar.Brand href="/">
   <img className="imager"
        style= {{height: '85px', paddingLeft: '20px'}}
         alt="Logo"

@@ -14,8 +14,6 @@ var userSchema = new Schema({
     password : {
         type: String,
         required: true
-        // Should not be unique since some people's password might be same
-        // unique: true
     },
 
     email: {
@@ -48,28 +46,21 @@ var userSchema = new Schema({
     ownedCommunityIDs : [{
         type: Schema.Types.ObjectId,
         ref: "Community"
-        // I don't think this should be required.
-        // required: true
+
     }],
 
     bannedCommunityIDs : [{
         type: Schema.Types.ObjectId,
         ref: "Community"
-        // I don't think this should be required, user might never get banned from a Community
-        // required: true
     }],
 
     isAdmin : {
        type: Boolean
-        // I don't think this should be required. A user might not make their own community
-        // required: true
     },
 
     favoriteCommunityIDs : [{
         type: Schema.Types.ObjectId,
         ref: "Community"
-        // I don't think this should be required
-        // required: true
     }],
 
     friends : {
