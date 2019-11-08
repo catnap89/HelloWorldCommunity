@@ -4,23 +4,13 @@
     border-color: blue !important;
 }
 
-.button {
-    background-color: #ddd;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 16px;
-  }
+
 
 .link-button {
     background-color: #ddd;
     border: none;
-    color: black;
+    color:black;
+    font-size: 16px;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -28,6 +18,7 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
+    font-weight: bolder;
 }
 
   .form {
@@ -36,7 +27,23 @@
   }
 
   .line {
-    color: blue;
+    color:blue;
+  }
+
+  .links {
+
+    color:whitesmoke;
+    font-size: 18px;
+    text-decoration: none !important;
+    font-weight: bolder;
+  }
+
+  .links:hover {
+    color:black;
+  }
+
+  em {
+    font-size: 24px;
   }
 
   #demo {
