@@ -7,12 +7,12 @@
 
 
 .link-button {
-    background-color: rgb(181, 218, 241);
+    background-color: rgb(158, 211, 245);
     color:rgba(37, 37, 37, 0.856);
     /* border:none; */
     font-size: 14px;
     border-width: medium;
-    border-color:whitesmoke;
+    border-color:rgba(245, 245, 245, 0.795);
     padding: 24px 6px;
     text-align: center;
     text-decoration: none;
