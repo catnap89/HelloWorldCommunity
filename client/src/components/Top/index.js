@@ -44,7 +44,7 @@ const Top = props => (
       <DropdownButton
         className="mr-5 pt-4"
         id="dropdown-basic-button"
-        title="Links"
+        title="Map"
       >
         <Dropdown.Item as={Link} to="/">Home</Dropdown.Item>
         <Dropdown.Item as={Link} to="/">About Us</Dropdown.Item>
