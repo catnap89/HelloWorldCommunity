@@ -39,11 +39,12 @@ const Top = (props) => (
    
     {/* <FormControl type="text" placeholder="&#xF002; Search" className=" p-3 mr-3 ml-5 mr-5 form fontAwesome" /><span className="line"> | </span> */}
 
-    <Link to="" className ="pt-4 ml-5 mr-3 links">Register</Link>
-    <Link to="" className ="pt-4 ml-5 mr-5 links">Sign In</Link>
+    <Link to="" className ="pt-4 ml-5 mr-4 links">Register</Link>
+    <span className="line pt-4"> | </span>
+    <Link to="" className ="pt-4 ml-4 mr-4 links">Sign In</Link>
     {/* <Link to="" className ="pt-4 ml-5 mr-5 links">Favorites</Link> */}
 <span className="line pt-4"> | </span>
- <Link to="/login" className="btn btn-dark link-button mr-3 ml-5" variant="dark" onClick={logout}>Sign Out</Link>
+ <Link to="/login" className="btn btn-dark link-button mr-4 ml-5" variant="dark" onClick={logout}>Sign Out</Link>
 
   </Form>
 </Navbar>

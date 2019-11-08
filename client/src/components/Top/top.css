@@ -9,7 +9,7 @@
 .link-button {
     background-color: #ddd;
     border: none;
-    color:black;
+    color:rgba(37, 37, 37, 0.856);
     font-size: 16px;
     padding: 10px 20px;
     text-align: center;
@@ -32,14 +32,14 @@
 
   .links {
 
-    color:whitesmoke;
+    color:rgba(37, 37, 37, 0.856);
     font-size: 18px;
     text-decoration: none !important;
     font-weight: bolder;
   }
 
   .links:hover {
-    color:black;
+    color:whitesmoke;
   }
 
   em {
