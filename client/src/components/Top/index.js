@@ -39,7 +39,10 @@ const Top = (props) => (
    
     {/* <FormControl type="text" placeholder="&#xF002; Search" className=" p-3 mr-3 ml-5 mr-5 form fontAwesome" /><span className="line"> | </span> */}
 
-    <Link className ="pt-4 ml-5 mr-4 links"as={Link} to="/register">Register</Link>
+    <Link className ="pt-4 ml-5 mr-4 links" as={Link} to="/">Home</Link>
+    <span className="line pt-4"> | </span>
+
+    <Link className ="pt-4 ml-4 mr-4 links" as={Link} to="/register">Register</Link>
     <span className="line pt-4"> | </span>
 
     <Link className ="pt-4 ml-4 mr-4 links" as={Link} to="/login">Sign In</Link>
