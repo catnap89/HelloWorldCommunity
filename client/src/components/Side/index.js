@@ -28,8 +28,8 @@ const Side =(props) => (
         Chatrooms
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
-        Favorties
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="/">
+        Favorites
       </ListGroup.Item>
       
       <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
