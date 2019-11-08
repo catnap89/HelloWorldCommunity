@@ -20,11 +20,11 @@ const Side =(props) => (
         </Button>
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="">
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
         something
       </ListGroup.Item>
 
-      <ListGroup.Item className="bg-light" action variant="bg-light border-0" as={Link} to="">
+      <ListGroup.Item className="bg-light" action variant="light border-0" as={Link} to="">
         something
       </ListGroup.Item>
 
