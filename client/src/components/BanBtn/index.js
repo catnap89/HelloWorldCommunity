@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+import { Dropdown, DropdownButton } from 'react-bootstrap'
 
 
 
@@ -8,8 +8,11 @@ const BanBtn = props => {
     return null;
   }
   return (
-    <Button className="ml-1 border-0" variant="outline-danger" data-toggle="tooltip" title="Ban User" size="sm" onClick={props.banUser}><i className="fas fa-ban pb-1 fa=lg"></i>
-    </Button>
+    <DropdownButton title="" className="ml-1 border-0"  variant="" size="sm" >
+  <Dropdown.Item onClick={props.banUser}>Ban User</Dropdown.Item>
+  <Dropdown.Item>Direct Message</Dropdown.Item>
+
+    </DropdownButton>
   );
 }
 
