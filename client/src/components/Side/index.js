@@ -25,9 +25,9 @@ const Side = props => (
           action
           variant="light border-0"
           as={Link}
-          to="/community/:id"
+          to="/"
         >
-          Chat / Main
+          All Communities
         </ListGroup.Item>
 
 
@@ -36,51 +36,12 @@ const Side = props => (
           action
           variant="light border-0"
           as={Link}
-          to="/"
+          to="/favoriteCommunities"
         >
-          Chatrooms
+          Favorite Communities
         </ListGroup.Item>
 
-        {/* <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/">
-        About Us
-      </ListGroup.Item>
-
-      <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/">
-        Contact Us
-      </ListGroup.Item> */}
-
-        <ListGroup.Item
-          className="bg-light pl-5"
-          action
-          variant="light border-0"
-          as={Link}
-          to="/"
-        >
-          Favorites
-        </ListGroup.Item>
-
-        <ul className="favList list-unstyled pl-5">
-          <Link to="/community/:id">
-            <li className="favItems pb-2">chatroom1</li>
-          </Link>
-          <Link to="/community/:id">
-            <li className="favItems pb-2">chatroom2</li>
-          </Link>
-          <Link to="/community/:id">
-            <li className="favItems pb-2">chatroom3</li>
-          </Link>
-          <Link to="/community/:id">
-            <li className="favItems pb-2">chatroom4</li>
-          </Link>
-        </ul>
-
-        {/* <ListGroup.Item className="bg-light" action variant="light border-0">
-        Info
-      </ListGroup.Item>
-
-      <ListGroup.Item className="bg-light" action variant="light border-0">
-        Light
-      </ListGroup.Item> */}
+       
       </ListGroup>
 
     </Card.Title>
