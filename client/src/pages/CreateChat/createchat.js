@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Top from "../../components/Top"; // Navbar
 import CardDeck from 'react-bootstrap/CardDeck';
 import Side from "../../components/Side";
-// import CreateChatForm from "../../components/CreateChatForm/index"
 import axios from "axios";
 
 import Card  from 'react-bootstrap/Card';
@@ -12,7 +11,6 @@ import Col from 'react-bootstrap/Col';
 import { Button } from 'react-bootstrap';
 
 class CreateChat extends Component {
-  // Not sure what to have in the states yet.
 
   state = {
     userInfo: {},
@@ -40,9 +38,6 @@ class CreateChat extends Component {
         }
       })
       .catch(error => {
-        // console.log("error: " + error.response.data.message);
-        // this.setState({
-        //   errorMessage: error.response.data.message
         console.log(error);
         this.props.history.push("/login");
       })
@@ -68,8 +63,15 @@ class CreateChat extends Component {
     axios.post("/api/community", communityInfo)
       .then((response) => {
         console.log(response.data);
-        // route to Main View
-        this.props.history.push("/");
+        // update user's ownedCommunityIDs
+        const communityId = response.data._id;
+        const username = this.state.userInfo.username;
+        axios.patch("/api/user/add/ownedCommunity/" + communityId + "/" + username)
+          .then(res => {
+            console.log(res);
+            // route to Main View
+            this.props.history.push("/");
+          })
       })
       .catch(error => {
         console.log(error);
@@ -82,7 +84,7 @@ class CreateChat extends Component {
         <Top 
           username={this.state.userInfo.username}
         />
-        <CardDeck className="size mx-auto"> 
+        <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <Side />
           {/* <CreateChatForm /> */}
           <CardDeck className= 'col-10 chat border-0 mt-5 mb-4 mx-auto'>

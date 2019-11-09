@@ -14,17 +14,13 @@ class Community extends Component {
   state = {
     userInfo: {},
     participants: [],
-    liked: false
-
+    liked: false,
+    isAdmin: false
   };
 
   componentDidMount() {
     this.checkUser();
   }
-
-  // componentDidUpdate() {
-  //   this.checkUser();
-  // }
 
   checkUser = () => {
     console.log("PARAMS!");
@@ -35,7 +31,9 @@ class Community extends Component {
         console.log( res.data.user)
         if (res.data.user ) {
           // debugger;
+          // if the current user is banned from current community
           if (res.data.user.bannedCommunityIDs.includes(this.props.match.params.id)) {
+            // redirect the user to the main page
             this.props.history.push("/");
           } else {
             this.setState({
@@ -83,7 +81,6 @@ class Community extends Component {
     }
   
     this.checkUser();
-    this.render();
   }
 
 
