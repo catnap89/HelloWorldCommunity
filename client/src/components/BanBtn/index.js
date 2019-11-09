@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, DropdownButton } from 'react-bootstrap'
 
-
+import './BanBtn.css';
 
 const BanBtn = props => {
   if (!props.isAdmin) {
