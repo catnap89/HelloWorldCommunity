@@ -1,7 +1,4 @@
 import React from 'react';
-// import ListGroup from 'react-bootstrap/ListGroup';
-// import Card from 'react-bootstrap/Card';
-// import './sideright.css';
 import Button from 'react-bootstrap/Button'
 
 const BanBtn = props => {
@@ -9,8 +6,8 @@ const BanBtn = props => {
     return null;
   }
   return (
-    <Button variant="primary" size="sm" onClic={props.banUser}>
-      <i class="fas fa-ban"></i>
+    <Button variant="primary" size="sm" onClick={props.banUser}>
+      <i className="fas fa-ban"></i>
     </Button>
   );
 }

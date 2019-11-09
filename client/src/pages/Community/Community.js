@@ -7,10 +7,14 @@ import Chatbox from "../../components/Chatbox";
 import Sideright from "../../components/Sideright";
 import axios from "axios";
 import SideCommunity from "../../components/Side-Community";
+import Participants from "../../components/Participants";
+
+import BanBtn from "../../components/BanBtn";
+
 
 
 class Community extends Component {
-  // Not sure what to have in the states yet.
+
   state = {
     userInfo: {},
     participants: [],
@@ -29,21 +33,40 @@ class Community extends Component {
       .then(res => {
         console.log("res: ");
         console.log( res.data.user)
+        // if user is logged in, check below
         if (res.data.user ) {
-          // debugger;
           // if the current user is banned from current community
           if (res.data.user.bannedCommunityIDs.includes(this.props.match.params.id)) {
             // redirect the user to the main page
             this.props.history.push("/");
+            // if user is logged in and not banned from the community,
           } else {
+            // set userInfo state to user's information from /auth/isauth
             this.setState({
               userInfo: res.data.user || {}
             })
+            // push username, no actually userInfo obejct to the end of participants array
+            // NEED TO TEST THIS IN DEPLOYED VERSION SINCE IN DEVELOPMENT ONLY ONE USER CAN BE LOGGED IN
+            // OR IS IT..?
+            this.setState(prevState => ({
+              participants: [...prevState.participants, this.state.userInfo]
+            }));
+            console.log(this.state.participants);
+            // if the current user has created this community,
+            if (res.data.user.ownedCommunityIDs.includes(this.props.match.params.id)) {
+              // set isAdmin state to true
+              this.setState({
+                isAdmin: true
+              })
+            } // not really sure if I need to make else statement to change isAdmin state to false because default is false
+            // And also, if user have this community as favorite community,
             if (res.data.user.favoriteCommunityIDs.includes(this.props.match.params.id)) {
+              // set liked state to true
               this.setState({
                 liked: true
               })
               console.log(this.state.liked);
+              // if not, set liked state to false
             } else {
               this.setState({
                 liked: false
@@ -51,7 +74,8 @@ class Community extends Component {
               console.log(this.state.liked);
             }
           }
-
+        // if user is not logged in, redirect the user back to login page
+        // preventing to access this page without logging in
         } else {
           this.props.history.push("/login");
         }
@@ -83,6 +107,10 @@ class Community extends Component {
     this.checkUser();
   }
 
+  banUser = (participants) => {
+    console.log(participants);
+    console.log(participants._id);
+  }
 
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
@@ -98,10 +126,21 @@ class Community extends Component {
             label={label}
           />
           <Chatbox />
-          <Sideright /> 
+          <Sideright >
+            {this.state.participants.map(participants => (
+              <Participants key={participants._id}>
+                <div className="userlist">
+                  <li className="memItems pb-2">{participants.username}</li> 
+                  <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(participants)}></BanBtn>
+                </div>
+              </Participants>
+            ))}
+          </Sideright>
+  
         </CardDeck> 
       
       </div>
+  
     );
   }
 }
