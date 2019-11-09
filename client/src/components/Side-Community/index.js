@@ -15,7 +15,7 @@ const SideCommunity =(props) => (
     <ListGroup className="flush" variant="flush border-right shadow">
     
       <ListGroup.Item className='pt-5 p-4 channel bg-light text-center border-0' >
-        <Button variant="outline-primary" size="lg" onClick={props.handleFavoriteCommunity}><i class="fas fa-heart pr-2"></i>
+        <Button variant="outline-primary" size="lg" onClick={props.handleFavoriteCommunity}><i className="fas fa-heart pr-2"></i>
           {props.label}
         </Button>
       </ListGroup.Item>
