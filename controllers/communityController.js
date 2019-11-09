@@ -33,7 +33,9 @@ module.exports = {
 
 
     get: function(query, callback) {
-        Community.find(query).sort({
+        Community.find(query)
+        .populate("userAdmin")
+        .sort({
             _id: -1
         }).exec(function(err, doc) {
             callback(doc);

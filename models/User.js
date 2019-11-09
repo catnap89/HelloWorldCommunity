@@ -14,8 +14,6 @@ var userSchema = new Schema({
     password : {
         type: String,
         required: true
-        // Should not be unique since some people's password might be same
-        // unique: true
     },
 
     email: {
@@ -38,36 +36,32 @@ var userSchema = new Schema({
     },
 
 
-    joinedCommunityIDs : {
-        type: Array
-        // I don't think this should be required
-        // required: true
-    },
+    // joinedCommunityIDs : [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Community"
+    //     // I don't think this should be required
+    //     // required: true
+    // }],
 
     ownedCommunityIDs : [{
         type: Schema.Types.ObjectId,
         ref: "Community"
-        // I don't think this should be required.
-        // required: true
+
     }],
 
-    bannedCommunityIDs : {
-        type: Array
-        // I don't think this should be required, user might never get banned from a Community
-        // required: true
-    },
+    bannedCommunityIDs : [{
+        type: Schema.Types.ObjectId,
+        ref: "Community"
+    }],
 
     isAdmin : {
        type: Boolean
-        // I don't think this should be required. A user might not make their own community
-        // required: true
     },
 
-    favoriteCommunityIDs : {
-        type: Array
-        // I don't think this should be required. I might be wrong tho
-        // required: true
-    },
+    favoriteCommunityIDs : [{
+        type: Schema.Types.ObjectId,
+        ref: "Community"
+    }],
 
     friends : {
         type: Array

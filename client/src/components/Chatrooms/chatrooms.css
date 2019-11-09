@@ -8,3 +8,37 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+/* annimation for card */
+
+.cardchat {
+	-webkit-animation: cardchat 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: cardchat 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+ @-webkit-keyframes cardchat {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+  @keyframes cardchat {
+    0% {
+      -webkit-transform: scaleY(0);
+              transform: scaleY(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+              transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+  

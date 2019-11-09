@@ -17,3 +17,7 @@ border-width: 5px;
     height:90vh
     /* min-height: 400px; */
 }
+
+.memItems {
+    font-size: 14px;
+}
