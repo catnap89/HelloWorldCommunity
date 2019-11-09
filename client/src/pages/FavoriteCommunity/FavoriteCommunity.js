@@ -85,7 +85,7 @@ class FavoriteCommunity extends Component {
           <Top 
             username={this.state.userInfo}
           />
-          <CardDeck className="pt-5 mt-5 size mx-auto"> 
+          <CardDeck className="size mx-auto"> 
             <Side />
             <h1>There are no saved communities</h1>
           </CardDeck> 
@@ -98,7 +98,7 @@ class FavoriteCommunity extends Component {
         <Top 
           username={this.state.userInfo.username}
         />
-        <CardDeck className="pt-5 mt-5 size mx-auto"> 
+        <CardDeck className="size mx-auto"> 
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto overflow-auto'>
             {this.state.savedCommunities.map(favCommunity => <SavedChatroom key={favCommunity._id} favCommunity={favCommunity} handleJoinCommunity={() => this.handleJoinCommunity(favCommunity)}/>)}

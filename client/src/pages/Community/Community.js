@@ -95,7 +95,7 @@ class Community extends Component {
         <Top 
           username={this.state.userInfo.username}
         />
-        <CardDeck className="pt-5 mt-5 size mx-auto"> 
+        <CardDeck className="size mx-auto"> 
           <SideCommunity 
             handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
             label={label}

@@ -82,7 +82,7 @@ class CreateChat extends Component {
         <Top 
           username={this.state.userInfo.username}
         />
-        <CardDeck className="pt-5 mt-5 size mx-auto"> 
+        <CardDeck className="size mx-auto"> 
           <Side />
           {/* <CreateChatForm /> */}
           <CardDeck className= 'col-10 chat border-0 mt-5 mb-4 mx-auto'>
