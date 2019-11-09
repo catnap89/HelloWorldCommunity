@@ -16,7 +16,7 @@ const SideCommunity =(props) => (
     
       <ListGroup.Item className='pt-3 p-4 channel bg-light' >
         <Button variant="outline-primary" size="lg" onClick={props.handleFavoriteCommunity}>
-          Save this community
+          {props.label}
         </Button>
       </ListGroup.Item>
 

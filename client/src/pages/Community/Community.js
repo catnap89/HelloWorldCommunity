@@ -13,14 +13,18 @@ class Community extends Component {
   // Not sure what to have in the states yet.
   state = {
     userInfo: {},
-    participants: []
-    // title: "",
-    // communityCreator: "",
+    participants: [],
+    liked: false
+
   };
 
   componentDidMount() {
     this.checkUser();
   }
+
+  // componentDidUpdate() {
+  //   this.checkUser();
+  // }
 
   checkUser = () => {
     console.log("PARAMS!");
@@ -34,10 +38,22 @@ class Community extends Component {
           if (res.data.user.bannedCommunityIDs.includes(this.props.match.params.id)) {
             this.props.history.push("/");
           } else {
-            return this.setState({
+            this.setState({
               userInfo: res.data.user || {}
-            });
+            })
+            if (res.data.user.favoriteCommunityIDs.includes(this.props.match.params.id)) {
+              this.setState({
+                liked: true
+              })
+              console.log(this.state.liked);
+            } else {
+              this.setState({
+                liked: false
+              })
+              console.log(this.state.liked);
+            }
           }
+
         } else {
           this.props.history.push("/login");
         }
@@ -48,16 +64,32 @@ class Community extends Component {
       })
   }
 
-  handleFavoriteCommunity = () => {
+
+  handleFavoriteCommunity = (label) => {
     const communityId = this.props.match.params.id;
     const username = this.state.userInfo.username;
-    axios.patch("/api/user/add/favoriteCommunity/" + communityId +  "/" + username)
-      .then(res => {
-        console.log(res);
-      })
+
+    if (label === "Unlike") {
+      console.log("like state: " + this.state.like);
+      axios.patch("/api/user/remove/favoriteCommunity/" + communityId + "/" + username)
+        .then(res => {
+          console.log("successfully removed this community from my favorites: " + res);
+        })
+    } else {
+      axios.patch("/api/user/add/favoriteCommunity/" + communityId + "/" + username)
+        .then(res => {
+        console.log("successfully favorited this community: " + res);
+        })
+    }
+  
+    this.checkUser();
+    this.render();
   }
 
+
   render() {
+    const label = this.state.liked ? 'Unlike' : 'Like'
+    // const liked = this.state.liked
     return (
       <div className="App">
         <Top 
@@ -65,7 +97,8 @@ class Community extends Component {
         />
         <CardDeck className="pt-5 mt-5 size mx-auto"> 
           <SideCommunity 
-            handleFavoriteCommunity={() => this.handleFavoriteCommunity()}
+            handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
+            label={label}
           />
           <Chatbox />
           <Sideright /> 
