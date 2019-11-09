@@ -2,3 +2,4 @@
 
 2. communitySchema need community description data
 
+3. when to user super()

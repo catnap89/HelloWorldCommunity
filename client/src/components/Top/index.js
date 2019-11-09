@@ -84,7 +84,7 @@ const Top = props => (
         variant="dark"
         onClick={logout}
       >
-        Sign Out
+        Log Out
       </Link>
     </Form>
   </Navbar>
