@@ -10,7 +10,7 @@ const BanBtn = props => {
   return (
     <DropdownButton title="" className="ml-1 border-0"  variant="" size="sm" >
   <Dropdown.Item onClick={props.banUser}>Ban User</Dropdown.Item>
-  <Dropdown.Item>Direct Message</Dropdown.Item>
+  <Dropdown.Item className="text-muted disabled">Direct Message</Dropdown.Item>
 
     </DropdownButton>
   );
