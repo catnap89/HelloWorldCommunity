@@ -8,7 +8,6 @@ import Sideright from "../../components/Sideright";
 import axios from "axios";
 import SideCommunity from "../../components/Side-Community";
 import Participants from "../../components/Participants";
-
 import BanBtn from "../../components/BanBtn";
 
 
@@ -48,6 +47,8 @@ class Community extends Component {
             // push username, no actually userInfo obejct to the end of participants array
             // NEED TO TEST THIS IN DEPLOYED VERSION SINCE IN DEVELOPMENT ONLY ONE USER CAN BE LOGGED IN
             // OR IS IT..?
+            // It does not seem to work. Only shows myself even in the deployed version and with 2 accounts in same chat
+            // Might need to use community data with participants stored and removed as user join and leave..?
             this.setState(prevState => ({
               participants: [...prevState.participants, this.state.userInfo]
             }));
