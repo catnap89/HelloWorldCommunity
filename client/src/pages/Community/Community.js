@@ -244,7 +244,7 @@ class Community extends Component {
 
               <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
                 <FormControl 
-                  className="bg-light" 
+                  className="bg-light shadow-none" 
                   autoFocus="autofocus" 
                   placeholder="Say something...&#xF075;"
                   onChange={this.handleInputChange}
