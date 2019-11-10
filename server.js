@@ -83,7 +83,7 @@ const server = app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
 });
 
-const io = require("socket.io").listen(server);
+const io = require("socket.io")(server);
 
 io.on('connection', function(socket){
   console.log(socket.id);
