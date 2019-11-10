@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express"); 
 const mongoose = require("mongoose"); 
 const passport = require("./passport/passport");
@@ -6,7 +8,8 @@ const session = require('express-session');
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
-require('dotenv').config();
+const socket = require("socket.io");
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -95,7 +98,7 @@ const server = app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
 });
 
-const io = require("socket.io")(server);
+const io = socket(server);
 
 io.on('connection', function(socket){
   console.log(socket.id);

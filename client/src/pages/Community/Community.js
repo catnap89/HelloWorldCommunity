@@ -14,7 +14,7 @@ import { FormControl, InputGroup, Button} from 'react-bootstrap';
 import "./community.css";
 import io from 'socket.io-client';
 
-
+const socketURL = process.env.NODE_ENV === "development" ? "http://localhost:5000" : "/";
 
 class Community extends Component {
 
@@ -37,8 +37,8 @@ class Community extends Component {
       numChildren: 0,
       messageId: 0
     }
-
-    this.socket = io(process.env.PORT || 'http://localhost:5000');
+    
+    this.socket = io(socketURL);
 
     this.socket.on('RECEIVE_MESSAGE', function(data) {
       addMessage(data);
@@ -56,11 +56,6 @@ class Community extends Component {
 
   }
   
-  // sending sockets
-  // send = () => {
-  //   const socket = socketIOClient(this.state.endpoint);
-  //   socket.emit('chat message', this.state.message)
-  // }
 
   componentDidMount() {
     this.checkUser();
