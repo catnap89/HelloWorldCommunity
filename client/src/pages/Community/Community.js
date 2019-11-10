@@ -9,7 +9,7 @@ import SideCommunity from "../../components/Side-Community";
 import Participants from "../../components/Participants";
 import BanBtn from "../../components/BanBtn";
 
-
+import './Community.css'
 
 class Community extends Component {
 
@@ -129,7 +129,7 @@ class Community extends Component {
           <Sideright >
             {this.state.participants.map(participants => (
               <Participants key={participants._id}>
-                <div className="userlist d-flex my-auto mt-2">
+                <div className="userlist d-flex my-auto mt-0">
                  
                   <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(participants)}></BanBtn>
                    <li className="memItems my-auto pl-1">{participants.username}</li> 

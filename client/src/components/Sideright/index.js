@@ -9,9 +9,9 @@ const Sideright = ({children}) => (
     <Card.Title>
       <ListGroup className="flush" variant="flush border-left shadow">
         <ListGroup.Item
-          className="pt-4 p-4 bg-light border-0 mb-2"
+          className="pt-4 p-4 bg-light border-0 mb-0"
           // action
-          variant="bg-light"
+          variant="light"
         >
           MEMBERS
         </ListGroup.Item>
