@@ -9,16 +9,57 @@ import SideCommunity from "../../components/Side-Community";
 import Participants from "../../components/Participants";
 import BanBtn from "../../components/BanBtn";
 
+import Card  from 'react-bootstrap/Card';
+import { FormControl, InputGroup, Button} from 'react-bootstrap';
+import "./community.css";
+import io from 'socket.io-client';
+
 
 
 class Community extends Component {
 
-  state = {
-    userInfo: {},
-    participants: [],
-    liked: false,
-    isAdmin: false
-  };
+  // state = {
+  //   userInfo: {},
+  //   participants: [],
+  //   liked: false,
+  //   isAdmin: false
+  // };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      userInfo: {},
+      participants: [],
+      liked: false,
+      isAdmin: false,
+      message: "",
+      messages: [],
+      numChildren: 0
+    }
+
+    this.socket = io('http://localhost:3000');
+
+    this.socket.on('RECEIVE_MESSAGE', function(data) {
+      addMessage(data);
+    });
+
+    const addMessage = data => {
+      console.log(data);
+      this.setState({
+        messages: [...this.state.messages, data]
+      });
+      console.log(this.state.messages);
+    };
+
+
+
+  }
+  
+  // sending sockets
+  // send = () => {
+  //   const socket = socketIOClient(this.state.endpoint);
+  //   socket.emit('chat message', this.state.message)
+  // }
 
   componentDidMount() {
     this.checkUser();
@@ -112,20 +153,135 @@ class Community extends Component {
     console.log(participants._id);
   }
 
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  // Sending message to the server 
+  handleFormSubmit = event => {
+
+    // const msg = this.state.message;
+    event.preventDefault();
+    console.log(this.state.message);
+    this.setState({
+      numChildren: this.state.numChildren + 1
+    });
+    this.socket.emit('SEND_MESSAGE', {
+      username: this.state.userInfo.username,
+      message: this.state.message
+    });
+    this.setState({
+      message: ''
+    });
+  };
+
+
+
+  displayMsg = () => {
+
+    this.socket.on('chat message', function (msg) {
+      // $('#messages').append($('<li>').text(msg));
+      console.log(msg);
+    });
+  }
+
+
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
     // const liked = this.state.liked
+
+    // const children = [];
+
+    // for (var i = 0; i < this.state.numChildren; i += 1) {
+    //   children.push(<Chatbox key={i} msg={this.state.message} username={this.state.userInfo.username}/>);
+    // };
+
     return (
       <div className="App">
+        {/* Navbar */}
         <Top 
           username={this.state.userInfo.username}
         />
+        {/* BODY */}
         <CardDeck className="size mx-auto"> 
+          {/* Left Sidebar for Community Page*/}
           <SideCommunity 
             handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
             label={label}
           />
-          <Chatbox />
+          {/* <Chatbox 
+            handleInputChange={() => this.handleInputChange()}
+            handleFormSubmit={() => this.handleFormSubmit()}
+            value={this.state.message}
+            name="message"
+          /> */}
+
+          <Card className= 'col-9 p-1 border-0 chat mt-3 mb-0 mx-auto'>
+
+            <Card.Header as="h5" className="bg-white">Chat Title</Card.Header>
+
+            <Card.Body className='scroll'>
+
+              {/* <div id="person1" className=" ml-auto mr-3">
+
+                <p className='response1 speech-bubble p-1'>
+                <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random sdsdfsdsf text.
+                </p>     
+
+                <p className='response1 speech-bubble p-1'>
+                <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
+                </p>    
+
+                <p className='response1 speech-bubble p-1'>
+                <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
+                </p>    
+                
+              </div> */}
+
+              {/* {children} */}
+
+              {/* {this.state.messages.map(message => <Chatroom key={message._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)} */}
+
+              <div className="messages">
+                {this.state.messages.map(message => {
+                  return (
+                    <div>
+                      {message.username}: {message.message}
+                    </div>
+                  )
+                })}
+              </div>
+
+            </Card.Body>
+
+            <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
+
+              <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
+                <FormControl 
+                  className="bg-light" 
+                  autoFocus="autofocus" 
+                  placeholder="say something...&#xF075;"
+                  onChange={this.handleInputChange}
+                  value={this.state.message}
+                  name="message"
+                /> 
+                <InputGroup.Append>
+                  <Button 
+                    variant="dark border pl-3 pr-3"
+                    onClick={this.handleFormSubmit}
+                  >
+                    <i className="fas fa-share pr-2"></i>
+                    Send
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup> 
+            </Card.Footer>
+          </Card>
+
+          {/* Right Sidebar for Community page */}
           <Sideright >
             {this.state.participants.map(participants => (
               <Participants key={participants._id}>
