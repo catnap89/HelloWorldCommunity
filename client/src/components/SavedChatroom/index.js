@@ -12,7 +12,7 @@ const SavedChatroom = (props) => (
         src="../Chat.png"
       />
       {props.favCommunity.communityName}
-      <i className="fas fa-times ml-auto"></i>
+      <i className="fas fa-times ml-auto fa-xs" title="UnLike Chatroom"></i>
     </Card.Header>
     
     <Card.Body className="overflow-auto" >
