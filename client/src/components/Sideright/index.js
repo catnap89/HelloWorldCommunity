@@ -13,7 +13,7 @@ const Sideright = ({children}) => (
           // action
           variant="light"
         >
-          MEMBERS
+          Members
         </ListGroup.Item>
         {children}
       </ListGroup>

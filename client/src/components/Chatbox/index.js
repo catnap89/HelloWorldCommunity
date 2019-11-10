@@ -49,7 +49,7 @@ const Chatbox = (props) => (
 
             <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
             <FormControl className="bg-light" autoFocus="autofocus" 
-                placeholder="say something...&#xF075;"
+                placeholder="Say Something...&#xF075;"
                 // aria-label="Recipient's username"
                 // aria-describedby="basic-addon2"
             /> 
