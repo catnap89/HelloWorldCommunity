@@ -130,7 +130,8 @@
   
     ::placeholder {
       color:rgb(185, 189, 192) !important; 
-      font-size: 15px;
+	  font-size: 15px;
+	  outline: none;
       /* padding-left: 5px; */
       
     }
