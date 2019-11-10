@@ -4,7 +4,7 @@
 }
 
 p {
-	font-size: 14px;
+	font-size: 15px;
 	margin-bottom: 5px;
   }
   
@@ -123,9 +123,9 @@ p {
 	}
   
 	::placeholder {
-	  color:slategray !important; 
+	  color:rgb(168, 174, 180) !important; 
 	  font-size: 15px;
 	  outline: none;
-	  padding-left: 5px;
+	  /* padding-left: 5px; */
 	  
 	}
