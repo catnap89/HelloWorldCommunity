@@ -3,6 +3,11 @@
     height:90vh
 } 
 
+.favItems {
+    padding-left: 30px;
+    font-size: 16px;
+}
+
 /* .channel {
     background-color:lightskyblue !important;
     color: white;
@@ -12,3 +17,6 @@
     /* color: white; */
 /* } */
 
+/* ul {
+    list-style-type: none;
+  } */

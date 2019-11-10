@@ -4,27 +4,19 @@ import axios from 'axios';
 import Top from "../../components/Top"; 
 import CardDeck from 'react-bootstrap/CardDeck';
 import Side from "../../components/Side";
-// import Chatrooms from "../../components/Chatrooms";
-// import Sideright from "../../components/Sideright";
-// import Card from 'react-bootstrap/Card';
-// import Button from 'react-bootstrap/Button';
-import Chatroom from "../../components/Chatrooms";
+import SavedChatroom from "../../components/SavedChatroom";
 // import './main.css'
 
 
 
-class Main extends Component {
+class FavoriteCommunity extends Component {
   // Not sure what to have in the states yet.
   state = {
     userInfo: {},
-    communities: [],
+    savedCommunities: [],
     noCommunity: false
   };
 
-  // make a request to the backend and check if the req.user object is not null
-  // if it's not null, then send that object back and use it on the frontend
-  // use request.user if is null (false), then send 403. which is going to cause catch on axios
-  // props.history,sometihnfskdnf to sign i
 
   componentDidMount() {
     this.checkUser().then(res => {
@@ -33,7 +25,7 @@ class Main extends Component {
           this.setState({
             userInfo: res.data.user || {}
           });
-          this.getCommunity();
+          this.getSavedCommunity();
         } else {
           this.props.history.push("/login");
         }
@@ -49,14 +41,16 @@ class Main extends Component {
   }
 
   // Get All communities from DB
-  getCommunity = () => {
-    console.log(this.state.userInfo)
-    axios.get('/api/community/all')
+  getSavedCommunity = () => {
+    console.log(this.state.userInfo);
+    const username = this.state.userInfo.username;
+    console.log("username: " + username);
+    axios.get('/api/user/' + username)
       .then(res => {
-        if (res.data.length > 0) {
+        if (res.data) {
           console.log(res.data);
           return this.setState({
-            communities: res.data
+            savedCommunities: res.data[0].favoriteCommunityIDs
           })
         } else {
           this.setState({
@@ -72,7 +66,7 @@ class Main extends Component {
       if (community.bannedList.includes(this.state.userInfo._id)) {
         //the user is not allowed, maybe alert them that they are banned
         //TODO make this fancy if we have time
-        alert("You have been banhammered. Go somewhere else.")
+        alert("Sorry you have been banned from this Chatroom.")
       }
       else {
         //the user IS allowed, switch locations
@@ -89,11 +83,11 @@ class Main extends Component {
       return (
         <div className="App">
           <Top 
-            username={this.state.userInfo.username}
+            username={this.state.userInfo}
           />
           <CardDeck className="size mx-auto"> 
             <Side />
-            <h1>There are no available communities</h1>
+            <h1>There are no saved communities</h1>
           </CardDeck> 
         </div>
       );
@@ -107,7 +101,7 @@ class Main extends Component {
         <CardDeck className="size mx-auto"> 
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto overflow-auto'>
-            {this.state.communities.map(community => <Chatroom key={community._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)}
+            {this.state.savedCommunities.map(favCommunity => <SavedChatroom key={favCommunity._id} favCommunity={favCommunity} handleJoinCommunity={() => this.handleJoinCommunity(favCommunity)}/>)}
           </CardDeck> 
         </CardDeck> 
       </div>
@@ -116,4 +110,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default FavoriteCommunity;

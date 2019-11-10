@@ -17,9 +17,9 @@ router.get("/api/community/all", function(req, res) {
 });
 
 //Returns a specific community
-router.get("/api/community/:community_name", function(req, res) {
+router.get("/api/community/:communityId", function(req, res) {
     var query = {};
-    query.communityName = req.params.community_name;
+    query.communityId = req.params.communityId;
     
     communityController.get(query, function(data) {
         res.json(data);
@@ -82,9 +82,9 @@ router.post("/api/user", function(req, res) {
 
 
 //Deletes Community
-router.delete("/api/community/:community_name", function(req, res) {
+router.delete("/api/community/:communityId", function(req, res) {
     var query = {};
-    query.communityName = req.params.community_name;
+    query.communityId = req.params.communityId;
 });
 
 
@@ -101,11 +101,11 @@ router.delete("/api/user/:username", function(req, res) {
 
 
 //Adds a community to the User's list of communities
-router.patch("/api/user/add/:communityType/:community_name/:username", function(req, res) {
+router.patch("/api/user/add/:communityType/:communityId/:username", function(req, res) {
 
     var details = {
         username : req.params.username,
-        communityName: req.params.community_name,
+        communityId: req.params.communityId,
         type: req.params.communityType
     }
 
@@ -116,11 +116,11 @@ router.patch("/api/user/add/:communityType/:community_name/:username", function(
 
 
 //Removes a community from the User's list of communities
-router.patch("/api/user/remove/:communityType/:community_name/:username", function(req, res) {
+router.patch("/api/user/remove/:communityType/:communityId/:username", function(req, res) {
 
     var details = {
         username : req.params.username,
-        communityName: req.params.community_name,
+        communityId: req.params.communityId,
         type: req.params.communityType
     }
 

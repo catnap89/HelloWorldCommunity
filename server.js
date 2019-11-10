@@ -2,11 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose"); 
 const passport = require("./passport/passport");
 const session = require('express-session');
-const flash = require("connect-flash");
+// const flash = require("connect-flash");
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
-const io = require("socket.io");
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
@@ -48,6 +47,7 @@ mongoose.connect(db, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTop
 
   else {
     console.log("mongoose connection is successful");
+    
   }
 });
 
@@ -91,6 +91,17 @@ app.get('*', function(req, res) {
 });
 
 // start the server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
+});
+
+const io = require("socket.io")(server);
+
+io.on('connection', function(socket){
+  console.log(socket.id);
+
+  socket.on('SEND_MESSAGE', function(data){
+    console.log('message: ' + data);
+    io.emit('RECEIVE_MESSAGE', data);
+  });
 });

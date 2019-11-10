@@ -11,11 +11,6 @@ var communitySchema =  new Schema({
       required: true
     },
 
-    // identifier: {
-    //     type: Number,
-    //     required: true
-    // },
-
   communityDesc : {
     type: String,
     required: true
