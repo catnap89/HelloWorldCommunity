@@ -2,10 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose"); 
 const passport = require("./passport/passport");
 const session = require('express-session');
-const flash = require("connect-flash");
+// const flash = require("connect-flash");
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
+const io = require("socket.io").listen(4000).sockets;
 require('dotenv').config();
 
 const app = express();
@@ -34,6 +35,7 @@ mongoose.connect(db, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTop
 
   else {
     console.log("mongoose connection is successful");
+    
   }
 });
 

@@ -62,7 +62,7 @@ const Top = props => (
           Register
         </Dropdown.Item>
         <Dropdown.Item as={Link} to="/login">
-          Sign In
+          Log In
         </Dropdown.Item>
       </DropdownButton>
       <span className="line pt-4"> | </span>
