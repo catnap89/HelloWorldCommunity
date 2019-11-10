@@ -9,7 +9,7 @@ const Side = props => (
   <Card className="col-2 pr-0 ml-0 pl-0 border-0" bg="light">
     <Card.Title>
       <ListGroup className="flush" variant="flush border-right shadow">
-        <ListGroup.Item className="pt-5 p-4 channel bg-light text-center">
+        <ListGroup.Item className="pt-5 p-4 channel bg-light text-center border-0">
           <Button
             variant="outline-primary"
             size="lg"
@@ -21,7 +21,7 @@ const Side = props => (
         </ListGroup.Item>
 
         <ListGroup.Item
-          className="bg-light pl-5"
+          className="bg-light pl-5 mt-4"
           action
           variant="light border-0"
           as={Link}

@@ -130,9 +130,10 @@ class Community extends Component {
           <Sideright >
             {this.state.participants.map(participants => (
               <Participants key={participants._id}>
-                <div className="userlist">
-                  <li className="memItems pb-2">{participants.username}</li> 
+                <div className="userlist d-flex my-auto mt-2">
+                 
                   <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(participants)}></BanBtn>
+                   <li className="memItems my-auto pl-1">{participants.username}</li> 
                 </div>
               </Participants>
             ))}
