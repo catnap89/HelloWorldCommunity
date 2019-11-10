@@ -34,10 +34,11 @@ class Community extends Component {
       isAdmin: false,
       message: "",
       messages: [],
-      numChildren: 0
+      numChildren: 0,
+      messageId: 0
     }
 
-    this.socket = io('http://localhost:3000');
+    this.socket = io(process.env.PORT || 'http://localhost:5000');
 
     this.socket.on('RECEIVE_MESSAGE', function(data) {
       addMessage(data);
@@ -166,27 +167,19 @@ class Community extends Component {
     // const msg = this.state.message;
     event.preventDefault();
     console.log(this.state.message);
-    this.setState({
-      numChildren: this.state.numChildren + 1
-    });
+    // this.setState({
+    //   numChildren: this.state.numChildren + 1
+    // });
     this.socket.emit('SEND_MESSAGE', {
       username: this.state.userInfo.username,
-      message: this.state.message
+      message: this.state.message,
+      messageId: this.state.messageId
     });
     this.setState({
-      message: ''
+      message: '',
+      messageId: this.state.messageId + 1
     });
   };
-
-
-
-  displayMsg = () => {
-
-    this.socket.on('chat message', function (msg) {
-      // $('#messages').append($('<li>').text(msg));
-      console.log(msg);
-    });
-  }
 
 
   render() {
@@ -225,35 +218,25 @@ class Community extends Component {
 
             <Card.Body className='scroll'>
 
-              {/* <div id="person1" className=" ml-auto mr-3">
 
-                <p className='response1 speech-bubble p-1'>
-                <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random sdsdfsdsf text.
-                </p>     
+              {this.state.messages.map(message => 
+                <Chatbox 
+                  key={message.messageId} 
+                  message={message} 
+                  handleFormSubmit={() => this.handleFormSubmit()}
+                />)}
 
-                <p className='response1 speech-bubble p-1'>
-                <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.Contrary to popular belief, Lorem Ipsum is not simply random text.  Contrary to popular belief, Lorem Ipsum is not simply random text.  
-                </p>    
 
-                <p className='response1 speech-bubble p-1'>
-                <strong>John - </strong>Contrary to popular belief, Lorem Ipsum is not simply random text.
-                </p>    
-                
-              </div> */}
-
-              {/* {children} */}
-
-              {/* {this.state.messages.map(message => <Chatroom key={message._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)} */}
-
-              <div className="messages">
+              {/* THIS ONE WORKS SOMEWHAT */}
+              {/* <div className="messages">
                 {this.state.messages.map(message => {
                   return (
-                    <div>
+                    <div key={message.messageId}>
                       {message.username}: {message.message}
                     </div>
                   )
                 })}
-              </div>
+              </div> */}
 
             </Card.Body>
 
