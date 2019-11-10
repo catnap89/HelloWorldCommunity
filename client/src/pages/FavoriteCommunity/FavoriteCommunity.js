@@ -10,7 +10,7 @@ import SavedChatroom from "../../components/SavedChatroom";
 
 
 class FavoriteCommunity extends Component {
-  // Not sure what to have in the states yet.
+
   state = {
     userInfo: {},
     savedCommunities: [],

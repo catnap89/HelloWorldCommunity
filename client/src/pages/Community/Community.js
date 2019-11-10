@@ -56,11 +56,6 @@ class Community extends Component {
 
   }
   
-  // sending sockets
-  // send = () => {
-  //   const socket = socketIOClient(this.state.endpoint);
-  //   socket.emit('chat message', this.state.message)
-  // }
 
   componentDidMount() {
     this.checkUser();
