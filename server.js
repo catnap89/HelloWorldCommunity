@@ -20,9 +20,9 @@ io.on("connection", (socket) => {
     console.log("User has left!");
   })
 
-  socket.on("chat", function(msg) {
-    console.log("message" + msg)
-    io.emit("chat", msg)
+  socket.on("chat message", msg => {
+    console.log(msg);
+    io.emit("chat message", msg);
   })
 });
 

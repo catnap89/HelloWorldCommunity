@@ -13,7 +13,13 @@ import { Button } from 'react-bootstrap';
 
 class CreateChat extends Component {
   // Not sure what to have in the states yet.
-
+constructor(props) {
+  super(props);
+  this.state = {
+    chatMessage: "",
+    chatMessages: []
+  };
+}
   //added username
   state = {
     userInfo: {},
@@ -24,7 +30,16 @@ class CreateChat extends Component {
   };
 
   componentDidMount() {
+    this.socket = io();
+    this.socket.on("chat message", msg => {
+      this.setState({chatMessages: [...this.state.chatMessages, msg]
+      });
+    });
+  }
+
+  componentDidMount() {
     this.checkUser();
+    
   }
 
   checkUser = () => {
@@ -79,6 +94,10 @@ class CreateChat extends Component {
   };
   
   render() {
+    const chatMessages = this.state.chatMessages.map(chatMessage => (
+      <Text>{chatMessage}</Text>
+    ));
+    
     return (
       <div className="App">
         <Top 
