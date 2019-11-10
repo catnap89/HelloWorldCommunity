@@ -43,9 +43,24 @@ module.exports = {
     },
 
 
-    update: function(query, callback) {
-        Community.update({communityName: query.communityName}, {$set:query}, {}, callback);
-        }
+    // update: function(query, callback) {
+    //     Community.update({communityName: query.communityName}, {$set:query}, {}, callback);
+    //     },
+    update: function(communityId, query, callback) {
+        Community.update({_id: communityId}, {$set: query}, {}, callback);
+        },
 
+    addActiveUser: function(communityId, userId, callback) {
+        console.log("got to commuhnity controller")
+        console.log(userId);
+        console.log("communityId:")
+        console.log(communityId)
+        Community.update({_id: communityId}, {$addToSet: {activeUsers: userId}}, {}, callback);
+        },
+
+    removeActiveUser: function(communityId, userId, callback) {
+        Community.update({_id: communityId}, {$pull: {activeUsers: userId}}, {}, callback);
+        },
     }
+
     

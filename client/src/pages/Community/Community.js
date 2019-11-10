@@ -41,7 +41,16 @@ class Community extends Component {
     this.socket = io(socketURL);
 
     this.socket.on('RECEIVE_MESSAGE', function(data) {
-      addMessage(data);
+      if (data.communityID === props.match.params.id) {
+        addMessage(data);
+      }
+    });
+
+//NOTE this can probably be optimized emit an event only for this community, but this will work for now
+    this.socket.on('USER_JOINED', function (data) {
+      if (data.communityID == props.match.params.id) {
+        addParticipant(data);
+      }
     });
 
     const addMessage = data => {
@@ -51,14 +60,35 @@ class Community extends Component {
       });
       console.log(this.state.messages);
     };
-
-
+    
+    const addParticipant = data => {
+      const currentParticipants = this.state.participants.filter(participant => participant._id != data.user._id);
+      this.setState({
+        participants: [...currentParticipants, data.user]
+      });
+      console.log("preParticipants:")
+      console.log(currentParticipants)
+      console.log("postParticipants:")
+      console.log(this.state.participants)
+    }
 
   }
   
 
   componentDidMount() {
     this.checkUser();
+    //check socket connections and add all connected users to the members panel 
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem("test", "TEST")
+    this.socket.emit('LEFT_CHAT', "test");
+
+    if (this.state.userInfo) {
+      //emit a "LEFT_CHAT" socket event (Note" we will need to do something with (this.socket.on("LEFT_CHAT")
+      //update our activeUser array in mongo
+      // axios.patch(`/api/community/user/remove/${this.props.match.params.id}/${this.state.userInfo._id}`)
+    }
   }
 
   checkUser = () => {
@@ -69,7 +99,7 @@ class Community extends Component {
         console.log("res: ");
         console.log( res.data.user)
         // if user is logged in, check below
-        if (res.data.user ) {
+        if (res.data.user) {
           // if the current user is banned from current community
           if (res.data.user.bannedCommunityIDs.includes(this.props.match.params.id)) {
             // redirect the user to the main page
@@ -80,14 +110,28 @@ class Community extends Component {
             this.setState({
               userInfo: res.data.user || {}
             })
-            // push username, no actually userInfo obejct to the end of participants array
-            // NEED TO TEST THIS IN DEPLOYED VERSION SINCE IN DEVELOPMENT ONLY ONE USER CAN BE LOGGED IN
-            // OR IS IT..?
-            // It does not seem to work. Only shows myself even in the deployed version and with 2 accounts in same chat
-            // Might need to use community data with participants stored and removed as user join and leave..?
-            this.setState(prevState => ({
-              participants: [...prevState.participants, this.state.userInfo]
-            }));
+
+            //emit a "User Joined" socket event
+            //NOTE we can refactor the axios calls below to perform the db update in the "JOIN_CHAT" event
+            this.socket.emit("JOIN_CHAT", {
+              communityID: this.props.match.params.id,
+              user: res.data.user
+            });
+            //define an event that will emit a "LEFT_CHAT" event when the browser closes or the back button is pressed
+            const socket = this.socket;
+            window.onbeforeunload = function() {
+              socket.emit("LEFT_CHAT", res.data.user);
+            }
+
+            //use axios to post to activeUser array in mongo
+            axios.patch(`/api/community/user/add/${this.props.match.params.id}/${res.data.user._id}`)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+            
+            // this.setState(prevState => ({
+            //   participants: [...prevState.participants, this.state.userInfo]
+            // }));
+
             console.log(this.state.participants);
             // if the current user has created this community,
             if (res.data.user.ownedCommunityIDs.includes(this.props.match.params.id)) {
@@ -141,7 +185,7 @@ class Community extends Component {
         })
     }
   
-    this.checkUser();
+    // this.checkUser();
   }
 
   banUser = (participants) => {
@@ -168,7 +212,8 @@ class Community extends Component {
     this.socket.emit('SEND_MESSAGE', {
       username: this.state.userInfo.username,
       message: this.state.message,
-      messageId: this.state.messageId
+      messageId: this.state.messageId,
+      communityID: this.props.match.params.id
     });
     this.setState({
       message: '',

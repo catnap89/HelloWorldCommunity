@@ -28,6 +28,11 @@ var communitySchema =  new Schema({
         // I don't think this should be required
         // required: true
     }],
+
+  activeUsers: [{
+      type: Schema.Types.ObjectId,
+      ref: "User"
+  }]
 });
 
 
