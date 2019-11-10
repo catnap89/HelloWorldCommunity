@@ -6,7 +6,7 @@ const session = require('express-session');
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
-const io = require("socket.io").listen(4000).sockets;
+
 require('dotenv').config();
 
 const app = express();
@@ -79,6 +79,17 @@ app.get('*', function(req, res) {
 });
 
 // start the server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
+});
+
+const io = require("socket.io")(server);
+
+io.on('connection', function(socket){
+  console.log(socket.id);
+
+  socket.on('SEND_MESSAGE', function(data){
+    console.log('message: ' + data);
+    io.emit('RECEIVE_MESSAGE', data);
+  });
 });
