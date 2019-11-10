@@ -5,16 +5,22 @@ import './BanBtn.css';
 
 const BanBtn = props => {
   if (!props.isAdmin) {
-    return null;
+    return (
+      <DropdownButton title="" className="ml-1 border-0"  variant="" size="sm" >
+
+        <Dropdown.Item className="text-muted disabled">Send Message</Dropdown.Item>
+        <Dropdown.Item className="text-muted disabled">Add Friend</Dropdown.Item>
+  
+      </DropdownButton>
+    )
   }
   return (
     <DropdownButton title="" className="ml-1 border-0"  variant="" size="sm" >
- <Dropdown.Item onClick={props.banUser}><i class="fas fa-ban pr-2"></i>Ban User</Dropdown.Item>
- 
-  <Dropdown.Item className="text-muted disabled">Send Message</Dropdown.Item>
-  <Dropdown.Item className="text-muted disabled">Add Friend</Dropdown.Item>
- 
- 
+
+      <Dropdown.Item onClick={props.banUser}><i className="fas fa-ban pr-2"></i>Ban User</Dropdown.Item>
+      <Dropdown.Item className="text-muted disabled">Send Message</Dropdown.Item>
+      <Dropdown.Item className="text-muted disabled">Add Friend</Dropdown.Item>
+  
     </DropdownButton>
   );
 }
