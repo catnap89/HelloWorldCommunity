@@ -3,129 +3,134 @@
     /* font-weight: bold; */
 }
 
-p {
-	font-size: 15px;
-	margin-bottom: 5px;
+/* .mt-5 {
+    margin-top: 100px !important;
+    min-height: 100%;
+ 
+  } */
+
+  p {
+    font-size: 14px;
+    margin-bottom: 5px;
   }
   
   .response1 {
-	color:indigo;
+    color:indigo;
   }
   
   /* .response {
-	color: indigo;
+    color: indigo;
   } */
   
   .chat {
-	/* min-height: 750px; 
-	max-height: 750px; */
-	min-height: 80vh;
-	max-height: 80vh;    
+    /* min-height: 750px; 
+    max-height: 750px; */
+    min-height: 80vh;
+    max-height: 80vh;    
    
-	/* height:90vh */
+    /* height:90vh */
   }
   
   .scroll {
-	 overflow-y: auto;
+     overflow-y: auto;
   }
   
   
   ::-webkit-scrollbar {
-	width: 12px;
+    width: 12px;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
-	background: rgb(248, 248, 248);
-	/* box-shadow: inset 0 0 5px orangered;  */
-	/* border-radius: 10px; */
+    background: rgb(248, 248, 248);
+    /* box-shadow: inset 0 0 5px orangered;  */
+    /* border-radius: 10px; */
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-	background: lightgray; 
-	/* border-radius: 10px; */
+    background: lightgray; 
+    /* border-radius: 10px; */
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-	background:lightskyblue; 
+    background:lightskyblue; 
   }  
   
   /* buubles right */
   .speech-bubble {
-	  position: relative;
-	  background: whitesmoke;
-	border-radius: .5em;
-	margin-right: 5px;
+      position: relative;
+      background: whitesmoke;
+    border-radius: .5em;
+    margin-right: 5px;
   }
   
   .speech-bubble:after {
-	  content: '';
-	  position: absolute;
-	  right: 0;
-	  top: 50%;
-	  width: 0;
-	  height: 0;
-	  border: 20px solid transparent;
-	  border-left-color:whitesmoke;
-	  border-right: 0;
-	  border-bottom: 0;
-	  margin-top: -10px;
-	  margin-right: -20px;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-left-color:whitesmoke;
+      border-right: 0;
+      border-bottom: 0;
+      margin-top: -10px;
+      margin-right: -20px;
   }
   
   .speech-bubble:hover {
-	background:rgb(220, 238, 253);
-	
+    background:rgb(220, 238, 253);
+    
   }
   
   /* bubbles left */
   
   /* .speech-bubble-left {
-	  position: relative;
-	  background:rgb(236, 235, 235);
-	  border-radius: 1.5em;
+      position: relative;
+      background:rgb(236, 235, 235);
+      border-radius: 1.5em;
   }
   .speech-bubble-left:after {
-	  content: '';
-	  position: absolute;
-	  left: 0;
-	  top: 50%;
-	  width: 0;
-	  height: 0;
-	  border: 20px solid transparent;
-	  border-right-color:rgb(236, 235, 235);
-	  border-left: 0;
-	  border-bottom: 0;
-	  margin-top: -10px;
-	  margin-left: -20px;
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-right-color:rgb(236, 235, 235);
+      border-left: 0;
+      border-bottom: 0;
+      margin-top: -10px;
+      margin-left: -20px;
   }
   .speech-bubble-left:hover {
-	background:rgb(211, 209, 209);
+    background:rgb(211, 209, 209);
    
   } */
   
   /* textbox lable chat here */
   
   /* .Input-label {
-	  font-size: 13px;
+      font-size: 13px;
   } */
   
   /* font awesome icon textbox */
   
   /* .mut {
-	  color:slategray;
+      color:slategray;
   } */
   
   .fontAwesome {
-	  font-family: 'Helvetica', "FontAwesome", sans-serif;
-	}
+      font-family: 'Helvetica', "FontAwesome", sans-serif;
+    }
   
-	::placeholder {
-	  color:rgb(168, 174, 180) !important; 
-	  font-size: 15px;
-	  outline: none;
-	  /* padding-left: 5px; */
-	  
-	}
+    ::placeholder {
+      color:rgb(185, 189, 192) !important; 
+      font-size: 15px;
+      /* padding-left: 5px; */
+      
+    }
