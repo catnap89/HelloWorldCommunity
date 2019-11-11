@@ -5,13 +5,14 @@ import Button from 'react-bootstrap/Button';
 
 const SavedChatroom = (props) => (
   <Card className= "cardchat rounded shadow mb-3" key={props.favCommunity._id} style={{ minWidth: '22rem', maxWidth: '22rem', maxHeight: '250px'}}>
-    <Card.Header href="#" className="pl-3 pt-3 mb-0 chattitle">
+    <Card.Header href="#" className="d-flex pl-3 pt-3 mb-0 chattitle">
       <img className="imagesm mr-2 ml-0 pl-0"
         style= {{height: '40px', paddingLeft: '20px'}}
         alt="Logo"
         src="../Chat.png"
       />
       {props.favCommunity.communityName}
+      <i className="fas fa-heart ml-auto pt-1 pr-1" title="UnLike Chatroom"></i>
     </Card.Header>
     
     <Card.Body className="overflow-auto" >

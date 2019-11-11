@@ -8,3 +8,10 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.fa-heart {
+    color:lightskyblue;
+   cursor:pointer;
+
+}
+

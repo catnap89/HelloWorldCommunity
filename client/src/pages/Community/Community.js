@@ -289,9 +289,9 @@ class Community extends Component {
 
               <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
                 <FormControl 
-                  className="bg-light" 
+                  className="bg-light shadow-none" 
                   autoFocus="autofocus" 
-                  placeholder="say something...&#xF075;"
+                  placeholder="Say something...&#xF075;"
                   onChange={this.handleInputChange}
                   onKeyPress={this.onKeyPress}
                   value={this.state.message}
@@ -315,7 +315,7 @@ class Community extends Component {
           <Sideright >
             {this.state.participants.map(participants => (
               <Participants key={participants._id}>
-                <div className="userlist d-flex my-auto mt-2">
+                <div className="userlist d-flex my-auto mt-0">
                  
                   <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(participants)}></BanBtn>
                    <li className="memItems my-auto pl-1">{participants.username}</li> 

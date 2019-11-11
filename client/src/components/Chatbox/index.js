@@ -9,7 +9,7 @@ const Chatbox = (props) => (
 
     <div id="person1" className=" ml-auto mr-3" key={props.message.messageId}>
 
-        <p className='response1 speech-bubble p-1'>
+        <p className='response1 speech-bubble p-1 pl-2'>
         <strong>{props.message.username} - </strong>{props.message.message}
         </p>     
 
