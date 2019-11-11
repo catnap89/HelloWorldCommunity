@@ -293,6 +293,7 @@ class Community extends Component {
                   autoFocus="autofocus" 
                   placeholder="Say something...&#xF075;"
                   onChange={this.handleInputChange}
+                  // I don't think onKeyPress is needed in form, maybe try to use it only in button
                   onKeyPress={this.onKeyPress}
                   value={this.state.message}
                   name="message"
