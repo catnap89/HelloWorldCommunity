@@ -304,8 +304,9 @@ class Community extends Component {
                     onClick={this.handleFormSubmit}
                     onKeyPress={this.onKeyPress}
                   >
-                    <i className="fas fa-share pr-2"></i>
-                    Send
+                    <i className="fas fa-spinner fa-pulse mr-2"></i>
+                     Send
+                   
                   </Button>
                 </InputGroup.Append>
               </InputGroup> 
