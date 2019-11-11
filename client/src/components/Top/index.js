@@ -42,12 +42,12 @@ const Top = props => (
       {/* <FormControl type="text" placeholder="&#xF002; Search" className=" p-3 mr-3 ml-5 mr-5 form fontAwesome" /><span className="line"> | </span> */}
 
       {/* <Link className ="pt-4 ml-5 mr-4 links" as={Link} to="/">Home</Link> */}
-      <DropdownButton
+      <DropdownButton 
         className="mr-5 pt-4"
-        variant="outline-dark"
-        size="sm"
+        variant="link-dark"
+        // size="lg"
         id="dropdown-basic-button"
-        title="Ch@ Links "
+        title="Site Links "
       >
         <Dropdown.Item as={Link} to="/">
           Home
