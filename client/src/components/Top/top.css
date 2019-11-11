@@ -32,6 +32,10 @@
     font-weight: bold;
   }
 
+  .icon-muted {
+    color: slategrey;
+  }
+
   /* .links {
 
     color:rgba(37, 37, 37, 0.856);
