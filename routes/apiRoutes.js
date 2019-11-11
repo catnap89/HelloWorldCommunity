@@ -129,7 +129,24 @@ router.patch("/api/user/remove/:communityType/:communityId/:username", function(
     });  
 });
 
+router.patch("/api/community/user/add/:id/:userId", function (req, res) {
+    communityController.addActiveUser(req.params.id, req.params.userId, function (err, data) {
+        if (err) {
+            res.json(err)
+        }
+        res.json(data);
+    });
+})
 
+router.patch("/api/community/user/remove/:id/:userId", function (req, res) {
+    communityController.removeActiveUser(req.params.id, req.params.userId, function (err, data) {
+        if (err) {
+            console.log(err);
+            res.json(err);
+        }
+        res.json(data);
+    })
+})
 
 
 module.exports = router;

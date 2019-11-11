@@ -94,4 +94,18 @@ io.on('connection', function(socket){
     console.log('message: ' + data);
     io.emit('RECEIVE_MESSAGE', data);
   });
+
+  socket.on('JOIN_CHAT', function(data) {
+    //we can update our database with "active users" here
+    io.emit('USER_JOINED', data);
+  })
+  socket.on('LEFT_CHAT', function (data) {
+    //we can update our database with "active users" here
+    console.log("left chat");
+    console.log(data);
+  });
+  socket.on("disconnect", function(data, otherParam) {
+    console.log("disconnect");
+    console.log(data);
+  });
 });
