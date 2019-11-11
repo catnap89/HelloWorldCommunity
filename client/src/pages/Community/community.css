@@ -1,4 +1,9 @@
 .memItems {
-    color:blue;
+    color:indigo;
     /* font-weight: bold; */
 }
+
+input {
+    
+    font-weight: 900;
+  }
