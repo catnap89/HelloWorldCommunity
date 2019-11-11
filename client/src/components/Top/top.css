@@ -29,6 +29,7 @@
 
   .line {
     color:blue;
+    font-weight: bold;
   }
 
   /* .links {
