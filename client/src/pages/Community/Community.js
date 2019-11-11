@@ -48,7 +48,7 @@ class Community extends Component {
 
 //NOTE this can probably be optimized emit an event only for this community, but this will work for now
     this.socket.on('USER_JOINED', function (data) {
-      if (data.communityID == props.match.params.id) {
+      if (data.communityID === props.match.params.id) {
         addParticipant(data);
       }
     });
@@ -62,7 +62,7 @@ class Community extends Component {
     };
     
     const addParticipant = data => {
-      const currentParticipants = this.state.participants.filter(participant => participant._id != data.user._id);
+      const currentParticipants = this.state.participants.filter(participant => participant._id !== data.user._id);
       this.setState({
         participants: [...currentParticipants, data.user]
       });
