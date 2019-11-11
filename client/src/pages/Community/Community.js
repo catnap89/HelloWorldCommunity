@@ -204,7 +204,7 @@ class Community extends Component {
   handleFormSubmit = event => {
 
     // const msg = this.state.message;
-    event.preventDefault();
+    // event.preventDefault();
     console.log(this.state.message);
     // this.setState({
     //   numChildren: this.state.numChildren + 1
@@ -221,6 +221,11 @@ class Community extends Component {
     });
   };
 
+  onKeyPress = (e) => {
+    if (e.which === 13) {
+      this.handleFormSubmit();
+    }
+  }
 
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
@@ -288,6 +293,7 @@ class Community extends Component {
                   autoFocus="autofocus" 
                   placeholder="say something...&#xF075;"
                   onChange={this.handleInputChange}
+                  onKeyPress={this.onKeyPress}
                   value={this.state.message}
                   name="message"
                 /> 
@@ -295,6 +301,7 @@ class Community extends Component {
                   <Button 
                     variant="dark border pl-3 pr-3"
                     onClick={this.handleFormSubmit}
+                    onKeyPress={this.onKeyPress}
                   >
                     <i className="fas fa-share pr-2"></i>
                     Send
