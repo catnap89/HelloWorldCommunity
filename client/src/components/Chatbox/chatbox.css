@@ -125,9 +125,9 @@ p {
 	font-family: 'Helvetica', "FontAwesome", sans-serif;
   }
 
-  ::placeholder {
-	color:rgb(181, 184, 187) !important; 
-	font-size: 15px;
-	/* padding-left: 5px; */
-	
-  }
+::placeholder {
+color:rgb(181, 184, 187) !important; 
+font-size: 15px;
+/* padding-left: 5px; */
+
+}
