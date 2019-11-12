@@ -7,9 +7,9 @@ var communitySchema =  new Schema({
     
   
   communityName : {
-      type: String,
-      required: true
-    },
+    type: String,
+    required: true
+  },
 
   communityDesc : {
     type: String,

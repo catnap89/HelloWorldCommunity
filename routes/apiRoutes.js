@@ -19,7 +19,8 @@ router.get("/api/community/all", function(req, res) {
 //Returns a specific community
 router.get("/api/community/:communityId", function(req, res) {
     var query = {};
-    query.communityId = req.params.communityId;
+    // query.communityId = req.params.communityId;
+    query._id = req.params.communityId;
     
     communityController.get(query, function(data) {
         res.json(data);
@@ -84,7 +85,7 @@ router.post("/api/user", function(req, res) {
 //Deletes Community
 router.delete("/api/community/:communityId", function(req, res) {
     var query = {};
-    query.communityId = req.params.communityId;
+    query._id = req.params.communityId;
 });
 
 
