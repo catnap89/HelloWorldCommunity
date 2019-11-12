@@ -49,7 +49,7 @@ function About () {
 
          < br />
 
-         <h6>CH@ is a free service to use, but services like adding Members to your 'Friends List' and 'Direct Messaging' will be part of the Premium Package.</h6>
+         <h6>Ch@ is a free service to use, but services like adding Members to your 'Friends List' and 'Direct Messaging' will be part of the Premium Package.</h6>
              
          < br />
          <h6>Thank you for visiting and we hope you stick around.</h6>
