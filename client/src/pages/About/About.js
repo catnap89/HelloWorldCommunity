@@ -18,6 +18,11 @@ function About () {
           <Card.Body>
           <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
             <h3>Welcome to <strong>Ch@</strong>.</h3>
+            <br />
+            <br />
+            <br />
+
+            <h4><em><strong>"Be a Big Fish in a Small Pond"</strong></em></h4>
            
           </Card.Body>
         </Card>
@@ -28,17 +33,27 @@ function About () {
           < br />
 
           <Card.Body>
-         <h6>Ch@ is an Community based Chat application, where users can come create and participate in chatrooms, either created themselves or by other users.</h6>
+         <h6>Ch@ is a 'Members Only' Community based Chat application, where users can come create and participate in chatrooms created by other Members.</h6>
          < br />
-         <h6>Users have the ability to search thru Chatrooms created by others and save those rooms to their favorites for direct access later.</h6>
+         <h6>Members have the ability to search thru Chatrooms created by other Members and save those rooms to their 'Favorites' for direct access later.</h6>
          < br />
 
-         <h6>Users have the ability to create their own chatroom and be the Admin for that room, which allows them to control the topics and control the participants.  You can create your own Topics and Moderate your room.  The 'Ban User' option is given to all Chatroom creators to ban users in real time.</h6>
+         <h6>Members have the ability to create their own chatroom and be the Admin for that room. This allows Members to control the topics and control the participants in their Chat directly.  </h6>
+            
+           
          < br />
          <h6>The Ch@ App was developed to make chatting fun for people of all ages and there are no restrictions to participate.</h6>
          < br />
 
          <h6>If you have any questions or concerns you can contact our Admin at <a href="mailto:thedragon@ch@.com">@Dragon</a>. </h6>
+
+         <br />
+         <h6>Thanks for your support!</h6>
+
+         <br />
+         <h6>Sincerely,</h6>
+         <br />
+         <h6><strong>The Ch@ Dev Team</strong></h6>
 
          </Card.Body>
          <Card.Footer className="bg-transparent border-0 ml-auto">
