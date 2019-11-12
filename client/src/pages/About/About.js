@@ -33,20 +33,27 @@ function About () {
           < br />
 
           <Card.Body>
+
+         
          <h6>Ch@ is a 'Members Only' Community based Chat application, where users can come create their own Chatroom or participate in Chatrooms created by other Members.</h6>
          < br />
-         <h6>Members have the ability to search thru Chatrooms created by other Members and save those rooms to their 'Favorites' for direct access later.</h6>
-         < br />
+
          <h6>Chatrooms are created by Topic and allow for a brief description.</h6>
          < br />
 
-         <h6>Members have the ability to create their own chatroom and be the Admin for that room. This allows Members to control the topics and control the participants in their Chat directly.  </h6>
-            
-           
-         < br />
-         <h6>The Ch@ App was developed to make chatting fun for people of all ages and there are no restrictions to participate.</h6>
+         <h6>Members can search thru Chatrooms created by other Members and save those rooms to their 'Favorites' for direct access later.</h6>
          < br />
 
+
+         <h6>Members have the ability to create their own chatroom and be the Admin for that room. This allows Members to control the topics and control the participants in their Chat directly.  </h6>
+
+         < br />
+
+         <h6>CH@ is a free service to use, but services like adding Members to your 'Friends List' and 'Direct Messaging' will be part of the Premium Package.</h6>
+             
+         < br />
+         <h6>Thank you for visiting and we hope you stick around.</h6>
+         < br />
          <h6>If you have any questions or concerns you can contact our Admin at <a href="mailto:thedragon@ch@.com">@Dragon</a>. </h6>
 
          <br />
