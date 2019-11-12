@@ -54,7 +54,7 @@ function About () {
          < br />
          <h6>Thank you for visiting and we hope you stick around.</h6>
          < br />
-         <h6>If you have any questions or concerns you can contact our Admin at <a href="mailto:thedragon@ch@.com">@Dragon</a>. </h6>
+         <h6>If you have any questions or concerns you can contact our Admin directly <a href="mailto:admin@ch@.com">@admin</a>. </h6>
 
          <br />
          <h6>Thanks for your support!</h6>
