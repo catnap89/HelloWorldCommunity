@@ -1,12 +1,7 @@
 import React from 'react';
-// import { Redirect } from "react-router-dom";
-// import Form from 'react-bootstrap/Form';
-// import Button from 'react-bootstrap/Button';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
-// import Top from "../../components/Top";
 import './about.css';
-// import axios from 'axios';
 
 
 function About () {
@@ -23,13 +18,7 @@ function About () {
           <Card.Body>
           <Card.Img src="../Chat.png" alt="Logo" className="image mb-5" style= {{height: '200px', width:'200px'}}/>
             <h3>Welcome to <strong>Ch@</strong>.</h3>
-            {/* <h5 className="p-4">The Dev Team:</h5>
-            <ul className="list-unstyled">
-              <li>Daniel Cho</li>
-              <li>Khavin Lindo</li>
-              <li>Ryan Weingart</li>
-              <li>Trey Helmer</li>
-            </ul> */}
+           
           </Card.Body>
         </Card>
         <Card className="col-7 bg-light shadow">
