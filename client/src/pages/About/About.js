@@ -33,9 +33,11 @@ function About () {
           < br />
 
           <Card.Body>
-         <h6>Ch@ is a 'Members Only' Community based Chat application, where users can come create and participate in chatrooms created by other Members.</h6>
+         <h6>Ch@ is a 'Members Only' Community based Chat application, where users can come create their own Chatroom or participate in Chatrooms created by other Members.</h6>
          < br />
          <h6>Members have the ability to search thru Chatrooms created by other Members and save those rooms to their 'Favorites' for direct access later.</h6>
+         < br />
+         <h6>Chatrooms are created by Topic and allow for a brief description.</h6>
          < br />
 
          <h6>Members have the ability to create their own chatroom and be the Admin for that room. This allows Members to control the topics and control the participants in their Chat directly.  </h6>
