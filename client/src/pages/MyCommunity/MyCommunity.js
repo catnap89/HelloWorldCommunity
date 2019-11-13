@@ -4,33 +4,33 @@ import axios from 'axios';
 import Top from "../../components/Top"; 
 import CardDeck from 'react-bootstrap/CardDeck';
 import Side from "../../components/Side";
-import SavedChatroom from "../../components/SavedChatroom";
+import MyChatroom from "../../components/MyChatroom";
 
-class FavoriteCommunity extends Component {
+class MyCommunity extends Component {
 
   state = {
     userInfo: {},
-    savedCommunities: [],
+    myCommunities: [],
     noCommunity: false
   };
 
 
   componentDidMount() {
     this.checkUser().then(res => {
-        console.log("res: " + res.data.user.username);
-        if (res.data.user) {
-          this.setState({
-            userInfo: res.data.user || {}
-          });
-          this.getSavedCommunity();
-        } else {
-          this.props.history.push("/login");
-        }
-      })
-      .catch(error => {
-        console.log(error);
+      console.log("res: " + res.data.user.username);
+      if (res.data.user) {
+        this.setState({
+          userInfo: res.data.user || {}
+        });
+        this.getMyCommunity();
+      } else {
         this.props.history.push("/login");
-      });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      this.props.history.push("/login");
+    });
   }
 
   checkUser = () => {
@@ -38,16 +38,16 @@ class FavoriteCommunity extends Component {
   }
 
   // Get All communities from DB
-  getSavedCommunity = () => {
+  getMyCommunity = () => {
     console.log(this.state.userInfo);
     const username = this.state.userInfo.username;
     console.log("username: " + username);
     axios.get('/api/user/' + username)
       .then(res => {
-        if (res.data) {
-          console.log(res.data);
+        if (res.data[0].ownedCommunityIDs) {
+          console.log("Get Community res.data: " + JSON.stringify(res.data[0].ownedCommunityIDs));
           return this.setState({
-            savedCommunities: res.data[0].favoriteCommunityIDs
+            myCommunities: res.data[0].ownedCommunityIDs
           })
         } else {
           this.setState({
@@ -75,6 +75,31 @@ class FavoriteCommunity extends Component {
     }
   }
 
+  handleRemoveCommunity = (community) => {
+    if (this.state.userInfo) {
+      if (this.state.userInfo.ownedCommunityIDs.includes(community._id)) {
+        // Remove community data
+        axios.delete(`/api/community/${community._id}`);
+        // Remove from ownedCommunity array in user data
+        axios.patch(`/api/user/remove/ownedCommunity/${community._id}/${this.state.userInfo.username}`)
+          .then(res => {
+            console.log("Removed from my ownedCommunity: " + res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        // Remove from favoriteCommunity array in user data
+        axios.patch(`/api/user/remove/favoriteCommunity/${community._id}/${this.state.userInfo.username}`)
+          .then(res => {
+            console.log("Removed from my favoriteCommunity: " + res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    }
+  }
+
   render() {
     if (this.state.noCommunity) {
       return (
@@ -84,7 +109,7 @@ class FavoriteCommunity extends Component {
           />
           <CardDeck className="size mx-auto"> 
             <Side />
-            <h1>There are no saved communities</h1>
+            <h1>You have not created any community</h1>
           </CardDeck> 
         </div>
       );
@@ -98,7 +123,13 @@ class FavoriteCommunity extends Component {
         <CardDeck className="size mx-auto"> 
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto overflow-auto'>
-            {this.state.savedCommunities.map(community => <SavedChatroom key={community._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)}
+            {this.state.myCommunities.map(community => 
+              <MyChatroom 
+                key={community._id}
+               community={community} 
+               handleJoinCommunity={() => this.handleJoinCommunity(community)}
+               handleRemoveCommunity={() => this.handleRemoveCommunity(community)}
+              />)}
           </CardDeck> 
         </CardDeck> 
       </div>
@@ -107,4 +138,4 @@ class FavoriteCommunity extends Component {
   }
 }
 
-export default FavoriteCommunity;
+export default MyCommunity;

@@ -34,6 +34,10 @@ const SideCommunity =(props) => (
         Favorite Communities
       </ListGroup.Item>
 
+      <ListGroup.Item className="bg-light pl-5" action variant="light border-0" as={Link} to="/myCommunities">
+        My Communities
+      </ListGroup.Item>
+
 
     </ListGroup>
     
