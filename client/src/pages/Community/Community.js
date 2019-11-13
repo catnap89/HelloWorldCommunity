@@ -272,7 +272,7 @@ class Community extends Component {
                 <FormControl 
                   className="bg-light shadow-none" 
                   autoFocus="autofocus" 
-                  placeholder="Say something...&#xF075;"
+                  placeholder="Say something..."
                   onChange={this.handleInputChange}
                   onKeyPress={this.onKeyPress}
                   value={this.state.message}
