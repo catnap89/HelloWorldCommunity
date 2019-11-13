@@ -48,19 +48,29 @@ module.exports = {
     //     },
     update: function(communityId, query, callback) {
         Community.update({_id: communityId}, {$set: query}, {}, callback);
-        },
+    },
 
-    addActiveUser: function(communityId, userId, callback) {
-        console.log("got to commuhnity controller")
+    addActiveUser: function(communityId, userId) {
+        console.log("got to addActiveUser")
         console.log(userId);
-        console.log("communityId:")
-        console.log(communityId)
-        Community.update({_id: communityId}, {$addToSet: {activeUsers: userId}}, {}, callback);
-        },
+        console.log("controller communityId:")
+        console.log(communityId);
+        console.log("controller userId:")
+        console.log(userId);
+        return Community.findOneAndUpdate({_id: communityId}, {$addToSet: {activeUsers: userId}}, {new: true})
+        .populate("activeUsers");
+    },
 
-    removeActiveUser: function(communityId, userId, callback) {
-        Community.update({_id: communityId}, {$pull: {activeUsers: userId}}, {}, callback);
-        },
-    }
+    removeActiveUser: function(communityId, userId) {
+        console.log("got to removeActiveUser")
+        console.log(userId);
+        console.log("controller communityId:")
+        console.log(communityId);
+        console.log("controller userId:")
+        console.log(userId);
+        return Community.findOneAndUpdate({_id: communityId}, {$pull: {activeUsers: userId}}, {new: true})
+        .populate("activeUsers")
+    },
+}
 
     

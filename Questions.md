@@ -9,6 +9,8 @@ issues
 2. userlist doesn't seem to update other than the current user
 3. like / unlike button to save / remove favorite community is somehow not responsive
 
+4. activeUsers is not joined with user data
+
 
 
 For chat with socket io

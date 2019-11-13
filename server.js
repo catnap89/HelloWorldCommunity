@@ -10,6 +10,9 @@ const auth_routes = require("./routes/auth_routes");
 const path = require("path");
 const socket = require("socket.io");
 
+const communityController = require("./controllers/communityController");
+var Community = require("./models/Community");
+
 
 const app = express();
 
@@ -53,16 +56,6 @@ app.use(session({
   proxy: true
 }));
 
-// // Connect Flash
-// app.use(flash());
-
-// // Gloal variable
-// app.use((req, res, next) => {
-//   res.locals.success_msg = req.flash("success_msg");
-//   res.locals.error_msg = req.flash("error_msg");
-//   next();
-// });
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -85,26 +78,67 @@ const server = app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
 });
 
+// SocketIO
 const io = socket(server);
 
 io.on('connection', function(socket){
   console.log(socket.id);
 
+  // create function to send status
+  sendStatus = function(s) {
+    socket.emit('status', s);
+  }
+
   socket.on('SEND_MESSAGE', function(data){
     console.log('message: ' + data);
     io.emit('RECEIVE_MESSAGE', data);
+    //future implementation: add message to community chat history 
   });
 
   socket.on('JOIN_CHAT', function(data) {
     //we can update our database with "active users" here
-    io.emit('USER_JOINED', data);
-  })
+    console.log("JOIN_CHAT DATA: " + JSON.stringify(data));
+
+    let communityId = data.communityID;
+    let activeUser = data.user;
+    if (communityId && activeUser._id) {
+      console.log("adding active user");
+      communityController.addActiveUser(communityId, activeUser._id)
+      .then( doc => {
+        if (doc) {
+            console.log("no worries!", doc);
+            data.currentActiveUsers = doc.activeUsers.map(user => ({ username: user.username, userId: user._id}));
+            console.log("CURRENT ACTIVE", data.currentActiveUsers)
+        }
+        io.emit("ACTIVE_USERS_CHANGED", data);
+      })
+      .catch(err => console.log("ERR", err));
+    }
+  });
+
   socket.on('LEFT_CHAT', function (data) {
     //we can update our database with "active users" here
-    console.log("left chat");
+    console.log("left chat data:");
     console.log(data);
+    let communityId = data.communityID;
+    let activeUser = data.user;
+      if (communityId && activeUser._id) {
+        console.log("removing active user")
+        communityController.removeActiveUser(communityId, activeUser._id)
+        .then( doc => {
+          if (doc) {
+              console.log("no worries!", doc);
+              data.currentActiveUsers = doc.activeUsers.map(user => ({ username: user.username, userId: user._id}));
+              console.log("data.currentActiveUsers", data.currentActiveUsers)
+          }
+          
+          io.emit("ACTIVE_USERS_CHANGED", data);
+        })
+        .catch(err => console.log(err));
+    }
   });
-  socket.on("disconnect", function(data, otherParam) {
+
+  socket.on("disconnect", function(data) {
     console.log("disconnect");
     console.log(data);
   });
