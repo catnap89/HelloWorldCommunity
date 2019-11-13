@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -26,22 +25,6 @@ var userSchema = new Schema({
         type: Date,
         default: Date.now
     },
-
-    firstName : {
-        type: String
-    }, 
-
-    lastName : {
-        type: String
-    },
-
-
-    // joinedCommunityIDs : [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Community"
-    //     // I don't think this should be required
-    //     // required: true
-    // }],
 
     ownedCommunityIDs : [{
         type: Schema.Types.ObjectId,
@@ -75,17 +58,6 @@ userSchema.methods.toJSON = function() {
     return obj;
 }
 
-// userSchema.methods.validatePassword = function(val) {
-//     return bcrypt.compare(val, this.password);
-// }
-
-
-// userSchema.pre('save', function(next) {
-//     if ( this.isNew ) {
-//         this.password = bcrypt.hashSync(this.password, 10);
-//     }
-//     next();
-// });
 
 var User = mongoose.model("User", userSchema);
 

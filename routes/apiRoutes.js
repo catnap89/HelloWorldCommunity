@@ -139,6 +139,7 @@ router.patch("/api/community/user/add/:id/:userId", function (req, res) {
     });
 })
 
+
 router.patch("/api/community/user/remove/:id/:userId", function (req, res) {
     communityController.removeActiveUser(req.params.id, req.params.userId, function (err, data) {
         if (err) {
