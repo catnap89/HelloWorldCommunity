@@ -12,10 +12,10 @@ const MyChatroom = (props) => (
         src="../Chat.png"
       />
       {props.community.communityName}
-      <i className="fas fa-heart ml-auto pt-1 pr-1" title="UnLike"></i>
+      <i className="fas fa-user-shield ml-auto pt-1 pr-1 pt-2" title="Moderator"></i>
     </Card.Header>
     
-    <Card.Body className="overflow-auto" >
+    <Card.Body className="overflow-auto">
 
       <Card.Text>
         {props.community.communityDesc}
@@ -24,8 +24,8 @@ const MyChatroom = (props) => (
     </Card.Body>
     
     <Card.Footer className="d-flex">
-      <Button onClick={props.handleRemoveCommunity} className="mr-5 pr-0" variant="link">Remove</Button> 
-      <Button onClick={props.handleJoinCommunity} className="mr-0 ml-5 pr-0" variant="link">Join Chat</Button>
+      <Button onClick={props.handleRemoveCommunity} className="mr-auto pl-0 ml-0" variant="link">Remove</Button> 
+      <Button onClick={props.handleJoinCommunity} className="mr-0 pr-0" variant="link">Join Chat</Button>
     </Card.Footer>
   </Card>
 )
