@@ -18,17 +18,11 @@ const socketURL = process.env.NODE_ENV === "development" ? "http://localhost:500
 
 class Community extends Component {
 
-  // state = {
-  //   userInfo: {},
-  //   participants: [],
-  //   liked: false,
-  //   isAdmin: false
-  // };
-
   constructor(props) {
     super(props)
     this.state = {
       userInfo: {},
+      communityInfo: {},
       participants: [],
       liked: false,
       isAdmin: false,
@@ -82,7 +76,7 @@ class Community extends Component {
 
   componentDidMount() {
     this.checkUser();
-    //check socket connections and add all connected users to the members panel 
+    this.communityInfo();
   }
 
   componentWillUnmount() {
@@ -187,6 +181,18 @@ class Community extends Component {
 
   }
 
+  communityInfo = () => {
+    axios.get(`/api/community/${this.props.match.params.id}`)
+      .then(res => {
+        console.log("COMMUNITY INFO: " +  res.data[0].communityName);
+        this.setState({
+          communityInfo: res.data[0]
+        })
+        console.log("Community INFO STATE" + JSON.stringify(this.state.communityInfo));
+        
+      })
+  }
+
   banUser = (participants) => {
     console.log(participants);
   }
@@ -227,7 +233,7 @@ class Community extends Component {
 
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
-{console.log(this.state.participants)}
+
     return (
       <div className="App">
         {/* Navbar */}
@@ -250,7 +256,7 @@ class Community extends Component {
 
           <Card className= 'col-9 p-1 border-0 chat mt-3 mb-0 mx-auto'>
 
-            <Card.Header as="h5" className="bg-white">Chat Title</Card.Header>
+            <Card.Header as="h5" className="bg-white">{this.state.communityInfo.communityName}</Card.Header>
 
             <Card.Body className='scroll'>
 
