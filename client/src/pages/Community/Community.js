@@ -18,17 +18,11 @@ const socketURL = process.env.NODE_ENV === "development" ? "http://localhost:500
 
 class Community extends Component {
 
-  // state = {
-  //   userInfo: {},
-  //   participants: [],
-  //   liked: false,
-  //   isAdmin: false
-  // };
-
   constructor(props) {
     super(props)
     this.state = {
       userInfo: {},
+      communityInfo: {},
       participants: [],
       liked: false,
       isAdmin: false,
@@ -82,7 +76,7 @@ class Community extends Component {
 
   componentDidMount() {
     this.checkUser();
-    //check socket connections and add all connected users to the members panel 
+    this.communityInfo();
   }
 
   componentWillUnmount() {
@@ -187,8 +181,22 @@ class Community extends Component {
 
   }
 
+  communityInfo = () => {
+    axios.get(`/api/community/${this.props.match.params.id}`)
+      .then(res => {
+        console.log("COMMUNITY INFO: " +  res.data[0].communityName);
+        this.setState({
+          communityInfo: res.data[0]
+        })
+        console.log("Community INFO STATE" + JSON.stringify(this.state.communityInfo));
+        
+      })
+  }
+
   banUser = (participants) => {
     console.log(participants);
+    // banning should add user's bannedCommunityID with current communityID
+    axios.patch(`/api/user/add/bannedCommunity/${this.props.match.params.id}/${participants.username}`)
   }
 
   handleInputChange = event => {
@@ -227,7 +235,7 @@ class Community extends Component {
 
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
-{console.log(this.state.participants)}
+
     return (
       <div className="App">
         {/* Navbar */}
@@ -241,16 +249,11 @@ class Community extends Component {
             handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
             label={label}
           />
-          {/* <Chatbox 
-            handleInputChange={() => this.handleInputChange()}
-            handleFormSubmit={() => this.handleFormSubmit()}
-            value={this.state.message}
-            name="message"
-          /> */}
 
+          {/* CHAT BOX */}
           <Card className= 'col-9 p-1 border-0 chat mt-3 mb-0 mx-auto'>
 
-            <Card.Header as="h5" className="bg-white">Chat Title</Card.Header>
+            <Card.Header as="h5" className="bg-white">{this.state.communityInfo.communityName}</Card.Header>
 
             <Card.Body className='scroll'>
 
@@ -269,9 +272,8 @@ class Community extends Component {
                 <FormControl 
                   className="bg-light shadow-none" 
                   autoFocus="autofocus" 
-                  placeholder="Say something...&#xF075;"
+                  placeholder="Say something..."
                   onChange={this.handleInputChange}
-                  // I don't think onKeyPress is needed in form, maybe try to use it only in button
                   onKeyPress={this.onKeyPress}
                   value={this.state.message}
                   name="message"
@@ -293,15 +295,7 @@ class Community extends Component {
 
           {/* Right Sidebar for Community page */}
           <Sideright >
-            {/* {this.state.participants.map(participants => (
-              <Participants key={participants._id}>
-                <div className="userlist d-flex my-auto mt-0">
-                 
-                  <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(participants)}></BanBtn>
-                   <li className="memItems my-auto pl-1">{participants.username}</li> 
-                </div>
-              </Participants>
-            ))} */}
+
             {this.state.participants.map(user => (
               <Participants key={user.userId}>
                 <div className="userlist d-flex my-auto mt-0">
