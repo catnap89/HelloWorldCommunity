@@ -275,7 +275,7 @@ class Community extends Component {
                 <FormControl 
                   className="bg-light shadow-none" 
                   autoFocus="autofocus" 
-                  placeholder="Say something...&#xF075;"
+                  placeholder="Say something..."
                   onChange={this.handleInputChange}
                   // I don't think onKeyPress is needed in form, maybe try to use it only in button
                   onKeyPress={this.onKeyPress}
