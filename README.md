@@ -9,7 +9,7 @@ Ch@ is a chat app created to connect users that want to converse about topics, s
 ## Functionality Overview
 
 ### Login page
-On loading of the app, the user is directed tp the login page, where they can sign in with their credentials if they are a registered user. If not a registered user, a link is provided to direct user where they can register by providing an email, username and password.
+On loading of the app, the user is directed to the login page, where they can sign in with their credentials if they are a registered user. If not a registered user, a link is provided to direct user where they can register by providing an email, username and password.
 
 ![login-page](images/login_page.PNG)
 
@@ -26,6 +26,8 @@ On the navigation bar, there is a 'Site Links' link that provides a dropdown to 
 
 ### Starting a new Community
 A user can create a new Community by clicking 'START NEW CHAT' link. The user is prompted to provide a title/name for their Community, and also a brief description of what will be discussed.
+
+When a user created a Community, they are the Admin, or Moderator of that community. They have the ability to ban or unban other users from joining that Community
 
 
 ![create-new-chat-page](images/create_new_chat.PNG)
