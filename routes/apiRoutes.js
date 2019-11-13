@@ -86,6 +86,10 @@ router.post("/api/user", function(req, res) {
 router.delete("/api/community/:communityId", function(req, res) {
     var query = {};
     query._id = req.params.communityId;
+
+    communityController.delete(query, function(err, data) {
+        res.json(data);
+    })
 });
 
 

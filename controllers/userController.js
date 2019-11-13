@@ -7,6 +7,7 @@ module.exports = {
     get: function(query, callback) {
         User.find(query)
         .populate("favoriteCommunityIDs")
+        .populate("ownedCommunityIDs")
         .sort({
             _id: -1
         }).exec(function(err, doc) {

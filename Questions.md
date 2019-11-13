@@ -6,8 +6,8 @@
 
 issues
 1. favorite communities - how to access community owner
-2. userlist doesn't seem to update other than the current user
-3. like / unlike button to save / remove favorite community is somehow not responsive
+2. userlist doesn't seem to update other than the current user (fixed)
+3. like / unlike button to save / remove favorite community is somehow not responsive (fixed)
 
 4. activeUsers is not joined with user data
 
@@ -20,3 +20,11 @@ Dependencies: node.js, mongodb, gitbash,
 2. need mongodb driver and socket io
   - mongo db native driver ( we will be using mongoose - done)
   - npm install socket.io (done)
+
+features to add
+1. unban form & button -- username form -> changes unbanUser state and do axios call to remove bannedCommunityID
+2. delete community button for admin - upon deleting, remove user's owned community (done)
+3. my community page - when creating chatroom, it should update the user's owned community (done)
+4. banned user gets redirected when new message is posted
+
+

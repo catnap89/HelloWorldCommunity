@@ -54,12 +54,6 @@ class Community extends Component {
         messages: [...this.state.messages, data]
       });
       console.log(this.state.messages);
-      // if (!this.state.participants.map(user => user.userId).includes(this.state.userInfo._id)) {
-      //     this.socket.emit("JOIN_CHAT", {
-      //       communityID: this.props.match.params.id,
-      //       user: this.state.userInfo
-      //     });
-      // }
     };
     
     const refreshParticipants = data => {

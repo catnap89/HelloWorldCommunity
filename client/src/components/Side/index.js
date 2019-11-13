@@ -10,6 +10,7 @@ const Side = props => (
     <Card.Title>
       <ListGroup className="flush" variant="flush border-right shadow">
         <ListGroup.Item className="pt-5 p-4 channel bg-light text-center border-0">
+
           <Button
             variant="outline-primary"
             size="lg"
@@ -39,6 +40,16 @@ const Side = props => (
           to="/favoriteCommunities"
         >
           Favorite Communities
+        </ListGroup.Item>
+
+        <ListGroup.Item
+          className="bg-light pl-5"
+          action
+          variant="light border-0"
+          as={Link}
+          to="/myCommunities"
+        >
+          My Communities
         </ListGroup.Item>
 
        
