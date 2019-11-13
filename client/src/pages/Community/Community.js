@@ -34,7 +34,6 @@ class Community extends Component {
       isAdmin: false,
       message: "",
       messages: [],
-      numChildren: 0,
       messageId: 0
     }
     
@@ -46,10 +45,12 @@ class Community extends Component {
       }
     });
 
-//NOTE this can probably be optimized emit an event only for this community, but this will work for now
-    this.socket.on('USER_JOINED', function (data) {
-      if (data.communityID === props.match.params.id) {
-        addParticipant(data);
+    //NOTE this can probably be optimized emit an event only for this community, but this will work for now
+    this.socket.on('ACTIVE_USERS_CHANGED', data => {
+      // console.log("got to active users changed")
+      // console.log("data.currentActiveUsers", data.currentActiveUsers)
+      if (data && data.communityID === props.match.params.id && data.currentActiveUsers) {
+        refreshParticipants(data);
       }
     });
 
@@ -59,17 +60,21 @@ class Community extends Component {
         messages: [...this.state.messages, data]
       });
       console.log(this.state.messages);
+      // if (!this.state.participants.map(user => user.userId).includes(this.state.userInfo._id)) {
+      //     this.socket.emit("JOIN_CHAT", {
+      //       communityID: this.props.match.params.id,
+      //       user: this.state.userInfo
+      //     });
+      // }
     };
     
-    const addParticipant = data => {
-      const currentParticipants = this.state.participants.filter(participant => participant._id !== data.user._id);
+    const refreshParticipants = data => {
+      console.log("refreshParticipants users array", data.currentActiveUsers);
+      console.log("refreshParticipants data");
+      console.log(data)
       this.setState({
-        participants: [...currentParticipants, data.user]
+        participants: data.currentActiveUsers
       });
-      console.log("preParticipants:")
-      console.log(currentParticipants)
-      console.log("postParticipants:")
-      console.log(this.state.participants)
     }
 
   }
@@ -81,13 +86,12 @@ class Community extends Component {
   }
 
   componentWillUnmount() {
-    localStorage.setItem("test", "TEST")
-    this.socket.emit('LEFT_CHAT', "test");
-
     if (this.state.userInfo) {
-      //emit a "LEFT_CHAT" socket event (Note" we will need to do something with (this.socket.on("LEFT_CHAT")
-      //update our activeUser array in mongo
-      // axios.patch(`/api/community/user/remove/${this.props.match.params.id}/${this.state.userInfo._id}`)
+      //emit a "LEFT_CHAT" socket event when page change in application
+      this.socket.emit("LEFT_CHAT", {
+        communityID: this.props.match.params.id,
+        user: this.state.userInfo
+      });
     }
   }
 
@@ -106,31 +110,25 @@ class Community extends Component {
             this.props.history.push("/");
             // if user is logged in and not banned from the community,
           } else {
-            // set userInfo state to user's information from /auth/isauth
-            this.setState({
-              userInfo: res.data.user || {}
-            })
+              // set userInfo state to user's information from /auth/isauth
+              this.setState({
+                userInfo: res.data.user || {}
+              })
 
-            //emit a "User Joined" socket event
-            //NOTE we can refactor the axios calls below to perform the db update in the "JOIN_CHAT" event
-            this.socket.emit("JOIN_CHAT", {
-              communityID: this.props.match.params.id,
-              user: res.data.user
-            });
-            //define an event that will emit a "LEFT_CHAT" event when the browser closes or the back button is pressed
-            const socket = this.socket;
-            window.onbeforeunload = function() {
-              socket.emit("LEFT_CHAT", res.data.user);
+              //emit a "User Joined" socket event
+              //NOTE we can refactor the axios calls below to perform the db update in the "JOIN_CHAT" event
+              this.socket.emit("JOIN_CHAT", {
+                communityID: this.props.match.params.id,
+                user: res.data.user
+              });
+              //define an event that will emit a "LEFT_CHAT" event when the browser closes or the back button is pressed      
+              window.onbeforeunload = () => {
+                this.socket.emit("LEFT_CHAT", {
+                communityID: this.props.match.params.id,
+                user: res.data.user
+              });
+
             }
-
-            //use axios to post to activeUser array in mongo
-            axios.patch(`/api/community/user/add/${this.props.match.params.id}/${res.data.user._id}`)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
-            
-            // this.setState(prevState => ({
-            //   participants: [...prevState.participants, this.state.userInfo]
-            // }));
 
             console.log(this.state.participants);
             // if the current user has created this community,
@@ -168,29 +166,29 @@ class Community extends Component {
   }
 
 
-  handleFavoriteCommunity = (label) => {
+  handleFavoriteCommunity = () => {
     const communityId = this.props.match.params.id;
     const username = this.state.userInfo.username;
 
-    if (label === "Unlike") {
-      console.log("like state: " + this.state.like);
+    if (this.state.liked) {
+      console.log("like state: " + this.state.liked);
       axios.patch("/api/user/remove/favoriteCommunity/" + communityId + "/" + username)
         .then(res => {
           console.log("successfully removed this community from my favorites: " + res);
+          this.setState({liked: false});
         })
     } else {
       axios.patch("/api/user/add/favoriteCommunity/" + communityId + "/" + username)
         .then(res => {
         console.log("successfully favorited this community: " + res);
+        this.setState({liked: true});
         })
     }
-  
-    // this.checkUser();
+
   }
 
   banUser = (participants) => {
     console.log(participants);
-    console.log(participants._id);
   }
 
   handleInputChange = event => {
@@ -229,14 +227,7 @@ class Community extends Component {
 
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
-    // const liked = this.state.liked
-
-    // const children = [];
-
-    // for (var i = 0; i < this.state.numChildren; i += 1) {
-    //   children.push(<Chatbox key={i} msg={this.state.message} username={this.state.userInfo.username}/>);
-    // };
-
+{console.log(this.state.participants)}
     return (
       <div className="App">
         {/* Navbar */}
@@ -263,25 +254,12 @@ class Community extends Component {
 
             <Card.Body className='scroll'>
 
-
               {this.state.messages.map(message => 
                 <Chatbox 
                   key={message.messageId} 
                   message={message} 
                   handleFormSubmit={() => this.handleFormSubmit()}
                 />)}
-
-
-              {/* THIS ONE WORKS SOMEWHAT */}
-              {/* <div className="messages">
-                {this.state.messages.map(message => {
-                  return (
-                    <div key={message.messageId}>
-                      {message.username}: {message.message}
-                    </div>
-                  )
-                })}
-              </div> */}
 
             </Card.Body>
 
@@ -315,12 +293,21 @@ class Community extends Component {
 
           {/* Right Sidebar for Community page */}
           <Sideright >
-            {this.state.participants.map(participants => (
+            {/* {this.state.participants.map(participants => (
               <Participants key={participants._id}>
                 <div className="userlist d-flex my-auto mt-0">
                  
                   <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(participants)}></BanBtn>
                    <li className="memItems my-auto pl-1">{participants.username}</li> 
+                </div>
+              </Participants>
+            ))} */}
+            {this.state.participants.map(user => (
+              <Participants key={user.userId}>
+                <div className="userlist d-flex my-auto mt-0">
+                 
+                  <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(user)}></BanBtn>
+                   <li className="memItems my-auto pl-1">{user.username}</li> 
                 </div>
               </Participants>
             ))}
