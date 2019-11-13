@@ -42,30 +42,27 @@ const Top = props => (
       {/* <FormControl type="text" placeholder="&#xF002; Search" className=" p-3 mr-3 ml-5 mr-5 form fontAwesome" /><span className="line"> | </span> */}
 
       {/* <Link className ="pt-4 ml-5 mr-4 links" as={Link} to="/">Home</Link> */}
-      <DropdownButton
+      <DropdownButton 
         className="mr-5 pt-4"
-        variant="outline-dark"
-        size="sm"
+        variant="link-dark"
+        // size="lg"
         id="dropdown-basic-button"
-        title="Ch@ Links "
+        title="Site Links "
       >
-        <Dropdown.Item as={Link} to="/">
-          Home
+        <Dropdown.Item as={Link} to="/"><i className="fas fa-home icon-muted pr-3"></i>Home
         </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/">
+        {/* <Dropdown.Item as={Link} to="/">
           About Us
         </Dropdown.Item>
         <Dropdown.Item as={Link} to="/">
           Contact Us
+        </Dropdown.Item> */}
+        <Dropdown.Item as={Link} to="/register"><i className="fas fa-user-plus icon-muted pr-3"></i>Register
         </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/register">
-          Register
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/login">
-          Sign In
+        <Dropdown.Item as={Link} to="/login"><i className="fas fa-sign-in-alt icon-muted pr-3"></i>Log In
         </Dropdown.Item>
       </DropdownButton>
-      <span className="line pt-4"> | </span>
+      <span className="line pt-4 mr-3"> | </span>
 
       {/* <Link className="pt-4 ml-4 mr-4 links" as={Link} to="/register">
         Register

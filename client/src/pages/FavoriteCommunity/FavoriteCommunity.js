@@ -10,7 +10,7 @@ import SavedChatroom from "../../components/SavedChatroom";
 
 
 class FavoriteCommunity extends Component {
-  // Not sure what to have in the states yet.
+
   state = {
     userInfo: {},
     savedCommunities: [],
@@ -66,7 +66,7 @@ class FavoriteCommunity extends Component {
       if (community.bannedList.includes(this.state.userInfo._id)) {
         //the user is not allowed, maybe alert them that they are banned
         //TODO make this fancy if we have time
-        alert("You have been banhammered. Go somewhere else.")
+        alert("Sorry you have been banned from this Chatroom.")
       }
       else {
         //the user IS allowed, switch locations

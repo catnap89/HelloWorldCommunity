@@ -1,12 +1,15 @@
+require('dotenv').config();
+
 const express = require("express"); 
 const mongoose = require("mongoose"); 
 const passport = require("./passport/passport");
 const session = require('express-session');
-const flash = require("connect-flash");
+// const flash = require("connect-flash");
 const api_routes = require("./routes/apiRoutes");
 const auth_routes = require("./routes/auth_routes");
 const path = require("path");
-require('dotenv').config();
+const socket = require("socket.io");
+
 
 const app = express();
 
@@ -34,6 +37,7 @@ mongoose.connect(db, {useCreateIndex: true, useNewUrlParser: true, useUnifiedTop
 
   else {
     console.log("mongoose connection is successful");
+    
   }
 });
 
@@ -77,6 +81,31 @@ app.get('*', function(req, res) {
 });
 
 // start the server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`==> API server now on port ${PORT}!`);
+});
+
+const io = socket(server);
+
+io.on('connection', function(socket){
+  console.log(socket.id);
+
+  socket.on('SEND_MESSAGE', function(data){
+    console.log('message: ' + data);
+    io.emit('RECEIVE_MESSAGE', data);
+  });
+
+  socket.on('JOIN_CHAT', function(data) {
+    //we can update our database with "active users" here
+    io.emit('USER_JOINED', data);
+  })
+  socket.on('LEFT_CHAT', function (data) {
+    //we can update our database with "active users" here
+    console.log("left chat");
+    console.log(data);
+  });
+  socket.on("disconnect", function(data, otherParam) {
+    console.log("disconnect");
+    console.log(data);
+  });
 });

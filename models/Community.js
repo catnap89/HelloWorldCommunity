@@ -7,14 +7,9 @@ var communitySchema =  new Schema({
     
   
   communityName : {
-      type: String,
-      required: true
-    },
-
-    // identifier: {
-    //     type: Number,
-    //     required: true
-    // },
+    type: String,
+    required: true
+  },
 
   communityDesc : {
     type: String,
@@ -33,6 +28,11 @@ var communitySchema =  new Schema({
         // I don't think this should be required
         // required: true
     }],
+
+  activeUsers: [{
+      type: Schema.Types.ObjectId,
+      ref: "User"
+  }]
 });
 
 

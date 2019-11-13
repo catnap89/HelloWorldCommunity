@@ -5,15 +5,14 @@
 }
 
 
-
 .link-button {
     background-color: rgb(169, 218, 248);
-    color:rgba(37, 37, 37, 0.856);
+    color:black;
     /* border:none; */
     font-size: 14px;
     border-width: medium;
     border-color:white;
-    padding: 24px 6px;
+    padding: 24px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -30,19 +29,24 @@
 
   .line {
     color:blue;
+    font-weight: bold;
   }
 
-  .links {
+  .icon-muted {
+    color: slategrey;
+  }
+
+  /* .links {
 
     color:rgba(37, 37, 37, 0.856);
     font-size: 18px;
     text-decoration: none !important;
     font-weight: bolder;
-  }
+  } */
 
-  .links:hover {
+  /* .links:hover {
     color:whitesmoke;
-  }
+  } */
 
   em {
     font-size: 24px;
@@ -50,7 +54,7 @@
 
   #demo {
     font-size: 20px;
-    color:rgba(37, 37, 37, 0.856)
+    color:black;
   }
 
   /* roll in left logo */
