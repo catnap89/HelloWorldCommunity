@@ -318,7 +318,7 @@ class Community extends Component {
 
               <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
 
-                <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
+                <InputGroup className="mb-0 shadow-sm fontAwesome"> 
                   <FormControl 
                     className="bg-light shadow-none" 
                     autoFocus="autofocus" 
@@ -411,7 +411,7 @@ class Community extends Component {
 
               <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
 
-                <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
+                <InputGroup className="mb-0 shadow-sm fontAwesome"> 
                   <FormControl 
                     className="bg-light shadow-none" 
                     autoFocus="autofocus" 
@@ -427,7 +427,7 @@ class Community extends Component {
                       onClick={this.handleFormSubmit}
                       onKeyPress={this.onKeyPress}
                     >
-                      <i className="fas fa-spinner fa-pulse mr-2"></i>
+                      <i className="fas fa-share mr-2"></i>
                       Send
                     
                     </Button>
