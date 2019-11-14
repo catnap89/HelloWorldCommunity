@@ -62,7 +62,7 @@ function About () {
          <br />
          <h6>Sincerely,</h6>
          <br />
-         <h6><strong>The Ch@ Dev Team</strong></h6>
+         <h6 className="dev">The Ch@ Dev Team</h6>
 
          </Card.Body>
          <Card.Footer className="bg-transparent border-0 ml-auto">
