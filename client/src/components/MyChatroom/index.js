@@ -12,7 +12,7 @@ const MyChatroom = (props) => (
         src="../Chat.png"
       />
       {props.community.communityName}
-      <i className="fas fa-user-shield ml-auto pt-1 pr-1 pt-2" title="Moderator"></i>
+      <i className="fa fa-user-shield ml-auto pr-0 pt-2" title="Moderator"></i>
     </Card.Header>
     
     <Card.Body className="overflow-auto">
