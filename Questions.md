@@ -22,9 +22,9 @@ Dependencies: node.js, mongodb, gitbash,
   - npm install socket.io (done)
 
 features to add
-1. unban form & button -- username form -> changes unbanUser state and do axios call to remove bannedCommunityID
+1. unban form & button -- username form -> changes unbanUser state and do axios call to remove bannedCommunityID (done)
 2. delete community button for admin - upon deleting, remove user's owned community (done)
 3. my community page - when creating chatroom, it should update the user's owned community (done)
 4. banned user gets redirected when new message is posted
-
-
+5. allow re-joining by clicking forward nav button to update userlist
+6. Haven't really test if the userlist will have scroll when there are many users in the community
