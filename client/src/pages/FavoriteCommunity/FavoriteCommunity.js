@@ -60,7 +60,7 @@ class FavoriteCommunity extends Component {
   handleJoinCommunity (community) {
 
     if (this.state.userInfo) {
-      if (community.bannedList.includes(this.state.userInfo._id)) {
+      if (community.bannedList.includes(this.state.userInfo.username)) {
         //the user is not allowed, maybe alert them that they are banned
         //TODO make this fancy if we have time
         alert("Sorry you have been banned from this Chatroom.")
