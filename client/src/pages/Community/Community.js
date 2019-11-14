@@ -8,6 +8,9 @@ import axios from "axios";
 import SideCommunity from "../../components/Side-Community";
 import Participants from "../../components/Participants";
 import BanBtn from "../../components/BanBtn";
+import SidebarAdmin from "../../components/SidebarAdmin";
+import BannedList from "../../components/BannedList";
+import UnbanBtn from "../../components/UnbanBtn";
 
 import Card  from 'react-bootstrap/Card';
 import { FormControl, InputGroup, Button} from 'react-bootstrap';
@@ -23,12 +26,15 @@ class Community extends Component {
     this.state = {
       userInfo: {},
       communityInfo: {},
-      participants: [],
+      participants: [], // [{username, userId}]
       liked: false,
       isAdmin: false,
       message: "",
       messages: [],
-      messageId: 0
+      messageId: 0,
+      bannedUsers: [],
+      bannedListId: 0,
+      displayAdminPanel: false
     }
     
     this.socket = io(socketURL);
@@ -63,6 +69,7 @@ class Community extends Component {
       this.setState({
         participants: data.currentActiveUsers
       });
+      console.log("Participants state: " +  JSON.stringify(this.state.participants));
     }
 
   }
@@ -119,6 +126,7 @@ class Community extends Component {
             }
 
             console.log(this.state.participants);
+            console.log("BannedListId: " + this.state.bannedListId);
             // if the current user has created this community,
             if (res.data.user.ownedCommunityIDs.includes(this.props.match.params.id)) {
               // set isAdmin state to true
@@ -183,15 +191,62 @@ class Community extends Component {
           communityInfo: res.data[0]
         })
         console.log("Community INFO STATE" + JSON.stringify(this.state.communityInfo));
-        
+        // get communityInfo which will have bannedlist that has username and id of the banned user
+        // set the bannedUsers state array
+        if (this.state.communityInfo.bannedList !== undefined) {
+
+          const bannedUserInfo = [];
+          this.state.communityInfo.bannedList.map(bannedUser => 
+            (bannedUserInfo.push({ username: bannedUser.username, userId: bannedUser._id, bannedUserId: this.state.bannedListId}) ))
+          this.setState({
+            bannedUsers: [...this.state.bannedUsers, bannedUserInfo[0]]
+          })
+          // console.log(bannedUserInfo[0].username);
+          // console.log(this.state.bannedUsers[0].username)
+          console.log(this.state.bannedUsers[0])
+          console.log(this.state.bannedUsers)
+
+          if (this.state.bannedUsers[0] !== undefined) {
+            this.setState({
+              displayAdminPanel: true
+            })
+            console.log("bannedUsers Arr Leng", this.state.bannedUsers.length);
+            console.log("displayAdmin: " + this.state.displayAdminPanel);
+          }
+
+        }
       })
+
   }
 
   banUser = (participants) => {
     console.log(participants);
     // banning should add user's bannedCommunityID with current communityID
-    axios.patch(`/api/user/add/bannedCommunity/${this.props.match.params.id}/${participants.username}`)
+    axios.patch(`/api/user/add/bannedCommunity/${this.props.match.params.id}/${participants.username}`);
+    // also add userId to bannedList of the community's data
+    axios.patch(`/api/community/user/ban/${this.props.match.params.id}/${participants.userId}`)
+      .then(res => {
+        console.log("banned res: " + JSON.stringify(res.data));
+      })
+    this.setState({
+      bannedListId: this.state.bannedListId + 1
+    })
+
   }
+
+  unbanUser = (bannedUser) => {
+    console.log(bannedUser);
+    // unbanning should remove current communityID from user's bannedCommunityID data array 
+    axios.patch(`/api/user/remove/bannedCommunity/${this.props.match.params.id}/${bannedUser.username}`);
+    // also remove userId from bannedList of the community's data
+    axios.patch(`/api/community/user/unban/${this.props.match.params.id}/${bannedUser.userId}`)
+      .then(res => {
+        console.log("banned res: " + JSON.stringify(res.data));
+
+      })
+  }
+
+  // Using this.state.bannedUsers, display list of banned users with button (unban)
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -229,83 +284,177 @@ class Community extends Component {
 
   render() {
     const label = this.state.liked ? 'Unlike' : 'Like'
+    if (this.state.isAdmin && this.state.displayAdminPanel) {
+      return (
 
-    return (
-      <div className="App">
-        {/* Navbar */}
-        <Top 
-          username={this.state.userInfo.username}
-        />
-        {/* BODY */}
-        <CardDeck className="size mx-auto"> 
-          {/* Left Sidebar for Community Page*/}
-          <SideCommunity 
-            handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
-            label={label}
+        <div className="App">
+          {/* Navbar */}
+          <Top 
+            username={this.state.userInfo.username}
           />
+          {/* BODY */}
+          <CardDeck className="size mx-auto"> 
+            {/* Left Sidebar for Community Page*/}
+            <SideCommunity 
+              handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
+              label={label}
+            />
 
-          {/* CHAT BOX */}
-          <Card className= 'col-9 p-1 border-0 chat mt-3 mb-0 mx-auto'>
+            {/* CHAT BOX */}
+            <Card className= 'col-9 p-1 border-0 chat mt-3 mb-0 mx-auto'>
 
-            <Card.Header as="h5" className="bg-white">{this.state.communityInfo.communityName}</Card.Header>
+              <Card.Header as="h5" className="bg-white">{this.state.communityInfo.communityName}</Card.Header>
 
-            <Card.Body className='scroll'>
+              <Card.Body className='scroll'>
 
-              {this.state.messages.map(message => 
-                <Chatbox 
-                  key={message.messageId} 
-                  message={message} 
-                  handleFormSubmit={() => this.handleFormSubmit()}
-                />)}
+                {this.state.messages.map(message => 
+                  <Chatbox 
+                    key={message.messageId} 
+                    message={message} 
+                    handleFormSubmit={() => this.handleFormSubmit()}
+                  />)}
 
-            </Card.Body>
+              </Card.Body>
 
-            <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
+              <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
 
-              <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
-                <FormControl 
-                  className="bg-light shadow-none" 
-                  autoFocus="autofocus" 
-                  placeholder="Say something..."
-                  onChange={this.handleInputChange}
-                  onKeyPress={this.onKeyPress}
-                  value={this.state.message}
-                  name="message"
-                /> 
-                <InputGroup.Append>
-                  <Button 
-                    variant="dark border pl-3 pr-3"
-                    onClick={this.handleFormSubmit}
+                <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
+                  <FormControl 
+                    className="bg-light shadow-none" 
+                    autoFocus="autofocus" 
+                    placeholder="Say something..."
+                    onChange={this.handleInputChange}
                     onKeyPress={this.onKeyPress}
-                  >
-                    <i className="fas fa-spinner fa-pulse mr-2"></i>
-                     Send
-                   
-                  </Button>
-                </InputGroup.Append>
-              </InputGroup> 
-            </Card.Footer>
-          </Card>
+                    value={this.state.message}
+                    name="message"
+                  /> 
+                  <InputGroup.Append>
+                    <Button 
+                      variant="dark border pl-3 pr-3"
+                      onClick={this.handleFormSubmit}
+                      onKeyPress={this.onKeyPress}
+                    >
+                      <i className="fas fa-spinner fa-pulse mr-2"></i>
+                      Send
+                    
+                    </Button>
+                  </InputGroup.Append>
+                </InputGroup> 
+              </Card.Footer>
+            </Card>
 
-          {/* Right Sidebar for Community page */}
-          <Sideright >
+            {/* Right Sidebar for Community page */}
+            <Sideright >
 
-            {this.state.participants.map(user => (
-              <Participants key={user.userId}>
-                <div className="userlist d-flex my-auto mt-0">
-                 
-                  <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(user)}></BanBtn>
-                   <li className="memItems my-auto pl-1">{user.username}</li> 
-                </div>
-              </Participants>
-            ))}
-          </Sideright>
-  
-        </CardDeck> 
-      
-      </div>
-  
-    );
+              {this.state.participants.map(user => (
+                <Participants key={user.userId}>
+                  <div className="userlist d-flex my-auto mt-0">
+                  
+                    <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(user)}></BanBtn>
+                    <li className="memItems my-auto pl-1">{user.username}</li> 
+
+                  </div>
+                </Participants>
+              ))}
+            </Sideright>
+
+            {/* Admin Panel for Community page */}
+            <SidebarAdmin isAdmin={this.state.isAdmin}>
+
+              {this.state.bannedUsers.map(bannedUser => (
+                <BannedList key={bannedUser.bannedUserId} >
+                  <div className="userlist d-flex my-auto mt-0">
+
+                    <UnbanBtn unbanUser={() => this.unbanUser(bannedUser)}></UnbanBtn>
+                    <li className ="memitems my-auto pl-1">{bannedUser.username}</li>
+
+                  </div>
+                </BannedList>
+              ))}
+            </SidebarAdmin>
+    
+          </CardDeck> 
+        
+        </div>
+    
+      );
+    }
+      return (
+        <div className="App">
+          {/* Navbar */}
+          <Top 
+            username={this.state.userInfo.username}
+          />
+          {/* BODY */}
+          <CardDeck className="size mx-auto"> 
+            {/* Left Sidebar for Community Page*/}
+            <SideCommunity 
+              handleFavoriteCommunity={() => this.handleFavoriteCommunity(label)}
+              label={label}
+            />
+
+            {/* CHAT BOX */}
+            <Card className= 'col-9 p-1 border-0 chat mt-3 mb-0 mx-auto'>
+
+              <Card.Header as="h5" className="bg-white">{this.state.communityInfo.communityName}</Card.Header>
+
+              <Card.Body className='scroll'>
+
+                {this.state.messages.map(message => 
+                  <Chatbox 
+                    key={message.messageId} 
+                    message={message} 
+                    handleFormSubmit={() => this.handleFormSubmit()}
+                  />)}
+
+              </Card.Body>
+
+              <Card.Footer fixed="bottom" className="text-muted bg-white border-0 mt-0 pt-0">
+
+                <InputGroup size="lg" className="mb-0 shadow-sm fontAwesome"> 
+                  <FormControl 
+                    className="bg-light shadow-none" 
+                    autoFocus="autofocus" 
+                    placeholder="Say something..."
+                    onChange={this.handleInputChange}
+                    onKeyPress={this.onKeyPress}
+                    value={this.state.message}
+                    name="message"
+                  /> 
+                  <InputGroup.Append>
+                    <Button 
+                      variant="dark border pl-3 pr-3"
+                      onClick={this.handleFormSubmit}
+                      onKeyPress={this.onKeyPress}
+                    >
+                      <i className="fas fa-spinner fa-pulse mr-2"></i>
+                      Send
+                    
+                    </Button>
+                  </InputGroup.Append>
+                </InputGroup> 
+              </Card.Footer>
+            </Card>
+
+            {/* Right Sidebar for Community page */}
+            <Sideright >
+
+              {this.state.participants.map(user => (
+                <Participants key={user.userId}>
+                  <div className="userlist d-flex my-auto mt-0">
+                  
+                    <BanBtn isAdmin={this.state.isAdmin} banUser={() => this.banUser(user)}></BanBtn>
+                    <li className="memItems my-auto pl-1">{user.username}</li> 
+                  </div>
+                </Participants>
+              ))}
+            </Sideright>
+    
+          </CardDeck> 
+        
+        </div>
+    
+      );
   }
 }
 

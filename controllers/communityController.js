@@ -35,6 +35,8 @@ module.exports = {
     get: function(query, callback) {
         Community.find(query)
         .populate("userAdmin")
+        .populate("activeUsers")
+        .populate("bannedList")
         .sort({
             _id: -1
         }).exec(function(err, doc) {
@@ -42,34 +44,47 @@ module.exports = {
         });
     },
 
-
-    // update: function(query, callback) {
-    //     Community.update({communityName: query.communityName}, {$set:query}, {}, callback);
-    //     },
     update: function(communityId, query, callback) {
         Community.update({_id: communityId}, {$set: query}, {}, callback);
     },
 
     addActiveUser: function(communityId, userId) {
-        console.log("got to addActiveUser")
-        console.log(userId);
-        console.log("controller communityId:")
-        console.log(communityId);
-        console.log("controller userId:")
-        console.log(userId);
+        // console.log("got to addActiveUser")
+        // console.log(userId);
+        // console.log("controller communityId:")
+        // console.log(communityId);
+        // console.log("controller userId:")
+        // console.log(userId);
         return Community.findOneAndUpdate({_id: communityId}, {$addToSet: {activeUsers: userId}}, {new: true})
         .populate("activeUsers");
     },
 
     removeActiveUser: function(communityId, userId) {
-        console.log("got to removeActiveUser")
-        console.log(userId);
+        // console.log("got to removeActiveUser")
+        // console.log(userId);
+        // console.log("controller communityId:")
+        // console.log(communityId);
+        // console.log("controller userId:")
+        // console.log(userId);
+        return Community.findOneAndUpdate({_id: communityId}, {$pull: {activeUsers: userId}}, {new: true})
+        .populate("activeUsers")
+    },
+
+    addBannedUser: function(communityId, userId, callback) {
+        console.log("got to addBannedUser")
         console.log("controller communityId:")
         console.log(communityId);
         console.log("controller userId:")
         console.log(userId);
-        return Community.findOneAndUpdate({_id: communityId}, {$pull: {activeUsers: userId}}, {new: true})
-        .populate("activeUsers")
+
+        Community.findOneAndUpdate({_id: communityId}, {$addToSet: {bannedList: userId}}, {new: true}, callback)
+            .populate("bannedList");
+    },
+
+    removeBannedUser: function(communityId, userId, callback) {
+
+        Community.findOneAndUpdate({_id: communityId}, {$pull: {bannedList: userId}}, {new: true}, callback)
+            .populate("bannedList")
     },
 }
 

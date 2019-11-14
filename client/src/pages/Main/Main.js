@@ -67,7 +67,7 @@ class Main extends Component {
   }
 
   handleJoinCommunity (community) {
-
+    console.log("community.bannedList: " + community.bannedList);
     if (this.state.userInfo) {
       if (community.bannedList.includes(this.state.userInfo._id)) {
         //the user is not allowed, maybe alert them that they are banned
@@ -107,6 +107,10 @@ class Main extends Component {
         <CardDeck className="size mx-auto"> 
           <Side />
           <CardDeck className= 'col-9 p-3 chat border-0 mt-5 mb-4 mx-auto overflow-auto'>
+            {/* <div className="mainheaderContainer">
+              <h1 className="mainheader">All Communities</h1>
+            </div> */}
+
             {this.state.communities.map(community => <Chatroom key={community._id} community={community} handleJoinCommunity={() => this.handleJoinCommunity(community)}/>)}
           </CardDeck> 
         </CardDeck> 

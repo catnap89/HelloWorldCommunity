@@ -134,6 +134,7 @@ router.patch("/api/user/remove/:communityType/:communityId/:username", function(
     });  
 });
 
+// Add to activeUsers array of the Community data
 router.patch("/api/community/user/add/:id/:userId", function (req, res) {
     communityController.addActiveUser(req.params.id, req.params.userId, function (err, data) {
         if (err) {
@@ -143,7 +144,7 @@ router.patch("/api/community/user/add/:id/:userId", function (req, res) {
     });
 })
 
-
+// Remove from activeUsers array of the community data
 router.patch("/api/community/user/remove/:id/:userId", function (req, res) {
     communityController.removeActiveUser(req.params.id, req.params.userId, function (err, data) {
         if (err) {
@@ -151,8 +152,29 @@ router.patch("/api/community/user/remove/:id/:userId", function (req, res) {
             res.json(err);
         }
         res.json(data);
-    })
-})
+    });
+});
+
+// Add to bannedList array of the Community data
+router.patch("/api/community/user/ban/:id/:userId", function (req, res) {
+    communityController.addBannedUser(req.params.id, req.params.userId, function (err, data) {
+        if (err) {
+            res.json(err)
+        }
+        res.json(data);
+    });
+});
+
+// Remove from bannedList array of the community data
+router.patch("/api/community/user/unban/:id/:userId", function (req, res) {
+    communityController.removeBannedUser(req.params.id, req.params.userId, function (err, data) {
+        if (err) {
+            console.log(err);
+            res.json(err);
+        }
+        res.json(data);
+    });
+});
 
 
 module.exports = router;
