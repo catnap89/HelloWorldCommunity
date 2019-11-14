@@ -6,7 +6,7 @@ import './unbanbtn.css';
 const UnbanBtn = props => {
 
   return (
-    <DropdownButton title="" className="ml-3 mr-1 border-0"  variant="" size="sm" >
+    <DropdownButton title={<span><i className="fas fa-user fa-sm userlist"> </i> </span>} className="ml-3 mr-1 border-0"  variant="" size="sm" >
 
       <Dropdown.Item onClick={props.unbanUser}><i className="fas fa-ban pr-2"></i>UnBan User</Dropdown.Item>
       
