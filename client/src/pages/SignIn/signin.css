@@ -77,3 +77,18 @@
     opacity: 1;
   }
 }
+
+/* media queries */
+
+@media only screen and (max-width: 1000px) {
+  /* For mobile phones: */
+  .col-4 , .col-8 ,.col-12{
+    max-width: 800px;
+    padding: 10px;
+    overflow-y: auto !important;
+    margin: none;
+  }
+
+  
+}
+

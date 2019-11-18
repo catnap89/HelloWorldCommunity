@@ -64,7 +64,7 @@
     -webkit-animation: imager 0.9s ease-out both;
     animation: imager 0.9s ease-out both;
   }
- 
+
 /**
  * ----------------------------------------
  * animation roll-in-left
@@ -133,4 +133,26 @@
             transform: translateX(0) rotate(0deg);
     opacity: 1;
   }
+}
+
+/* media queries */
+
+@media only screen and (max-width: 1025px) {
+  /* For mobile phones: */
+  .topbar {
+    flex-direction: column;
+    /* padding: 5px; */
+    
+  }
+  .imager {
+    display: inline-block;
+  
+   
+  }
+
+  #demo {
+    padding: none;
+    margin: none;
+  }
+  
 }
