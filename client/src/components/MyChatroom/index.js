@@ -13,7 +13,7 @@ const MyChatroom = (props) => (
         src="../Chat.png"
       />
      <div className="my-auto">{props.community.communityName}</div> 
-     <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">You are the Moderator</Tooltip>}>
+     <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">You Moderate this Room</Tooltip>}>
       <i className="fas fa-user-shield ml-auto pr-0 pt-2"></i>
 </OverlayTrigger>
 
