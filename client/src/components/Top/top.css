@@ -144,14 +144,10 @@
     /* padding: 5px; */
     
   }
-  .imager {
-    display: inline-block;
   
-   
-  }
 
-  #demo {
-    padding: none;
+  p {
+    padding-top: none !important;
     margin: none;
   }
   
