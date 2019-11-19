@@ -27,7 +27,7 @@ const Top = props => (
       />
     </Navbar.Brand>
 
-    <p id="demo" className="mb-0 pb-0 pt-4">
+    <p id="demo" className="mb-0 pb-0">
       <em>
         <strong>Welcome, {props.username}!</strong>
       </em>

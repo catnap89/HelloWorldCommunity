@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import './mychatroom.css';
 import Button from 'react-bootstrap/Button';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 const MyChatroom = (props) => (
   <Card className= "cardchat rounded shadow mb-3" key={props.community._id} style={{ minWidth: '22rem', maxWidth: '22rem', maxHeight: '250px'}}>
@@ -12,7 +13,10 @@ const MyChatroom = (props) => (
         src="../Chat.png"
       />
      <div className="my-auto">{props.community.communityName}</div> 
-      <i className="fas fa-user-shield ml-auto pr-0 pt-2" title="Moderator"></i>
+     <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">You Moderate this Room</Tooltip>}>
+      <i className="fas fa-user-shield ml-auto pr-0 pt-2"></i>
+</OverlayTrigger>
+
     </Card.Header>
     
     <Card.Body className="overflow-auto">

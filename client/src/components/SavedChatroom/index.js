@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import './savedchatroom.css';
 import Button from 'react-bootstrap/Button';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const SavedChatroom = (props) => (
   <Card className= "cardchat rounded shadow mb-3" key={props.community._id} style={{ minWidth: '22rem', maxWidth: '22rem', maxHeight: '250px'}}>
@@ -11,8 +12,10 @@ const SavedChatroom = (props) => (
         alt="Logo"
         src="../Chat.png"
       />
-       <div className="my-auto">{props.community.communityName}</div> 
-    <i className="fas fa-heart ml-auto  pr-0 pt-2" title="Favorite"></i>
+       <div className="my-auto">{props.community.communityName}</div>
+       <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">You liked this Room</Tooltip>}> 
+    <i className="fas fa-heart ml-auto  pr-0 pt-2"></i>
+    </OverlayTrigger>
     </Card.Header>
     
     <Card.Body className="overflow-auto" >
